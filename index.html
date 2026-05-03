@@ -1,265 +1,292 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio Mateo Zamora</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.2.0/css/line.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Mateo Zamora</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.2.0/css/line.css"
+    />
+  </head>
 
-<body>
+  <body>
+    <header class="navbar">
+      <div class="logo">Mateo Zamora</div>
+      <nav>
+        <a href="#sobre-mi">About me</a>
+        <a href="#proyectos">Projects</a>
+        <a href="#software">Software</a>
+      </nav>
+    </header>
 
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="logo">Mateo Zamora</div>
-    <nav>
-      <a href="#sobre-mi">About me</a>
-      <a href="#proyectos">Projects</a>
-      <a href="#software">Software</a>
-    </nav>
-  </header>
+    <section id="sobre-mi" class="hero">
+      <div class="hero-video">
+        <div class="video-wrapper">
+          <video autoplay muted loop playsinline>
+            <source src="Imagenes/AMAT3D DREAM SEQUENCE.mp4" type="video/mp4" />
+          </video>
 
-  <!-- HERO / SOBRE MI -->
-<section id="sobre-mi" class="hero">
-  
-  <!-- LEFT: VIDEO -->
-  <div class="hero-video">
-    <div class="video-wrapper">
-    
-      <video autoplay muted loop playsinline>
-        <source src="Imagenes/AMAT3D DREAM SEQUENCE.mp4" type="video/mp4">
-      </video>
-
-      <div class="video-overlay">
-        <h3>Dream Sequence</h3>
-        <p>My entry for the Dream Sequence community challenge hosted by pwnisher.</p>
-        <p>The challenge consisted in creating a 4 seconds animation that visualized the provided beat of 120 BPM. </p>
+          <div class="video-overlay">
+            <h3>Dream Sequence</h3>
+            <p>
+              My entry for the Dream Sequence community challenge hosted by
+              pwnisher.
+            </p>
+            <p>
+              The challenge consisted in creating a 4 seconds animation that
+              visualized the provided beat of 120 BPM.
+            </p>
+          </div>
+        </div>
       </div>
 
-    </div>
-</div>
+      <div class="info">
+        <div class="foto">
+          <img src="Imagenes/Foto perfil.jpeg" alt="Foto de perfil" />
+        </div>
 
-  <!-- RIGHT: INFO -->
-  <div class="info">
-    <div class="foto">
-      <img src="Imagenes/Foto perfil.jpeg" alt="Foto de perfil">
-    </div>
+        <h1>Mateo Zamora</h1>
+        <h2>Rigging artist & Animador</h2>
 
-    <h1>Mateo Zamora</h1>
-    <h2>Rigging artist & Animador</h2>
+        <p>
+          Specialized in rigging and animation for characters, creatures or
+          objects for videogames, videos and marketing.
+        </p>
 
-    <p>
-      Specialized in rigging and animation for characters, creatures or objects for videogames,
-      videos and marketing.
-    </p>
+        <b>
+          <p><i class="uil uil-envelope"></i> originalamat@gmail.com</p>
+          <p><i class="uil uil-phone"></i> +52 8182079917</p>
+        </b>
 
-    <b>
-      <p><i class="uil uil-envelope"></i> originalamat@gmail.com</p>
-      <p><i class="uil uil-phone"></i> +52 8182079917</p>
-    </b>
+        <div class="social">
+          <a href="https://www.instagram.com/amat.3d/?hl=en" target="_blank">
+            <img src="Imagenes/Instagram_Logo.png" />
+          </a>
+          <a
+            href="https://mx.linkedin.com/in/mateo-zamora-474546261"
+            target="_blank"
+          >
+            <img src="Imagenes/LinkedIn_logo.png" />
+          </a>
+        </div>
 
-    <div class="social">
-      <a href="https://www.instagram.com/amat.3d/?hl=en" target="_blank">
-        <img src="Imagenes/Instagram_Logo.png">
-      </a>
-      <a href="https://mx.linkedin.com/in/mateo-zamora-474546261" target="_blank">
-        <img src="Imagenes/LinkedIn_logo.png">
-      </a>
-    </div>
+        <a href="Documents/Mateo_Zamora_CV.pdf" download class="btn-resume">
+          Download Resume
+        </a>
+      </div>
+    </section>
 
-    <a href="Documents/Mateo_Zamora_CV.pdf" download class="btn-resume">
-      Download Resume
-    </a>
-  </div>
+    <section class="featured-projects">
+      <!-- PROJECT 1 -->
+      <div class="project-row">
+        <div class="project-media">
+          <img src="Imagenes/Dragon Rig Render.png" alt="Project 1" />
+        </div>
 
-</section>
+        <div class="project-text">
+          <h3>DRAGON RIG & ANIMATION</h3>
+          <p>
+            Adapted and optimized a high-resolution dragon sculpt into a fully
+            animatable rig. Developed IK/FK systems using drivers and
+            constraints, along with secondary physics-based bones to enhance
+            realism and motion detail.
+          </p>
+        </div>
+      </div>
 
-<section class="featured-projects">
+      <!-- PROJECT 2 -->
+      <div class="project-row reverse">
+        <div class="project-media">
+          <img src="Imagenes/AntRig Render.png" alt="Project 2" />
+        </div>
 
-  <!-- PROJECT 1 -->
-  <div class="project-row">
-    <div class="project-media">
-      <img src="Imagenes/Dragon Rig Render.png" alt="Project 1">
-      <!-- or video -->
-      <!-- <video src="videos/project1.mp4" autoplay muted loop></video> -->
-    </div>
+        <div class="project-text">
+          <h3>ANT RIG & ANIMATION</h3>
+          <p>
+            Designed a gameplay-focused rig for the player character in *Ant
+            Defender*, prioritizing flexibility and responsiveness for movement
+            and emotes in Unreal Engine. Implemented IK systems with supporting
+            FK controls, along with drivers, constraints, and a toggle system
+            for switching between standing and running states.
+          </p>
+        </div>
+      </div>
 
-    <div class="project-text">
-      <h3>DRAGON RIG & ANIMATION</h3>
-      <p>
-        Adapted and optimized a high-resolution dragon sculpt into
-        a fully animatable rig. Developed IK/FK systems using drivers and
-        constraints, along with secondary physics-based bones to enhance
-        realism and motion detail.
-      </p>
-    </div>
-  </div>
+      <!-- PROJECT 3 -->
+      <div class="project-row">
+        <div class="project-media">
+          <img src="Imagenes/BearRig render.png" alt="Project 3" />
+        </div>
 
-  <!-- PROJECT 2 (reversed) -->
-  <div class="project-row reverse">
-    <div class="project-media">
-      <img src="Imagenes/AntRig Render.png" alt="Project 2">
-    </div>
+        <div class="project-text">
+          <h3>BEAR RIG & ANIMATION</h3>
+          <p>
+            Created a lightweight rig for an augmented reality experience in
+            Unity, triggered via QR code scanning on a presentation card.
+            Optimized the rig to work with a low-poly mesh while maintaining
+            functional and intuitive controls for animation.
+          </p>
+        </div>
+      </div>
+    </section>
 
-    <div class="project-text">
-      <h3>ANT RIG & ANIMATION</h3>
-      <p>
-        Designed a gameplay-focused rig for the player character
-        in *Ant Defender*, prioritizing flexibility and responsiveness
-        for movement and emotes in Unreal Engine. Implemented IK systems with supporting
-        FK controls, along with drivers, constraints, and a toggle
-        system for switching between standing and running states.
-      </p>
-    </div>
-  </div>
+    <section id="proyectos" class="proyectos">
+      <h2 class="title">MORE PROJECTS</h2>
 
-  <!-- PROJECT 3 -->
-  <div class="project-row">
-    <div class="project-media">
-      <img src="Imagenes/BearRig render.png" alt="Project 3">
-    </div>
-
-    <div class="project-text">
-      <h3>BEAR RIG & ANIMATION</h3>
-      <p>
-        Created a lightweight rig for an augmented reality
-        experience in Unity, triggered via QR code scanning
-        on a presentation card. Optimized the rig to work with
-        a low-poly mesh while maintaining functional and 
-        intuitive controls for animation.
-      </p>
-    </div>
-  </div>
-
-</section>
-
-  <!-- PROYECTOS -->
-  <section id="proyectos" class="proyectos">
-    <h2 class="title">MORE PROJECTS</h2>
-
-    <div class="grid-proyectos">
-
-        <!-- Proyecto Ejemplo (solo copia y pega para agregar más) -->
+      <div class="grid-proyectos">
         <div class="card">
-          <img src="Imagenes/DreamSequence.png" alt="Proyecto Dragon">
+          <img src="Imagenes/DreamSequence.png" alt="Proyecto Dragon" />
           <h3>DREAM SEQUENCE</h3>
           <p><strong>Rol:</strong> 3D Rigger & Animator</p>
           <p><strong>Software:</strong> Blender</p>
-          <a href="https://www.instagram.com/p/DVhes2NEhkm/" class="btn" target="_blank">See more</a>
-      
-        </div>
-        
-        <div class="card">
-            <img src="Imagenes/DragonRig.jpeg" alt="Proyecto Dragon">
-            <h3>DRAGON RIG</h3>
-            <p><strong>Rol:</strong> 3D Rigger & Animator</p>
-            <p><strong>Software:</strong> Blender</p>
-            <a href="https://www.instagram.com/p/DRiERhjj-78/" class="btn" target="_blank">See more</a>
-            
+          <a
+            href="https://www.instagram.com/p/DVhes2NEhkm/"
+            class="btn"
+            target="_blank"
+            >See more</a
+          >
         </div>
 
         <div class="card">
-            <img src="Imagenes/AntRig.jpeg">
-            <h3>ANT RIG</h3>
-            <p><strong>Rol:</strong> 3D Rigger & Animador</p>
-            <p><strong>Software:</strong> Blender</p>
-            <a href="https://www.instagram.com/p/DLiuzmoNlZq/" class="btn" target="_blank">See more</a>
-            
+          <img src="Imagenes/DragonRig.jpeg" alt="Proyecto Dragon" />
+          <h3>DRAGON RIG</h3>
+          <p><strong>Rol:</strong> 3D Rigger & Animator</p>
+          <p><strong>Software:</strong> Blender</p>
+          <a
+            href="https://www.instagram.com/p/DRiERhjj-78/"
+            class="btn"
+            target="_blank"
+            >See more</a
+          >
         </div>
 
         <div class="card">
-            <img src="Imagenes/BearAnim.jpg">
-            <h3>BEAR ANIMATION</h3>
-            <p><strong>Rol:</strong> 3D Rigger & Animador</p>
-            <p><strong>Software:</strong> Blender</p>
-            <a href="https://www.instagram.com/p/DORQnnBj0He/" class="btn" target="_blank">See more</a>
+          <img src="Imagenes/AntRig.jpeg" />
+          <h3>ANT RIG</h3>
+          <p><strong>Rol:</strong> 3D Rigger & Animador</p>
+          <p><strong>Software:</strong> Blender</p>
+          <a
+            href="https://www.instagram.com/p/DLiuzmoNlZq/"
+            class="btn"
+            target="_blank"
+            >See more</a
+          >
         </div>
 
         <div class="card">
-            <img src="Imagenes/ClawRig.jpg">
-            <h3>MECHANICAL ARM RIG</h3>
-            <p><strong>Rol:</strong> 3D Rigger & Animador</p>
-            <p><strong>Software:</strong> Maya</p>
-            <a href="https://www.instagram.com/p/DLn9ykMN_92/" class="btn" target="_blank">See more</a>
+          <img src="Imagenes/BearAnim.jpg" />
+          <h3>BEAR ANIMATION</h3>
+          <p><strong>Rol:</strong> 3D Rigger & Animador</p>
+          <p><strong>Software:</strong> Blender</p>
+          <a
+            href="https://www.instagram.com/p/DORQnnBj0He/"
+            class="btn"
+            target="_blank"
+            >See more</a
+          >
         </div>
 
         <div class="card">
-            <img src="Imagenes/BallRig.jpg">
-            <h3>WRECKING BALL RIG</h3>
-            <p><strong>Rol:</strong> 3D Rigger & Animador</p>
-            <p><strong>Software:</strong> Maya</p>
-            <a href="https://www.instagram.com/p/DLn9nkQt5RI/" class="btn" target="_blank">See more</a>
+          <img src="Imagenes/ClawRig.jpg" />
+          <h3>MECHANICAL ARM RIG</h3>
+          <p><strong>Rol:</strong> 3D Rigger & Animador</p>
+          <p><strong>Software:</strong> Maya</p>
+          <a
+            href="https://www.instagram.com/p/DLn9ykMN_92/"
+            class="btn"
+            target="_blank"
+            >See more</a
+          >
         </div>
 
         <div class="card">
-            <img src="Imagenes/AntModel.jpg">
-            <h3>ANT MODEL</h3>
-            <p><strong>Rol:</strong> 3D Modelador</p>
-            <p><strong>Software:</strong> Blender</p>
-            <a href="https://www.instagram.com/p/DLjBVD3NAnA/?img_index=1" class="btn" target="_blank">See more</a>
+          <img src="Imagenes/BallRig.jpg" />
+          <h3>WRECKING BALL RIG</h3>
+          <p><strong>Rol:</strong> 3D Rigger & Animador</p>
+          <p><strong>Software:</strong> Maya</p>
+          <a
+            href="https://www.instagram.com/p/DLn9nkQt5RI/"
+            class="btn"
+            target="_blank"
+            >See more</a
+          >
         </div>
 
-    </div>
-  </section>
-
-  <!-- SOFTWARE y SKILLS -->
-  <section id="software" class="skills">
-    <h2 class="title">SOFTWARE</h2>
-
-    <div class="skills-grid ">
-
-      <div class="skill">
-        <img src="Imagenes/Blender_Logo.png">
-        <h3>Blender</h3>
-        <p>Professional</p>
+        <div class="card">
+          <img src="Imagenes/AntModel.jpg" />
+          <h3>ANT MODEL</h3>
+          <p><strong>Rol:</strong> 3D Modelador</p>
+          <p><strong>Software:</strong> Blender</p>
+          <a
+            href="https://www.instagram.com/p/DLjBVD3NAnA/?img_index=1"
+            class="btn"
+            target="_blank"
+            >See more</a
+          >
+        </div>
       </div>
+    </section>
 
-      <div class="skill">
-        <img src="https://brandlogos.net/wp-content/uploads/2022/07/autodesk_maya-logo_brandlogos.net_x7aqy.png">
-        <h3>Maya</h3>
-        <p>Advanced</p>
+    <section id="software" class="skills">
+      <h2 class="title">SOFTWARE</h2>
+
+      <div class="skills-grid">
+        <div class="skill">
+          <img src="Imagenes/Blender_Logo.png" />
+          <h3>Blender</h3>
+          <p>Professional</p>
+        </div>
+
+        <div class="skill">
+          <img
+            src="https://brandlogos.net/wp-content/uploads/2022/07/autodesk_maya-logo_brandlogos.net_x7aqy.png"
+          />
+          <h3>Maya</h3>
+          <p>Advanced</p>
+        </div>
+
+        <div class="skill">
+          <img src="https://www.svgrepo.com/show/508998/zbrush.svg" />
+          <h3>ZBrush</h3>
+          <p>Intermediate</p>
+        </div>
+
+        <div class="skill">
+          <img
+            src="https://brandlogos.net/wp-content/uploads/2022/05/autodesk_3ds_max-logo_brandlogos.net_ugjmh.png"
+          />
+          <h3>3D Max</h3>
+          <p>Intermediate</p>
+        </div>
+
+        <div class="skill">
+          <img
+            src="https://pnghdpro.com/wp-content/themes/pnghdpro/download/social-media-and-brands/unreal-engine-logo-icon.png"
+          />
+          <h3>Unreal Engine</h3>
+          <p>Advanced</p>
+        </div>
+
+        <div class="skill">
+          <img src="Imagenes/Adobe_Premiere_Pro_Logo.png" />
+          <h3>Premier Pro</h3>
+          <p>Professional</p>
+        </div>
+
+        <div class="skill">
+          <img src="Imagenes/Adobe_After_Effects_Logo.png" />
+          <h3>After Effects</h3>
+          <p>Advanced</p>
+        </div>
       </div>
+    </section>
 
-      <div class="skill">
-        <img src="https://www.svgrepo.com/show/508998/zbrush.svg">
-        <h3>ZBrush</h3>
-        <p>Intermediate</p>
-      </div>
-
-      <div class="skill">
-        <img src="https://brandlogos.net/wp-content/uploads/2022/05/autodesk_3ds_max-logo_brandlogos.net_ugjmh.png">
-        <h3>3D Max</h3>
-        <p>Intermediate</p>
-      </div>
-
-      <div class="skill">
-        <img src="https://pnghdpro.com/wp-content/themes/pnghdpro/download/social-media-and-brands/unreal-engine-logo-icon.png">
-        <h3>Unreal Engine</h3>
-        <p>Advanced</p>
-      </div>
-
-      <div class="skill">
-        <img src="Imagenes/Adobe_Premiere_Pro_Logo.png">
-        <h3>Premier Pro</h3>
-        <p>Professional</p>
-      </div>
-
-      <div class="skill">
-        <img src="Imagenes/Adobe_After_Effects_Logo.png">
-        <h3>After Effects</h3>
-        <p>Advanced</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer id="contacto" class="footer">
-    <p><i class="uil uil-envelope"></i> originalamat@gmail.com</p>
-    <p><i class="uil uil-phone"></i> +52 8182079917</p>
-    <p>© 2026 Portfolio Mateo Zamora</p>
-  </footer>
-
-</body>
+    <footer id="contacto" class="footer">
+      <p><i class="uil uil-envelope"></i> originalamat@gmail.com</p>
+      <p><i class="uil uil-phone"></i> +52 8182079917</p>
+      <p>© 2026 Portfolio Mateo Zamora</p>
+    </footer>
+  </body>
 </html>
