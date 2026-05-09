@@ -442,9 +442,13 @@ body {
     height: 120px;
   }
 
-  .video-overlay {
+    .video-overlay {
+    transform: translateY(75%);
+    transition: transform 0.3s ease;
+  }
+
+  .video-wrapper.active .video-overlay {
     transform: translateY(0);
-    padding: 15px;
   }
 
   .video-overlay h3 {
@@ -530,8 +534,19 @@ video {
 }
 
 @media (max-width: 768px) {
+  .hero {
+    flex-direction: column-reverse;
+  }
   .navbar nav {
     flex-direction: column;
     gap: 10px;
   }
+  @media (max-width: 768px) {
+
+  .social img {
+    width: 30px;
+    height: 30px;
+  }
+
+}
 }

@@ -288,5 +288,15 @@
       <p><i class="uil uil-phone"></i> +52 8182079917</p>
       <p>© 2026 Portfolio Mateo Zamora</p>
     </footer>
+    <script>
+      const videoWrapper = document.querySelector(".video-wrapper");
+
+      videoWrapper.addEventListener("click", () => {
+        if (window.innerWidth <= 768) {
+          videoWrapper.classList.toggle("active");
+      }
+      });
+    </script>
+  
   </body>
 </html>
