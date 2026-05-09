@@ -406,21 +406,27 @@ body {
 @media (max-width: 768px) {
 
   .navbar {
+    padding: 15px 20px;
     flex-direction: column;
-    gap: 15px;
-    padding: 20px;
-    text-align: center;
+    gap: 10px;
   }
 
   .navbar nav {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
+    align-items: center;
+    gap: 18px;
+
+    flex-wrap: wrap;
   }
 
   .navbar nav a {
     margin-left: 0;
+    font-size: 0.95rem;
+  }
+
+  .logo {
+    font-size: 1.1rem;
   }
 
   .hero {
