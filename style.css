@@ -22,21 +22,24 @@ body {
   color: #222;
   line-height: 1.6;
   overflow-x: hidden;
+  padding-top: 80px;  
 }
 
 .navbar {
   width: 100%;
   padding: 16px 28px;
   background: #0a0a23;
+
+  transition: transform 0.3s ease;
+
   color: white;
   display: flex;
   gap: 20px;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 20;
-  transition: transform 0.3s ease;
 }
 
 .nav-hidden {
