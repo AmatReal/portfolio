@@ -11,6 +11,24 @@
     />
   </head>
 
+  <script>
+    let lastScroll = 0;
+    const navbar = document.querySelector(".navbar");
+
+    window.addEventListener("scroll", () => {
+
+      const currentScroll = window.pageYOffset;
+
+      if (currentScroll > lastScroll && currentScroll > 100) {
+        navbar.classList.add("nav-hidden");
+      } else {
+        navbar.classList.remove("nav-hidden");
+      }
+
+      lastScroll = currentScroll;
+    });
+  </script>
+
   <body>
     <header class="navbar">
       <div class="logo">Mateo Zamora</div>
