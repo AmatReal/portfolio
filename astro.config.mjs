@@ -1,7 +1,17 @@
 import { defineConfig } from 'astro/config';
 
+import tailwindcss from '@tailwindcss/vite';
+
 export default defineConfig({
-  site: 'https://amatreal.github.io',   // ← cambia esto
-  base: '/portfolio',               // ← cambia esto
+  // ← cambia esto
+  site: 'https://amatreal.github.io',
+
+  // ← cambia esto
+  base: '/portfolio',
+
   output: 'static',
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

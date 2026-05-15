@@ -18,7 +18,7 @@ const globKey = skill.logo.replace('src/assets/images', '../assets/images');
 const imageData = isRemote ? null : images[globKey]?.default;
 ---
  
-<div class="skill">
+<div class="skill flex flex-col items-center gap-2">
   {isRemote
     ? <img src={skill.logo} alt={skill.name} />
     : imageData
