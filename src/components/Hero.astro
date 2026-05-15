@@ -1,0 +1,73 @@
+---
+import { Image } from 'astro:assets';
+import profileImg   from '../assets/images/Amat3d.logo.jpeg';
+import instagramImg from '../assets/images/Instagram_Logo.png';
+import linkedinImg  from '../assets/images/LinkedIn_logo.png';
+import cvPdf        from '../assets/documents/Mateo_Zamora_CV.pdf';
+ 
+// El video va en public/video/ — Astro no procesa video, solo lo copia
+const base = import.meta.env.BASE_URL;
+const videoSrc = `${base}/video/AMAT3D DREAM SEQUENCE.mp4`;
+---
+ 
+<section id="sobre-mi" class="hero">
+  <div class="hero-video">
+    <div class="video-wrapper">
+      <video autoplay muted loop playsinline>
+        <source src={videoSrc} type="video/mp4" />
+      </video>
+ 
+      <div class="video-overlay">
+        <h3>Dream Sequence</h3>
+        <p>
+          My entry for the Dream Sequence community challenge hosted by pwnisher.
+        </p>
+        <p>
+          The challenge consisted in creating a 4 seconds animation that
+          visualized the provided beat of 120 BPM.
+        </p>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="info">
+    <div class="foto">
+      <Image src={profileImg} alt="Foto de perfil" width={150} height={150} />
+    </div>
+ 
+    <h1>Mateo Zamora</h1>
+    <h2>Rigging artist & Animador</h2>
+ 
+    <p>
+      Specialized in rigging and animation for characters, creatures or objects
+      for videogames, videos and marketing.
+    </p>
+ 
+    <b>
+      <p><i class="uil uil-envelope"></i> originalamat@gmail.com</p>
+      <p><i class="uil uil-phone"></i> +52 8182079917</p>
+    </b>
+ 
+    <div class="social">
+      <a href="https://www.instagram.com/amat.3d/?hl=en" target="_blank">
+        <Image src={instagramImg} alt="Instagram" width={40} height={40} />
+      </a>
+      <a href="https://mx.linkedin.com/in/mateo-zamora-474546261" target="_blank">
+        <Image src={linkedinImg} alt="LinkedIn" width={40} height={40} />
+      </a>
+    </div>
+ 
+    <a href={cvPdf} download class="btn-resume">
+      Download Resume
+    </a>
+  </div>
+</section>
+ 
+<script>
+  const videoWrapper = document.querySelector('.video-wrapper');
+  videoWrapper?.addEventListener('click', () => {
+    if (window.innerWidth <= 768) {
+      videoWrapper.classList.toggle('active');
+    }
+  });
+</script>

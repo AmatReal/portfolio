@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import FeaturedProject from '../components/FeaturedProject.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import SkillCard from '../components/SkillCard.astro';
+
+import { featuredProjects } from '../data/featured';
+import { projects } from '../data/projects';
+import { skills } from '../data/skills';
+---
+
+<BaseLayout>
+  <Hero />
+
+  <!-- Featured projects (las 3 filas grandes) -->
+  <section class="featured-projects">
+    {featuredProjects.map((project) => (
+      <FeaturedProject project={project} />
+    ))}
+  </section>
+
+  <!-- Grid de más proyectos -->
+  <section id="proyectos" class="proyectos">
+    <h2 class="title">MORE PROJECTS</h2>
+    <div class="grid-proyectos">
+      {projects.map((project) => (
+        <ProjectCard project={project} />
+      ))}
+    </div>
+  </section>
+
+  <!-- Software skills -->
+  <section id="software" class="skills">
+    <h2 class="title">SOFTWARE</h2>
+    <div class="skills-grid">
+      {skills.map((skill) => (
+        <SkillCard skill={skill} />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,29 @@
+---
+import { Image } from 'astro:assets';
+import type { Project } from '../data/projects';
+ 
+interface Props {
+  project: Project;
+}
+ 
+const { project } = Astro.props;
+ 
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/images/*',
+  { eager: true }
+);
+ 
+const globKey = project.image.replace('src/assets/images', '../assets/images');
+const imageData = images[globKey]?.default;
+---
+ 
+<div class="card">
+  {imageData
+    ? <Image src={imageData} alt={project.title} />
+    : <img src={project.image} alt={project.title} />
+  }
+  <h3>{project.title.toUpperCase()}</h3>
+  <p><strong>Rol:</strong> {project.role}</p>
+  <p><strong>Software:</strong> {project.software}</p>
+  <a href={project.link} class="btn" target="_blank">See more</a>
+</div>

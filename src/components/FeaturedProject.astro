@@ -1,0 +1,32 @@
+---
+import { Image } from 'astro:assets';
+import type { FeaturedProject } from '../data/featured';
+ 
+interface Props {
+  project: FeaturedProject;
+}
+ 
+const { project } = Astro.props;
+ 
+// glob devuelve ImageMetadata completo — eso es lo que <Image> necesita
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/images/*',
+  { eager: true }
+);
+ 
+const globKey = project.image.replace('src/assets/images', '../assets/images');
+const imageData = images[globKey]?.default;
+---
+ 
+<div class={`project-row${project.reverse ? ' reverse' : ''}`}>
+  <div class="project-media">
+    {imageData
+      ? <Image src={imageData} alt={project.imageAlt} />
+      : <img src={project.image} alt={project.imageAlt} />
+    }
+  </div>
+  <div class="project-text">
+    <h3>{project.title.toUpperCase()}</h3>
+    <p>{project.description}</p>
+  </div>
+</div>
