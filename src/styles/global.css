@@ -5,9 +5,9 @@
   /* Color */
   --navy: #0a0a23;
   --navy-2: #111133;
-  --blue: #1e90ff;
-  --blue-hover: #0d6efd;
-  --blue-soft: #eaf2ff;
+  --blue: #c026d3;
+  --blue-hover: #a21caf;
+  --blue-soft: #fdf4ff;
   --bg: #f4f4f4;
   --bg-alt: #f5f5f5;
   --card: #ffffff;
@@ -128,6 +128,13 @@ a {
   color: #ffffff;
 }
 
+.logo-img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
 .navbar nav {
   display: flex;
   gap: 4px;
@@ -151,7 +158,7 @@ a {
 
 .navbar nav a.active {
   color: #ffffff;
-  background: rgba(30, 144, 255, 0.18);
+  background: rgba(192, 38, 211, 0.18);
 }
 
 /* ==========================================================================
@@ -366,18 +373,18 @@ a {
    Featured projects
    ========================================================================== */
 .featured-projects {
-  padding: 80px 40px;
+  padding: 80px 16px;
   background: var(--bg-alt);
   display: flex;
   flex-direction: column;
-  gap: 80px;
+  gap: 72px;
 }
 
 .project-row {
   display: flex;
   align-items: center;
-  gap: 80px;
-  max-width: 1180px;
+  gap: 44px;
+  max-width: 1240px;
   margin: 0 auto;
   width: 100%;
 }
@@ -387,7 +394,7 @@ a {
 }
 
 .project-media {
-  flex: 1.4;
+  flex: 1.75;
   border-radius: 16px;
   overflow: hidden;
   background: var(--card);
@@ -465,7 +472,7 @@ a {
 
 .ph-render.dragon::before,
 .ph-render.dragon .creature::before {
-  background: radial-gradient(500px 320px at 30% 30%, rgba(30, 144, 255, 0.35), transparent 60%),
+  background: radial-gradient(500px 320px at 30% 30%, rgba(192, 38, 211, 0.35), transparent 60%),
     radial-gradient(420px 320px at 85% 85%, rgba(255, 90, 40, 0.18), transparent 60%),
     linear-gradient(180deg, #0f1430 0%, #1a1e3a 100%);
 }
@@ -477,7 +484,7 @@ a {
 .ph-render.ant::before,
 .ph-render.ant .creature::before {
   background: radial-gradient(480px 300px at 25% 25%, rgba(120, 200, 80, 0.28), transparent 60%),
-    radial-gradient(400px 300px at 80% 80%, rgba(30, 144, 255, 0.18), transparent 60%),
+    radial-gradient(400px 300px at 80% 80%, rgba(192, 38, 211, 0.18), transparent 60%),
     linear-gradient(180deg, #141a14 0%, #1e2418 100%);
 }
 
@@ -488,7 +495,7 @@ a {
 .ph-render.bear::before,
 .ph-render.bear .creature::before {
   background: radial-gradient(520px 320px at 70% 20%, rgba(255, 200, 60, 0.22), transparent 60%),
-    radial-gradient(420px 320px at 15% 85%, rgba(30, 144, 255, 0.14), transparent 60%),
+    radial-gradient(420px 320px at 15% 85%, rgba(192, 38, 211, 0.14), transparent 60%),
     linear-gradient(180deg, #151c22 0%, #1e252e 100%);
 }
 
@@ -829,9 +836,9 @@ button.card-media {
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  background: #f1f4ff;
-  color: #3b5bdb;
-  border: 1px solid #dde4ff;
+  background: #fdf4ff;
+  color: #a21caf;
+  border: 1px solid #f5d0fe;
   padding: 4px 7px;
   border-radius: 6px;
   display: inline-flex;
@@ -893,8 +900,8 @@ button.card-media {
   display: inline-block;
 }
 
-.skills-group-title + .skills-group-title {
-  margin-top: 30px;
+.skills-grid + .skills-group-title {
+  margin-top: 56px;
 }
 
 .skills-grid {
@@ -972,13 +979,13 @@ button.card-media {
 }
 
 .lvl-pro {
-  background: #e6f0ff;
+  background: #fdf4ff;
   color: var(--blue);
 }
 
 .lvl-adv {
-  background: #eef2ff;
-  color: #5b5bd6;
+  background: #f5f3ff;
+  color: #9333ea;
 }
 
 .lvl-int {
@@ -1120,11 +1127,17 @@ button.card-media {
   place-items: center;
 }
 
-.modal-main video,
-.modal-main img {
+.modal-main video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
+}
+
+.modal-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   display: block;
 }
 
@@ -1133,7 +1146,7 @@ button.card-media {
   grid-row: span 2;
   align-self: stretch;
   min-height: 100%;
-  background: radial-gradient(360px 220px at 50% 70%, rgba(120, 180, 255, 0.18), transparent 60%),
+  background: radial-gradient(360px 220px at 50% 70%, rgba(192, 38, 211, 0.18), transparent 60%),
     linear-gradient(180deg, #131845 0%, #0f1430 100%);
   border: 1px solid rgba(255, 255, 255, 0.07);
   display: flex;

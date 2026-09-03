@@ -7,7 +7,7 @@ const { variant = 'home' } = Astro.props;
 ---
 
 <header class="navbar" id="navbar">
-  <div class="logo"><span class="logo-mark">MZ</span> Mateo Zamora</div>
+  <div class="logo"><img class="logo-img" src="/assets/images/Logos/Amat3d_Logo.jpeg" alt="AMAT.3D" /> AMAT.3D</div>
   <nav>
     {
       variant === 'home' ? (
@@ -20,6 +20,7 @@ const { variant = 'home' } = Astro.props;
         <>
           <a href="/">Home</a>
           <a href="/projects/" class="active" aria-current="page">Projects</a>
+          <a href="/#software">Software</a>
         </>
       )
     }
