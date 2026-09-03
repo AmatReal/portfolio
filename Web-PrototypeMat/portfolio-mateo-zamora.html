@@ -1,0 +1,830 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mateo Zamora — Rigging Artist &amp; Animator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.2.0/css/line.css">
+<style>
+  :root{
+    --navy:#0a0a23;
+    --navy-2:#111133;
+    --blue:#1e90ff;
+    --blue-hover:#0d6efd;
+    --blue-soft:#eaf2ff;
+    --bg:#f4f4f4;
+    --card:#ffffff;
+    --text:#1a1a2e;
+    --muted:#6b6b7a;
+    --muted-2:#9aa0b3;
+    --border:#e8e8ef;
+    --radius:14px;
+    --radius-lg:18px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  section{scroll-margin-top:80px}
+  body{
+    font-family:"Inter",system-ui,-apple-system,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,video{max-width:100%;height:auto;display:block}
+
+  /* NAVBAR - fiel al original */
+  .navbar{
+    width:100%;
+    padding:16px 28px;
+    background:var(--navy);
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:40;
+    transition:transform .35s ease;
+    border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .navbar.nav-hidden{transform:translateY(-100%)}
+  .logo{
+    font-weight:700;
+    font-size:17px;
+    letter-spacing:-.02em;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .logo-mark{
+    width:28px;height:28px;
+    border-radius:7px;
+    background:var(--blue);
+    display:grid;place-items:center;
+    font-size:13px;font-weight:800;
+    color:white;
+  }
+  .navbar nav{display:flex;gap:4px;align-items:center}
+  .navbar nav a{
+    text-decoration:none;
+    color:#c9cce0;
+    font-weight:500;
+    font-size:14px;
+    padding:8px 14px;
+    border-radius:8px;
+    transition:all .2s;
+  }
+  .navbar nav a:hover{color:white;background:rgba(255,255,255,.08)}
+  .navbar nav a.active{color:white;background:rgba(30,144,255,.18)}
+
+  /* HERO - fiel: video izquierda, info derecha, fondo navy */
+  .hero{
+    display:flex;
+    color:#ddd;
+    background:var(--navy);
+    justify-content:space-between;
+    align-items:center;
+    padding:80px 28px 80px 10px;
+    gap:50px;
+    min-height:86vh;
+    overflow:hidden;
+  }
+  .hero-video{
+    flex:1.5;
+    position:relative;
+    margin-left:-10px;
+    margin-right:20px;
+  }
+  .video-wrapper{
+    position:relative;
+    width:100%;
+    aspect-ratio:16/9.4;
+    overflow:hidden;
+    border-radius:12px;
+    background:#0f0f2a;
+    box-shadow:0 24px 60px rgba(0,0,0,.45);
+    cursor:pointer;
+  }
+  .video-fallback{
+    width:100%;height:100%;
+    background:
+      radial-gradient(600px 300px at 20% 20%, rgba(30,144,255,.22), transparent 60%),
+      radial-gradient(500px 300px at 80% 90%, rgba(122,90,255,.22), transparent 60%),
+      linear-gradient(135deg,#0d1028 0%, #151a3a 50%, #0a0a23 100%);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:14px;
+    position:relative;
+  }
+  .video-fallback::after{
+    content:"";
+    position:absolute;inset:0;
+    background:linear-gradient(to top, rgba(0,0,0,.45), transparent 55%);
+  }
+  .play-badge{
+    width:62px;height:62px;border-radius:50%;
+    background:rgba(255,255,255,.95);
+    display:grid;place-items:center;
+    font-size:22px;color:var(--navy);
+    box-shadow:0 8px 24px rgba(0,0,0,.25);
+    position:relative;z-index:1;
+  }
+  .video-meta{
+    position:relative;z-index:1;
+    text-align:center;color:white;
+  }
+  .video-meta small{
+    display:block;
+    font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+    opacity:.7;margin-bottom:6px;
+  }
+  .video-meta strong{font-size:15px;font-weight:700;letter-spacing:-.02em}
+  .video-overlay{
+    position:absolute;bottom:0;left:0;width:100%;
+    padding:22px 22px 18px;
+    color:white;
+    background:linear-gradient(to top, rgba(0,0,0,.78), rgba(0,0,0,.18) 60%, transparent);
+    transform:translateY(100%);
+    transition:transform .35s ease;
+    z-index:2;
+  }
+  .video-wrapper:hover .video-overlay{transform:translateY(0)}
+  .video-overlay h3{font-size:16px;font-weight:700;margin-bottom:6px;letter-spacing:-.02em}
+  .video-overlay p{font-size:12.5px;line-height:1.55;opacity:.9;margin-bottom:4px;color:#e8eaf2}
+  .info{
+    flex:1;
+    max-width:500px;
+    padding-right:18px;
+  }
+  .foto{
+    width:150px;height:150px;border-radius:50%;
+    overflow:hidden;
+    border:3px solid rgba(255,255,255,.12);
+    box-shadow:0 12px 30px rgba(0,0,0,.35);
+    margin-bottom:22px;
+    background:linear-gradient(135deg,#1a1f45,#2a2f6a);
+    display:grid;place-items:center;
+    color:white;font-weight:700;font-size:42px;letter-spacing:-.04em;
+  }
+  .foto span{font-family:"Instrument Serif",serif;font-weight:400;font-size:52px;margin-top:-4px}
+  .info h1{
+    font-family:"Instrument Serif",serif;
+    font-size:42px;font-weight:400;
+    color:white;line-height:1;letter-spacing:-.03em;
+    margin-bottom:6px;
+  }
+  .info h2{
+    font-size:17px;font-weight:500;
+    color:#8a90b8;
+    margin-bottom:14px;
+    letter-spacing:-.01em;
+  }
+  .info > p{
+    font-size:14.5px;line-height:1.65;
+    color:#b9bdd6;max-width:430px;margin-bottom:18px;
+  }
+  .contact-lines{margin-bottom:18px}
+  .contact-lines p{
+    font-size:13.5px;color:#d6d9ee;
+    display:flex;align-items:center;gap:10px;
+    margin-bottom:6px;
+  }
+  .contact-lines i{color:var(--blue);font-size:16px;opacity:.9}
+  .social{display:flex;gap:10px;align-items:center}
+  .social a{
+    width:42px;height:42px;border-radius:10px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.1);
+    display:grid;place-items:center;
+    text-decoration:none;color:white;
+    transition:all .2s;
+  }
+  .social a:hover{background:var(--blue);border-color:var(--blue);transform:translateY(-2px)}
+  .social a i{font-size:18px}
+
+  /* FEATURED - fiel con alternancia */
+  .featured-projects{
+    padding:80px 40px;
+    background:#f5f5f5;
+    display:flex;flex-direction:column;gap:80px;
+  }
+  .project-row{
+    display:flex;align-items:center;gap:80px;
+    max-width:1180px;margin:0 auto;width:100%;
+  }
+  .project-row.reverse{flex-direction:row-reverse}
+  .project-media{
+    flex:1.4;
+    border-radius:16px;overflow:hidden;
+    background:white;
+    box-shadow:0 20px 40px rgba(10,10,35,.12);
+    aspect-ratio:1.55;
+    position:relative;
+  }
+  .ph-render{
+    width:100%;height:100%;
+    display:flex;flex-direction:column;
+    justify-content:flex-end;
+    padding:22px;
+    color:white;
+    position:relative;
+    overflow:hidden;
+  }
+  .ph-render::before{
+    content:"";
+    position:absolute;inset:0;
+    opacity:.9;
+  }
+  .ph-render.dragon{ background:#0e1229;}
+  .ph-render.dragon::before{
+    background:
+      radial-gradient(500px 320px at 30% 30%, rgba(30,144,255,.35), transparent 60%),
+      radial-gradient(420px 320px at 85% 85%, rgba(255,90,40,.18), transparent 60%),
+      linear-gradient(180deg, #0f1430 0%, #1a1e3a 100%);
+  }
+  .ph-render.ant{ background:#0f1410;}
+  .ph-render.ant::before{
+    background:
+      radial-gradient(480px 300px at 25% 25%, rgba(120,200,80,.28), transparent 60%),
+      radial-gradient(400px 300px at 80% 80%, rgba(30,144,255,.18), transparent 60%),
+      linear-gradient(180deg, #141a14 0%, #1e2418 100%);
+  }
+  .ph-render.bear{ background:#121820;}
+  .ph-render.bear::before{
+    background:
+      radial-gradient(520px 320px at 70% 20%, rgba(255,200,60,.22), transparent 60%),
+      radial-gradient(420px 320px at 15% 85%, rgba(30,144,255,.14), transparent 60%),
+      linear-gradient(180deg, #151c22 0%, #1e252e 100%);
+  }
+  .ph-render .creature{
+    position:absolute;inset:0;
+    display:grid;place-items:center;
+    font-size:84px;opacity:.14;
+    z-index:0;
+  }
+  .ph-caption{
+    position:relative;z-index:1;
+    display:flex;align-items:center;gap:10px;
+  }
+  .ph-badge{
+    width:34px;height:34px;border-radius:9px;
+    background:rgba(255,255,255,.14);
+    backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,.18);
+    display:grid;place-items:center;font-size:16px;
+  }
+  .ph-caption div strong{display:block;font-size:13px;font-weight:700;letter-spacing:-.02em}
+  .ph-caption div span{font-size:11px;opacity:.75;letter-spacing:.04em;text-transform:uppercase}
+  .project-text{flex:1;max-width:500px}
+  .eyebrow{
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--blue);font-weight:700;margin-bottom:10px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--blue);border-radius:2px}
+  .project-text h3{
+    font-family:"Instrument Serif",serif;
+    font-size:30px;font-weight:400;letter-spacing:-.03em;
+    line-height:.95;margin-bottom:14px;color:var(--text);
+  }
+  .project-text h3::after{
+    content:"";display:block;width:44px;height:3px;background:var(--blue);margin-top:12px;border-radius:2px;
+  }
+  .project-text p{
+    font-size:14.5px;line-height:1.72;color:#5a5e73;margin-bottom:18px;
+  }
+  .project-btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:10px 18px;background:var(--blue);color:white;
+    text-decoration:none;border-radius:8px;
+    font-size:13.5px;font-weight:600;
+    transition:all .2s;
+  }
+  .project-btn:hover{background:var(--blue-hover);transform:translateY(-2px)}
+
+  /* MORE PROJECTS - grid fiel */
+  .proyectos{padding:70px 20px 40px;max-width:1280px;margin:0 auto}
+  .title{
+    text-align:center;
+    font-family:"Instrument Serif",serif;
+    font-weight:400;
+    font-size:38px;letter-spacing:-.03em;
+    margin-bottom:8px;color:var(--text);
+  }
+  .title-sub{
+    text-align:center;font-size:13px;color:var(--muted);
+    letter-spacing:.08em;text-transform:uppercase;font-weight:600;
+    margin-bottom:36px;
+  }
+  .grid-proyectos{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+    padding:0 20px;
+  }
+  .card{
+    background:white;
+    padding:14px 14px 18px;
+    border-radius:16px;
+    border:1px solid var(--border);
+    box-shadow:0 6px 18px rgba(10,10,35,.06);
+    transition:all .25s;
+    text-align:left;
+    display:flex;flex-direction:column;
+    overflow:hidden;
+  }
+  .card:hover{transform:translateY(-6px);box-shadow:0 16px 36px rgba(10,10,35,.12)}
+  .card-media{
+    aspect-ratio:1.45;
+    border-radius:12px;overflow:hidden;
+    background:#0a0a23;
+    position:relative;
+    margin-bottom:14px;
+  }
+  .card-media-inner{
+    width:100%;height:100%;
+    display:grid;place-items:center;
+    color:white;font-size:28px;
+    position:relative;
+  }
+  .card-media-inner::before{
+    content:"";position:absolute;inset:0;opacity:.85;
+  }
+  .card-media .tag{
+    position:absolute;top:10px;left:10px;
+    font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+    background:rgba(255,255,255,.92);color:var(--navy);
+    padding:4px 8px;border-radius:6px;font-weight:700;
+  }
+  .card h3{
+    font-size:13px;font-weight:800;letter-spacing:.06em;
+    text-transform:uppercase;margin-bottom:8px;color:var(--text);
+    padding:0 4px;
+  }
+  .card .meta{
+    padding:0 4px;
+    font-size:12.5px;color:var(--muted);line-height:1.5;margin-bottom:4px;
+  }
+  .card .meta strong{color:var(--text);font-weight:600}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:6px;
+    margin-top:14px;background:var(--navy);padding:10px 16px;
+    color:white;text-decoration:none;border-radius:9px;
+    font-size:13px;font-weight:600;
+    transition:all .2s;
+    margin-left:4px;margin-right:4px;
+  }
+  .btn:hover{background:var(--blue)}
+  .btn i{font-size:14px}
+
+  /* SKILLS - fiel */
+  .skills{padding:60px 20px 50px;max-width:1280px;margin:0 auto}
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    padding:0 20px;
+  }
+  .skill{
+    background:white;
+    padding:22px 18px;
+    text-align:center;
+    border-radius:16px;
+    border:1px solid var(--border);
+    box-shadow:0 6px 15px rgba(10,10,35,.05);
+    transition:all .25s;
+    display:flex;flex-direction:column;align-items:center;gap:8px;
+  }
+  .skill:hover{transform:translateY(-5px);box-shadow:0 14px 28px rgba(10,10,35,.1)}
+  .skill-icon{
+    width:58px;height:58px;border-radius:12px;
+    display:grid;place-items:center;
+    font-size:22px;font-weight:800;color:white;
+    margin-bottom:6px;
+  }
+  .skill h3{font-size:14px;font-weight:700;letter-spacing:-.02em;color:var(--text)}
+  .skill p{
+    font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+    font-weight:700;padding:4px 10px;border-radius:20px;
+  }
+  .lvl-pro{background:#e6f0ff;color:var(--blue)}
+  .lvl-adv{background:#eef2ff;color:#5b5bd6}
+  .lvl-int{background:#fef3e2;color:#b7791f}
+
+  /* FOOTER fiel */
+  .footer{
+    background:var(--navy);
+    color:white;
+    text-align:center;
+    padding:42px 20px;
+    margin-top:50px;
+    border-top:1px solid rgba(255,255,255,.06);
+  }
+  .footer p{opacity:.85;margin-top:6px;font-size:13.5px;color:#c9cce0;display:flex;align-items:center;justify-content:center;gap:8px}
+  .footer p:first-child{opacity:1;font-weight:500}
+  .footer .copy{margin-top:16px;opacity:.5;font-size:12px;letter-spacing:.04em}
+
+  /* responsive */
+  @media(max-width:1024px){
+    .hero{flex-direction:column;text-align:center;padding:50px 30px 60px;gap:36px}
+    .hero-video{margin:0;width:100%;max-width:720px}
+    .info{max-width:100%;display:flex;flex-direction:column;align-items:center;padding:0}
+    .info h1{font-size:38px}
+    .info > p{max-width:640px}
+    .contact-lines p{justify-content:center}
+    .project-row,.project-row.reverse{flex-direction:column;gap:28px}
+    .project-text{max-width:100%;text-align:center}
+    .project-text h3::after{margin:12px auto 0}
+    .eyebrow{justify-content:center}
+    .project-media{width:100%;max-width:640px}
+    .grid-proyectos{grid-template-columns:repeat(2,1fr)}
+    .skills-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media(max-width:768px){
+    .navbar{padding:12px 16px}
+    .navbar nav a{padding:7px 10px;font-size:13px}
+    .logo{font-size:16px}
+    .hero{flex-direction:column-reverse;padding:36px 16px 50px;gap:28px;min-height:auto}
+    .foto{width:120px;height:120px;font-size:36px}
+    .foto span{font-size:44px}
+    .info h1{font-size:32px}
+    .info h2{font-size:15px}
+    .video-overlay{transform:translateY(0);background:linear-gradient(to top, rgba(0,0,0,.78) 40%, transparent)}
+    .featured-projects{padding:48px 16px;gap:48px}
+    .project-text h3{font-size:26px}
+    .grid-proyectos{padding:0;grid-template-columns:1fr}
+    .skills-grid{padding:0;grid-template-columns:repeat(2,1fr)}
+    .title{font-size:30px}
+  }
+  @media(max-width:480px){
+    .skills-grid{grid-template-columns:1fr}
+    .navbar nav{gap:2px}
+    .navbar nav a{padding:6px 8px;font-size:12.5px}
+  }
+</style>
+</head>
+<body>
+
+<header class="navbar" id="navbar" data-od-id="navbar">
+  <div class="logo"><span class="logo-mark">MZ</span> Mateo Zamora</div>
+  <nav>
+    <a href="#about" data-od-id="nav-about">About me</a>
+    <a href="projects.html" target="_blank" rel="noopener" data-od-id="nav-projects">Projects</a>
+    <a href="#software" data-od-id="nav-software">Software</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section id="about" class="hero" data-od-id="hero" style="transform: translate(-32px, -12px);">
+  <div class="hero-video" data-od-id="hero-video">
+    <div class="video-wrapper" id="videoWrapper">
+      <div class="video-fallback" aria-label="Dream Sequence video preview">
+        <div class="play-badge"><i class="uil uil-play" style="margin-left:2px"></i></div>
+        <div class="video-meta">
+          <small>Featured — Pwnisher Challenge</small>
+          <strong>Dream Sequence — 120 BPM</strong>
+          <small style="margin-top:4px;letter-spacing:.04em;text-transform:none;opacity:.6">4 seconds • Blender • Hover to view details</small>
+        </div>
+      </div>
+      <div class="video-overlay">
+        <h3>Dream Sequence</h3>
+        <p>My entry for the Dream Sequence community challenge hosted by pwnisher.</p>
+        <p>The challenge consisted in creating a 4 seconds animation that visualized the provided beat of 120 BPM.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="info" data-od-id="hero-info">
+    <div class="foto" aria-label="Foto de perfil"><span>MZ</span></div>
+    <h1>Mateo Zamora</h1>
+    <h2>Rigging artist &amp; Animator</h2>
+    <p>Specialized in rigging and animation for characters, creatures or objects for videogames, videos and marketing.</p>
+    <div class="contact-lines">
+      <p><i class="uil uil-envelope"></i> originalamat@gmail.com</p>
+      <p><i class="uil uil-phone"></i> +52 818 207 9917</p>
+    </div>
+    <div class="social">
+      <a href="https://www.instagram.com/amat.3d/?hl=en" target="_blank" aria-label="Instagram" data-od-id="cta-instagram"><i class="uil uil-instagram"></i></a>
+      <a href="https://mx.linkedin.com/in/mateo-zamora-474546261" target="_blank" aria-label="LinkedIn" data-od-id="cta-linkedin"><i class="uil uil-linkedin"></i></a>
+      <a href="#" aria-label="Resume" style="width:auto;padding:0 14px;gap:6px;font-size:13px;font-weight:600" data-od-id="cta-resume"><i class="uil uil-file-alt"></i> Resume</a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PROJECTS -->
+<section class="featured-projects" data-od-id="featured">
+  <!-- Dragon -->
+  <div class="project-row" data-od-id="featured-dragon">
+    <div class="project-media">
+      <div class="ph-render dragon">
+        <button class="creature" type="button" aria-label="Abrir vista previa Dragon Rig" aria-haspopup="dialog" aria-controls="dragon-modal" onclick="document.getElementById('dragon-modal').showModal()" style="position:absolute;inset:0;width:100%;height:100%;background:#0a0a23;border:none;cursor:pointer;padding:0;z-index:1;overflow:hidden;display:block;">
+          <img src="Dragon_Rig_Render-1.png" alt="Dragon Rig Render" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+        </button>
+        <div class="ph-caption" style="pointer-events:none">
+          <div class="ph-badge"><i class="uil uil-cube"></i></div>
+          <div><strong>Click for more information</strong></div>
+        </div>
+      </div>
+      <style>[data-od-id="featured-dragon"] .project-media,[data-od-id="featured-ant"] .project-media,[data-od-id="featured-bear"] .project-media{box-shadow:0 14px 36px rgba(0,0,0,.22), 0 2px 8px rgba(0,0,0,.12);transition:transform .28s ease, box-shadow .28s ease;will-change:transform} [data-od-id="featured-dragon"] .project-media:hover,[data-od-id="featured-ant"] .project-media:hover,[data-od-id="featured-bear"] .project-media:hover{transform:translateY(-8px);box-shadow:0 22px 56px rgba(0,0,0,.32), 0 8px 20px rgba(0,0,0,.18)} [data-od-id="featured-dragon"] .project-media:focus-within,[data-od-id="featured-ant"] .project-media:focus-within,[data-od-id="featured-bear"] .project-media:focus-within{transform:translateY(-4px);box-shadow:0 18px 44px rgba(0,0,0,.28)}</style>
+      <style>#dragon-modal::backdrop{background:rgba(3,6,20,.82);backdrop-filter:blur(5px)} #dragon-modal[open]{animation:dmIn .22s ease} @keyframes dmIn{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}} .carousel-track{scrollbar-width:none;-ms-overflow-style:none} .carousel-track::-webkit-scrollbar{display:none} .carousel-arrow:disabled{opacity:.35;pointer-events:none} @media(max-width:640px){.dragon-modal-grid{grid-template-columns:1fr !important} .dragon-modal-grid > div:first-child{grid-column:span 1 !important;aspect-ratio:16/9 !important} .dragon-modal-grid > div:nth-child(2){grid-column:span 1 !important;grid-row:span 1 !important;min-height:auto !important;aspect-ratio:1 !important} .dragon-carousel{grid-column:span 1 !important}}</style>
+      <dialog id="dragon-modal" aria-label="Dragon Rig placeholder preview" style="padding:0;border:none;border-radius:0;max-width:1180px;width:min(1180px,92vw);max-height:88vh;background:#0f1430;color:white;box-shadow:0 28px 80px rgba(0,0,0,.6);margin:auto;position:fixed;inset:0;height:fit-content;overflow-y:auto;overflow-x:hidden;border:1px solid rgba(255,255,255,.08);">
+        <div style="padding:22px 22px 18px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.08)">
+          <div>
+            <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.6;font-weight:700">Placeholder</div>
+            <div style="font-family:Instrument Serif,serif;font-size:20px;letter-spacing:-.02em">Dragon Rig &amp; Animation</div>
+          </div>
+          <button type="button" onclick="this.closest('dialog').close()" aria-label="Cerrar" style="width:36px;height:36px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.08);color:white;cursor:pointer;display:grid;place-items:center;font-size:18px;line-height:1">×</button>
+        </div>
+        <div class="dragon-modal-grid" style="background:#0a0a23;padding:12px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:start;">
+          <div id="main-display" style="grid-column:span 2;position:relative;overflow:hidden;background:#000;border:1px solid rgba(255,255,255,.07);aspect-ratio:1.78/1;display:grid;place-items:center;">
+            <video id="main-video" src="X9EXuuS7vrVchLr6-1.mp4" autoplay="" muted="" loop="" playsinline="" controls="" style="width:100%;height:100%;object-fit:cover;display:block;"></video>
+            <img id="main-image" alt="" style="display:none;width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="grid-column:span 1;grid-row:span 2;align-self:stretch;min-height:100%;background:radial-gradient(360px 220px at 50% 70%, rgba(120,180,255,.18), transparent 60%), linear-gradient(180deg,#131845 0%, #0f1430 100%);border:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column;padding:20px 18px;text-align:left;overflow:auto;">
+            <div>
+              <div style="font-size:15px;letter-spacing:.06em;text-transform:uppercase;font-weight:800;opacity:1;margin-bottom:10px;color:#ffffff;">Description</div>
+              <p style="font-size:12.5px;line-height:1.6;color:rgba(255,255,255,.88);margin:0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.</p>
+              <p style="font-size:12.5px;line-height:1.6;color:rgba(255,255,255,.72);margin:8px 0 0;">Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra vestibulum erat wisi.</p>
+            </div>
+            <div style="height:1px;background:rgba(255,255,255,.08);margin:18px 0;flex-shrink:0;"></div>
+            <div>
+              <div style="font-size:15px;letter-spacing:.06em;text-transform:uppercase;font-weight:800;opacity:1;margin-bottom:10px;color:#ffffff;">Technologies</div>
+              <p style="font-size:12.5px;line-height:1.6;color:rgba(255,255,255,.78);margin:0;">Blender, Maya, ZBrush, Drivers &amp; Constraints, IK/FK systems, Unreal Engine, Unity</p>
+            </div>
+          </div>
+          <!-- Carousel below video: 2/3 width, minimal gap, left-aligned, stackable with arrows -->
+          <div class="dragon-carousel" style="grid-column:span 2;display:flex;align-items:center;gap:4px;min-width:0;align-self:start;">
+            <button type="button" class="carousel-arrow" data-dir="-1" aria-label="Anterior" style="flex:0 0 22px;width:22px;height:22px;border-radius:7px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:white;display:grid;place-items:center;cursor:pointer;font-size:13px;line-height:1;">‹</button>
+            <div class="carousel-track" id="dragon-carousel-track" style="flex:1;min-width:0;display:flex;gap:4px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;align-items:stretch;padding:1px 0;">
+              <button type="button" class="carousel-item is-active" data-type="video" data-src="X9EXuuS7vrVchLr6-1.mp4" aria-label="Ver video" style="flex:0 0 16%;scroll-snap-align:start;aspect-ratio:1;background:#000;border:1px solid #1e90ff;overflow:hidden;position:relative;display:block;padding:0;cursor:pointer;box-shadow:0 0 0 1px #1e90ff;">
+                <video src="X9EXuuS7vrVchLr6-1.mp4" muted="" playsinline="" preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></video>
+                <span style="position:absolute;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.18);">
+                  <span style="width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center;font-size:12px;color:#0a0a23;">▶</span>
+                </span>
+              </button>
+              <button type="button" class="carousel-item" data-type="image" data-src="AntRig_Render.png" aria-label="Ver AntRig Render" style="flex:0 0 16%;scroll-snap-align:start;aspect-ratio:1;background:#0a0a23;border:1px solid rgba(255,255,255,.07);overflow:hidden;position:relative;display:block;padding:0;cursor:pointer;">
+                <img src="AntRig_Render.png" alt="Ant Rig Render" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;" loading="lazy">
+              </button>
+              <button type="button" class="carousel-item" data-type="image" data-src="AntRig.jpeg" aria-label="Ver AntRig" style="flex:0 0 16%;scroll-snap-align:start;aspect-ratio:1;background:#0a0a23;border:1px solid rgba(255,255,255,.07);overflow:hidden;position:relative;display:block;padding:0;cursor:pointer;">
+                <img src="AntRig.jpeg" alt="Ant Rig" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;" loading="lazy">
+              </button>
+              <button type="button" class="carousel-item" data-type="image" data-src="Dragon_Rig_Render.png" aria-label="Ver Dragon Rig" style="flex:0 0 16%;scroll-snap-align:start;aspect-ratio:1;background:#0a0a23;border:1px solid rgba(255,255,255,.07);overflow:hidden;position:relative;display:block;padding:0;cursor:pointer;">
+                <img src="Dragon_Rig_Render.png" alt="Dragon Rig Render" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;" loading="lazy">
+              </button>
+              <button type="button" class="carousel-item" data-type="image" data-src="AntRig_Render.png" aria-label="Ver AntRig Render extra" style="flex:0 0 16%;scroll-snap-align:start;aspect-ratio:1;background:#0a0a23;border:1px solid rgba(255,255,255,.07);overflow:hidden;position:relative;display:block;padding:0;cursor:pointer;">
+                <img src="AntRig_Render.png" alt="Ant Rig Render extra" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;" loading="lazy">
+              </button>
+              <button type="button" class="carousel-item" data-type="image" data-src="AntRig.jpeg" aria-label="Ver AntRig extra" style="flex:0 0 16%;scroll-snap-align:start;aspect-ratio:1;background:#0a0a23;border:1px solid rgba(255,255,255,.07);overflow:hidden;position:relative;display:block;padding:0;cursor:pointer;">
+                <img src="AntRig.jpeg" alt="Ant Rig extra" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;" loading="lazy">
+              </button>
+              <button type="button" class="carousel-item" data-type="image" data-src="Dragon_Rig_Render.png" aria-label="Ver Dragon extra" style="flex:0 0 16%;scroll-snap-align:start;aspect-ratio:1;background:#0a0a23;border:1px solid rgba(255,255,255,.07);overflow:hidden;position:relative;display:block;padding:0;cursor:pointer;">
+                <img src="Dragon_Rig_Render.png" alt="Dragon Rig extra" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;" loading="lazy">
+              </button>
+            </div>
+            <button type="button" class="carousel-arrow" data-dir="1" aria-label="Siguiente" style="flex:0 0 22px;width:22px;height:22px;border-radius:7px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:white;display:grid;place-items:center;cursor:pointer;font-size:13px;line-height:1;">›</button>
+          </div>
+        </div>
+        <div style="padding:16px 22px 20px;display:flex;gap:10px;justify-content:flex-end;background:#0a0a23;">
+          <button type="button" onclick="this.closest('dialog').close()" style="padding:9px 16px;border-radius:9px;border:1px solid rgba(255,255,255,.14);background:transparent;color:white;font-size:13px;font-weight:600;cursor:pointer">Cerrar</button>
+          <a href="https://www.instagram.com/p/DRiERhjj-78/" target="_blank" style="padding:9px 16px;border-radius:9px;background:#1e90ff;color:white;text-decoration:none;font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:6px">View breakdown <i class="uil uil-arrow-up-right"></i></a>
+        </div>
+      </dialog>
+    </div>
+    <div class="project-text">
+      <div class="eyebrow">Featured — Creature Rig</div>
+      <h3>DRAGON RIG &amp; ANIMATION</h3>
+      <p>Adapted and optimized a high-resolution dragon sculpt into a fully animatable rig. Developed IK/FK systems using drivers and constraints, along with secondary physics-based bones to enhance realism and motion detail.</p>
+    </div>
+  </div>
+
+  <!-- Ant -->
+  <div class="project-row reverse" data-od-id="featured-ant">
+    <div class="project-media" style="cursor:pointer" onclick="document.getElementById('dragon-modal').showModal()">
+      <div class="ph-render ant">
+        <button class="creature" type="button" aria-label="Abrir Dragon modal desde Ant" aria-haspopup="dialog" onclick="event.stopPropagation();document.getElementById('dragon-modal').showModal()" style="position:absolute;inset:0;display:grid;place-items:center;width:100%;height:100%;background:transparent;border:none;cursor:pointer;z-index:1;padding:0;"><span style="font-size:84px;opacity:.14;line-height:1">🐜</span></button>
+        <div class="ph-caption" style="position:relative;z-index:2;pointer-events:none">
+          <div class="ph-badge"><i class="uil uil-game-structure"></i></div>
+          <div><strong>Ant Defender — Player</strong><span>Unreal Engine • IK + FK Toggle</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="project-text">
+      <div class="eyebrow">Featured — Gameplay Rig</div>
+      <h3>ANT RIG &amp; ANIMATION</h3>
+      <p>Designed a gameplay-focused rig for the player character in Ant Defender, prioritizing flexibility and responsiveness for movement and emotes in Unreal Engine. Implemented IK systems with supporting FK controls, along with drivers, constraints, and a toggle system for switching between standing and running states.</p>
+      <a href="https://www.instagram.com/p/DLiuzmoNlZq/" target="_blank" class="project-btn">View in Unreal <i class="uil uil-arrow-up-right"></i></a>
+    </div>
+  </div>
+
+  <!-- Bear -->
+  <div class="project-row" data-od-id="featured-bear">
+    <div class="project-media" style="cursor:pointer" onclick="document.getElementById('dragon-modal').showModal()">
+      <div class="ph-render bear">
+        <button class="creature" type="button" aria-label="Abrir Dragon modal desde Bear" aria-haspopup="dialog" onclick="event.stopPropagation();document.getElementById('dragon-modal').showModal()" style="position:absolute;inset:0;display:grid;place-items:center;width:100%;height:100%;background:transparent;border:none;cursor:pointer;z-index:1;padding:0;"><span style="font-size:84px;opacity:.14;line-height:1">🐻</span></button>
+        <div class="ph-caption" style="position:relative;z-index:2;pointer-events:none">
+          <div class="ph-badge"><i class="uil uil-mobile-android"></i></div>
+          <div><strong>AR Card Experience</strong><span>Unity • QR Trigger • Low-Poly</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="project-text">
+      <div class="eyebrow">Featured — AR / Unity</div>
+      <h3>BEAR RIG &amp; ANIMATION</h3>
+      <p>Created a lightweight rig for an augmented reality experience in Unity, triggered via QR code scanning on a presentation card. Optimized the rig to work with a low-poly mesh while maintaining functional and intuitive controls for animation.</p>
+      <a href="https://www.instagram.com/p/DORQnnBj0He/" target="_blank" class="project-btn">View AR demo <i class="uil uil-arrow-up-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<div style="display:flex;justify-content:center;padding:12px 20px 8px;" data-od-id="view-more-wrapper">
+  <a href="projects.html" target="_blank" rel="noopener" data-od-id="btn-view-more" style="background:#7c3aed;color:white;text-decoration:none;border-radius:10px;padding:14px 36px;font-family:Inter,sans-serif;font-size:14px;font-weight:700;letter-spacing:.02em;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(124,58,237,.32);transition:background .2s, transform .2s, box-shadow .2s;" onmouseover="this.style.background='#6d28d9';this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 28px rgba(124,58,237,.4)'" onmouseout="this.style.background='#7c3aed';this.style.transform='translateY(0)';this.style.boxShadow='0 8px 20px rgba(124,58,237,.32)'">View More</a>
+</div>
+
+<!-- SOFTWARE -->
+<section id="software" class="skills" data-od-id="software">
+  <h2 class="title">TECHNICAL KNOWLEDGE</h2>
+  <p class="title-sub">TOOLS & SPECIALTIES</p>
+  <h3 data-od-id="software-group-software" style="font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#0a0a23;margin:6px 20px 14px;display:flex;align-items:center;gap:10px;"><span style="width:22px;height:3px;background:#1e90ff;border-radius:2px;display:inline-block;"></span>SOFTWARE</h3>
+  <div class="skills-grid">
+    <div class="skill" data-od-id="skill-blender">
+      <div class="skill-icon" style="background:#0a66ff"><i class="uil uil-cube"></i></div>
+      <h3>Blender</h3>
+      <p class="lvl-pro">Professional</p>
+    </div>
+    <div class="skill" data-od-id="skill-maya">
+      <div class="skill-icon" style="background:#0a0a23">M</div>
+      <h3>Maya</h3>
+      <p class="lvl-adv">Advanced</p>
+    </div>
+    <div class="skill" data-od-id="skill-zbrush">
+      <div class="skill-icon" style="background:#1a1a1e">Z</div>
+      <h3>ZBrush</h3>
+      <p class="lvl-int">Intermediate</p>
+    </div>
+    <div class="skill" data-od-id="skill-3dmax">
+      <div class="skill-icon" style="background:#111827">3</div>
+      <h3>3D Max</h3>
+      <p class="lvl-int">Intermediate</p>
+    </div>
+    <div class="skill" data-od-id="skill-unreal">
+      <div class="skill-icon" style="background:#0a0a23">UE</div>
+      <h3>Unreal Engine</h3>
+      <p class="lvl-adv">Advanced</p>
+    </div>
+    <div class="skill" data-od-id="skill-premiere">
+      <div class="skill-icon" style="background:#2d2d9a">Pr</div>
+      <h3>Premiere Pro</h3>
+      <p class="lvl-pro">Professional</p>
+    </div>
+    <div class="skill" data-od-id="skill-after">
+      <div class="skill-icon" style="background:#2a2a6a">Ae</div>
+      <h3>After Effects</h3>
+      <p class="lvl-adv">Advanced</p>
+    </div>
+  </div>
+  <h3 data-od-id="software-group-procedural" style="font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#0a0a23;margin:30px 20px 14px;display:flex;align-items:center;gap:10px;"><span style="width:22px;height:3px;background:#1e90ff;border-radius:2px;display:inline-block;"></span>PROCEDURAL SYSTEMS</h3>
+  <div class="skills-grid">
+    <div class="skill" data-od-id="skill-geonodes">
+      <h3>Geometry Nodes</h3>
+      <p style="color:var(--muted);font-size:12.5px;">Procedural modeling</p>
+    </div>
+    <div class="skill" data-od-id="skill-procanim">
+      <h3>Procedural Animation</h3>
+      <p style="color:var(--muted);font-size:12.5px;">Systems & motion</p>
+    </div>
+  </div>
+  <h3 data-od-id="software-group-rigging" style="font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#0a0a23;margin:30px 20px 14px;display:flex;align-items:center;gap:10px;"><span style="width:22px;height:3px;background:#1e90ff;border-radius:2px;display:inline-block;"></span>RIGGING & LOGIC</h3>
+  <div class="skills-grid">
+    <div class="skill" data-od-id="skill-constraints">
+      <h3>Complex Constraints</h3>
+      <p style="color:var(--muted);font-size:12.5px;">Rig behavior</p>
+    </div>
+    <div class="skill" data-od-id="skill-drivers">
+      <h3>Custom Drivers</h3>
+      <p style="color:var(--muted);font-size:12.5px;">Control logic</p>
+    </div>
+    <div class="skill" data-od-id="skill-nodelogic">
+      <h3>Node-Based Logic</h3>
+      <p style="color:var(--muted);font-size:12.5px;">Modular setups</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer" data-od-id="footer">
+  <p><i class="uil uil-envelope"></i> originalamat@gmail.com</p>
+  <p><i class="uil uil-phone"></i> +52 818 207 9917</p>
+  <p class="copy">© 2026 Portfolio Mateo Zamora — Rigging artist &amp; Animator</p>
+</footer>
+
+<script>
+  // Navbar hide on scroll (fiel al comportamiento sutil del original)
+  let lastY = window.scrollY;
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if(y > lastY && y > 120) navbar.classList.add('nav-hidden');
+    else navbar.classList.remove('nav-hidden');
+    lastY = y;
+  });
+
+  // Video overlay toggle en mobile (fiel)
+  const vw = document.getElementById('videoWrapper');
+  if(vw){
+    vw.addEventListener('click', () => {
+      if(window.innerWidth <= 768){
+        vw.classList.toggle('active');
+        const ov = vw.querySelector('.video-overlay');
+        if(vw.classList.contains('active')){
+          ov.style.transform = 'translateY(0)';
+        } else {
+          ov.style.transform = '';
+        }
+      }
+    });
+  }
+
+  // Main display: video/image switch from carousel
+  const mainVideo = document.getElementById('main-video');
+  const mainImage = document.getElementById('main-image');
+  function showInMain(type, src){
+    if(type === 'video'){
+      mainImage.style.display = 'none';
+      mainVideo.style.display = 'block';
+      if(mainVideo.getAttribute('src') !== src) mainVideo.src = src;
+      mainVideo.play().catch(()=>{});
+    } else {
+      mainVideo.pause();
+      mainVideo.style.display = 'none';
+      mainImage.src = src;
+      mainImage.alt = src;
+      mainImage.style.display = 'block';
+    }
+    // active state
+    document.querySelectorAll('.carousel-item').forEach(el=>{
+      const isActive = el.dataset.src === src && el.dataset.type === type;
+      el.classList.toggle('is-active', isActive);
+      el.style.borderColor = isActive ? '#1e90ff' : 'rgba(255,255,255,.07)';
+      el.style.boxShadow = isActive ? '0 0 0 1px #1e90ff' : 'none';
+    });
+  }
+  document.querySelectorAll('.carousel-item').forEach(el=>{
+    el.addEventListener('click', ()=> showInMain(el.dataset.type, el.dataset.src));
+  });
+
+  // Carousel arrows - stackable, minimal gap, left-aligned
+  const track = document.getElementById('dragon-carousel-track');
+  const arrows = document.querySelectorAll('.carousel-arrow');
+  function updateArrows(){
+    if(!track) return;
+    const max = track.scrollWidth - track.clientWidth - 2;
+    arrows.forEach(b=>{
+      const dir = parseInt(b.dataset.dir,10);
+      b.disabled = (dir < 0 && track.scrollLeft <= 2) || (dir > 0 && track.scrollLeft >= max);
+    });
+  }
+  arrows.forEach(b=>{
+    b.addEventListener('click', ()=>{
+      if(!track) return;
+      const dir = parseInt(b.dataset.dir,10);
+      const step = track.clientWidth * 0.85;
+      track.scrollBy({left: dir * step, behavior:'smooth'});
+    });
+  });
+  if(track){
+    track.addEventListener('scroll', updateArrows, {passive:true});
+    window.addEventListener('resize', updateArrows);
+    // init after images load
+    setTimeout(updateArrows, 300);
+  }
+
+  // Close dragon modal on backdrop click
+  const dlg = document.getElementById('dragon-modal');
+  if(dlg){
+    dlg.addEventListener('click', (e)=>{
+      const r = dlg.getBoundingClientRect();
+      if(e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dlg.close();
+    });
+  }
+
+  // Active nav link on scroll
+  const sections = ['about','projects','software'];
+  const navLinks = document.querySelectorAll('.navbar nav a');
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        navLinks.forEach(a=>a.classList.remove('active'));
+        const link = document.querySelector(`.navbar nav a[href="#${e.target.id}"]`);
+        if(link) link.classList.add('active');
+      }
+    });
+  },{rootMargin:'-40% 0px -50% 0px', threshold:0});
+  sections.forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) observer.observe(el);
+  });
+</script>
+
+
+</body></html>

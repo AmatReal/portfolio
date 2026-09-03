@@ -1,42 +1,197 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
+import Layout from '../components/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
 import FeaturedProject from '../components/FeaturedProject.astro';
-import ProjectCard from '../components/ProjectCard.astro';
 import SkillCard from '../components/SkillCard.astro';
+import ProjectModal from '../components/ProjectModal.astro';
 
-import { featuredProjects } from '../data/featured';
-import { projects } from '../data/projects';
-import { skills } from '../data/skills';
+const featured = [
+  {
+    eyebrow: 'Featured — Creature Rig',
+    heading: 'DRAGON RIG & ANIMATION',
+    description:
+      'Adapted and optimized a high-resolution dragon sculpt into a fully animatable rig. Developed IK/FK systems using drivers and constraints, along with secondary physics-based bones to enhance realism and motion detail.',
+    variant: 'dragon',
+    image: '/assets/images/Dragon_Rig_Render-1.png',
+    badgeIcon: 'uil-cube',
+    captionTitle: 'Click for more information',
+  },
+  {
+    eyebrow: 'Featured — Gameplay Rig',
+    heading: 'ANT RIG & ANIMATION',
+    description:
+      'Designed a gameplay-focused rig for the player character in Ant Defender, prioritizing flexibility and responsiveness for movement and emotes in Unreal Engine. Implemented IK systems with supporting FK controls, along with drivers, constraints, and a toggle system for switching between standing and running states.',
+    variant: 'ant',
+    emoji: '🐜',
+    badgeIcon: 'uil-game-structure',
+    captionTitle: 'Ant Defender — Player',
+    captionSub: 'Unreal Engine • IK + FK Toggle',
+    cta: { label: 'View in Unreal', href: 'https://www.instagram.com/p/DLiuzmoNlZq/' },
+    reverse: true,
+  },
+  {
+    eyebrow: 'Featured — AR / Unity',
+    heading: 'BEAR RIG & ANIMATION',
+    description:
+      'Created a lightweight rig for an augmented reality experience in Unity, triggered via QR code scanning on a presentation card. Optimized the rig to work with a low-poly mesh while maintaining functional and intuitive controls for animation.',
+    variant: 'bear',
+    emoji: '🐻',
+    badgeIcon: 'uil-mobile-android',
+    captionTitle: 'AR Card Experience',
+    captionSub: 'Unity • QR Trigger • Low-Poly',
+    cta: { label: 'View AR demo', href: 'https://www.instagram.com/p/DORQnnBj0He/' },
+  },
+];
+
+const softwareSkills = [
+  { name: 'Blender', iconClass: 'uil-cube', iconBg: '#0a66ff', badge: 'Professional', badgeClass: 'lvl-pro' },
+  { name: 'Maya', icon: 'M', iconBg: '#0a0a23', badge: 'Advanced', badgeClass: 'lvl-adv' },
+  { name: 'ZBrush', icon: 'Z', iconBg: '#1a1a1e', badge: 'Intermediate', badgeClass: 'lvl-int' },
+  { name: '3D Max', icon: '3', iconBg: '#111827', badge: 'Intermediate', badgeClass: 'lvl-int' },
+  { name: 'Unreal Engine', icon: 'UE', iconBg: '#0a0a23', badge: 'Advanced', badgeClass: 'lvl-adv' },
+  { name: 'Premiere Pro', icon: 'Pr', iconBg: '#2d2d9a', badge: 'Professional', badgeClass: 'lvl-pro' },
+  { name: 'After Effects', icon: 'Ae', iconBg: '#2a2a6a', badge: 'Advanced', badgeClass: 'lvl-adv' },
+];
+
+const proceduralSkills = [
+  { name: 'Geometry Nodes', subtitle: 'Procedural modeling' },
+  { name: 'Procedural Animation', subtitle: 'Systems & motion' },
+];
+
+const riggingSkills = [
+  { name: 'Complex Constraints', subtitle: 'Rig behavior' },
+  { name: 'Custom Drivers', subtitle: 'Control logic' },
+  { name: 'Node-Based Logic', subtitle: 'Modular setups' },
+];
 ---
 
-<BaseLayout>
-  <Hero />
+<Layout
+  title="Mateo Zamora — Rigging Artist & Animator"
+  description="Portfolio of Mateo Zamora, rigging artist and animator specialized in characters, creatures and objects for videogames, videos and marketing."
+>
+  <Navbar variant="home" />
 
-  <!-- Featured projects (las 3 filas grandes) -->
+  <section id="about" class="hero">
+    <div class="hero-video">
+      <div class="video-wrapper">
+        <video
+          class="hero-media"
+          src="/assets/videos/X9EXuuS7vrVchLr6.mp4"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          aria-label="Dream Sequence video preview"
+        ></video>
+        <div class="video-overlay">
+          <h3>Dream Sequence</h3>
+          <p>My entry for the Dream Sequence community challenge hosted by pwnisher.</p>
+          <p>The challenge consisted in creating a 4 seconds animation that visualized the provided beat of 120 BPM.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="info">
+      <div class="foto" aria-label="Foto de perfil">
+        <img src="/assets/images/image.png" alt="Mateo Zamora" decoding="async" fetchpriority="high" />
+      </div>
+      <h1>Mateo Zamora</h1>
+      <h2>Rigging artist &amp; Animator</h2>
+      <p>Specialized in rigging and animation for characters, creatures or objects for videogames, videos and marketing.</p>
+      <div class="contact-lines">
+        <p><i class="uil uil-envelope"></i> originalamat@gmail.com</p>
+        <p><i class="uil uil-phone"></i> +52 818 207 9917</p>
+      </div>
+      <div class="social">
+        <a href="https://www.instagram.com/amat.3d/?hl=en" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon"><i class="uil uil-instagram"></i></a>
+        <a href="https://mx.linkedin.com/in/mateo-zamora-474546261" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon"><i class="uil uil-linkedin"></i></a>
+        <a href="#" aria-label="Resume" class="social-resume"><i class="uil uil-file-alt"></i> Resume</a>
+      </div>
+    </div>
+  </section>
+
   <section class="featured-projects">
-    {featuredProjects.map((project) => (
-      <FeaturedProject project={project} />
-    ))}
+    {featured.map((project) => <FeaturedProject {...project} />)}
   </section>
 
-  <!-- Grid de más proyectos -->
-  <section id="proyectos" class="proyectos">
-    <h2 class="title">MORE PROJECTS</h2>
-    <div class="grid-proyectos">
-      {projects.map((project) => (
-        <ProjectCard project={project} />
-      ))}
-    </div>
-  </section>
+  <div class="view-more-wrapper">
+    <a href="/projects/" target="_blank" rel="noopener" class="btn-view-more">View More</a>
+  </div>
 
-  <!-- Software skills -->
   <section id="software" class="skills">
-    <h2 class="title">SOFTWARE</h2>
+    <h2 class="title">TECHNICAL KNOWLEDGE</h2>
+    <p class="title-sub">TOOLS &amp; SPECIALTIES</p>
+
+    <h3 class="skills-group-title">SOFTWARE</h3>
     <div class="skills-grid">
-      {skills.map((skill) => (
-        <SkillCard skill={skill} />
-      ))}
+      {softwareSkills.map((skill) => <SkillCard {...skill} />)}
+    </div>
+
+    <h3 class="skills-group-title">PROCEDURAL SYSTEMS</h3>
+    <div class="skills-grid">
+      {proceduralSkills.map((skill) => <SkillCard {...skill} />)}
+    </div>
+
+    <h3 class="skills-group-title">RIGGING &amp; LOGIC</h3>
+    <div class="skills-grid">
+      {riggingSkills.map((skill) => <SkillCard {...skill} />)}
     </div>
   </section>
-</BaseLayout>
+
+  <Footer />
+
+  <ProjectModal />
+</Layout>
+
+<script>
+  // Navbar hide on scroll
+  let lastY = window.scrollY;
+  const navbar = document.getElementById('navbar');
+  window.addEventListener(
+    'scroll',
+    () => {
+      const y = window.scrollY;
+      if (navbar) {
+        if (y > lastY && y > 120) navbar.classList.add('nav-hidden');
+        else navbar.classList.remove('nav-hidden');
+      }
+      lastY = y;
+    },
+    { passive: true }
+  );
+
+  // Hero video overlay toggle on mobile (≤768px)
+  const videoWrapper = document.querySelector('.hero .video-wrapper');
+  if (videoWrapper) {
+    videoWrapper.addEventListener('click', () => {
+      if (window.innerWidth <= 768) {
+        videoWrapper.classList.toggle('is-open');
+      }
+    });
+  }
+
+  // Scroll-spy: highlight active nav link
+  const navLinks = document.querySelectorAll('.navbar nav a[href^="#"]');
+  const sections = Array.from(navLinks)
+    .map((link) => document.querySelector(link.getAttribute('href')))
+    .filter(Boolean);
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navLinks.forEach((link) => link.classList.remove('active'));
+          const active = document.querySelector(
+            `.navbar nav a[href="#${entry.target.id}"]`
+          );
+          if (active) active.classList.add('active');
+        }
+      });
+    },
+    { rootMargin: '-40% 0px -50% 0px', threshold: 0 }
+  );
+
+  sections.forEach((section) => observer.observe(section));
+</script>

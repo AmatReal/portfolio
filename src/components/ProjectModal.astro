@@ -1,0 +1,223 @@
+---
+interface CarouselItem {
+  type: 'video' | 'image';
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  description?: string[];
+  technologies?: string;
+  breakdownUrl?: string;
+  items?: CarouselItem[];
+}
+
+const {
+  eyebrow = 'Placeholder',
+  title = 'Dragon Rig & Animation',
+  description = [
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.',
+    'Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra vestibulum erat wisi.',
+  ],
+  technologies = 'Blender, Maya, ZBrush, Drivers & Constraints, IK/FK systems, Unreal Engine, Unity',
+  breakdownUrl = 'https://www.instagram.com/p/DRiERhjj-78/',
+  items = [
+    { type: 'video', src: '/assets/videos/X9EXuuS7vrVchLr6-1.mp4', alt: 'Ver video' },
+    { type: 'image', src: '/assets/images/AntRig_Render.png', alt: 'Ver AntRig Render' },
+    { type: 'image', src: '/assets/images/AntRig.jpeg', alt: 'Ver AntRig' },
+    { type: 'image', src: '/assets/images/Dragon_Rig_Render.png', alt: 'Ver Dragon Rig' },
+    { type: 'image', src: '/assets/images/AntRig_Render.png', alt: 'Ver AntRig Render extra' },
+    { type: 'image', src: '/assets/images/AntRig.jpeg', alt: 'Ver AntRig extra' },
+    { type: 'image', src: '/assets/images/Dragon_Rig_Render.png', alt: 'Ver Dragon extra' },
+  ],
+} = Astro.props;
+
+const initialItem = items[0];
+---
+
+<dialog
+  id="project-modal"
+  class="project-modal"
+  aria-label={title}
+  aria-modal="true"
+>
+  <div class="modal-header">
+    <div>
+      <div class="modal-eyebrow">{eyebrow}</div>
+      <div class="modal-title">{title}</div>
+    </div>
+    <button
+      type="button"
+      data-modal-close
+      aria-label="Cerrar"
+      class="modal-close"
+    >&times;</button>
+  </div>
+
+  <div class="modal-grid">
+    <div class="modal-main">
+      {
+        initialItem.type === 'video' ? (
+          <>
+            <video
+              data-main-video
+              src={initialItem.src}
+              autoplay
+              muted
+              loop
+              playsinline
+              controls
+            ></video>
+            <img data-main-image alt="" hidden />
+          </>
+        ) : (
+          <>
+            <video data-main-video hidden></video>
+            <img data-main-image src={initialItem.src} alt={initialItem.alt} />
+          </>
+        )
+      }
+    </div>
+
+    <div class="modal-info">
+      <div class="modal-desc">
+        <h4>Description</h4>
+        {description.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+      <div class="modal-divider"></div>
+      <div>
+        <h4>Technologies</h4>
+        <p class="modal-tech">{technologies}</p>
+      </div>
+    </div>
+
+    <div class="modal-carousel">
+      <button
+        type="button"
+        class="carousel-arrow"
+        data-dir="-1"
+        aria-label="Anterior"
+      >&lsaquo;</button>
+      <div class="carousel-track">
+        {items.map((item) => (
+          <button
+            type="button"
+            class:list={['carousel-item', { 'is-active': item === initialItem }]}
+            data-type={item.type}
+            data-src={item.src}
+            aria-label={item.alt}
+          >
+            {
+              item.type === 'video' ? (
+                <>
+                  <video src={item.src} muted playsinline preload="metadata"></video>
+                  <span class="carousel-play"><span>&#9654;</span></span>
+                </>
+              ) : (
+                <img src={item.src} alt={item.alt} loading="lazy" decoding="async" />
+              )
+            }
+          </button>
+        ))}
+      </div>
+      <button
+        type="button"
+        class="carousel-arrow"
+        data-dir="1"
+        aria-label="Siguiente"
+      >&rsaquo;</button>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" data-modal-close class="btn-secondary">Cerrar</button>
+    <a href={breakdownUrl} target="_blank" rel="noopener" class="btn-primary">
+      View breakdown <i class="uil uil-arrow-up-right"></i>
+    </a>
+  </div>
+</dialog>
+
+<script>
+  const dialog = document.getElementById('project-modal');
+  if (dialog) {
+    document.addEventListener('click', (event) => {
+      const trigger = event.target instanceof Element ? event.target.closest('[data-modal-open]') : null;
+      if (trigger) {
+        event.preventDefault();
+        dialog.showModal();
+      }
+    });
+
+    dialog.querySelectorAll('[data-modal-close]').forEach((btn) => {
+      btn.addEventListener('click', () => dialog.close());
+    });
+
+    dialog.addEventListener('click', (event) => {
+      const rect = dialog.getBoundingClientRect();
+      const outside =
+        event.clientX < rect.left ||
+        event.clientX > rect.right ||
+        event.clientY < rect.top ||
+        event.clientY > rect.bottom;
+      if (outside) dialog.close();
+    });
+
+    const mainVideo = dialog.querySelector('[data-main-video]');
+    const mainImage = dialog.querySelector('[data-main-image]');
+    const items = dialog.querySelectorAll('.carousel-item');
+
+    function showInMain(type, src) {
+      if (type === 'video') {
+        mainImage.hidden = true;
+        mainVideo.hidden = false;
+        if (mainVideo.getAttribute('src') === '' || mainVideo.getAttribute('src') !== src) {
+          mainVideo.src = src;
+        }
+        mainVideo.play().catch(() => {});
+      } else {
+        mainVideo.pause();
+        mainVideo.hidden = true;
+        mainImage.src = src;
+        mainImage.hidden = false;
+      }
+
+      items.forEach((el) => {
+        const isActive = el.dataset.src === src && el.dataset.type === type;
+        el.classList.toggle('is-active', isActive);
+      });
+    }
+
+    items.forEach((el) => {
+      el.addEventListener('click', () => showInMain(el.dataset.type, el.dataset.src));
+    });
+
+    const track = dialog.querySelector('.carousel-track');
+    const arrows = dialog.querySelectorAll('.carousel-arrow');
+
+    function updateArrows() {
+      if (!track) return;
+      const max = track.scrollWidth - track.clientWidth - 2;
+      arrows.forEach((btn) => {
+        const dir = Number(btn.dataset.dir);
+        btn.disabled = dir < 0 ? track.scrollLeft <= 2 : track.scrollLeft >= max;
+      });
+    }
+
+    arrows.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        if (!track) return;
+        const dir = Number(btn.dataset.dir);
+        track.scrollBy({ left: dir * track.clientWidth * 0.85, behavior: 'smooth' });
+      });
+    });
+
+    if (track) {
+      track.addEventListener('scroll', updateArrows, { passive: true });
+      window.addEventListener('resize', updateArrows);
+      window.addEventListener('load', updateArrows);
+      setTimeout(updateArrows, 300);
+    }
+  }
+</script>

@@ -1,30 +1,31 @@
 ---
-import { Image } from 'astro:assets';
-import type { Skill } from '../data/skills';
- 
 interface Props {
-  skill: Skill;
+  name: string;
+  icon?: string;
+  iconBg?: string;
+  iconClass?: string;
+  badge?: string;
+  badgeClass?: string;
+  subtitle?: string;
 }
- 
-const { skill } = Astro.props;
- 
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  '../assets/images/*',
-  { eager: true }
-);
- 
-const isRemote = skill.logo.startsWith('http');
-const globKey = skill.logo.replace('src/assets/images', '../assets/images');
-const imageData = isRemote ? null : images[globKey]?.default;
+
+const { name, icon, iconBg, iconClass, badge, badgeClass, subtitle } = Astro.props;
 ---
- 
-<div class="skill flex flex-col items-center gap-2">
-  {isRemote
-    ? <img src={skill.logo} alt={skill.name} />
-    : imageData
-      ? <Image src={imageData} alt={skill.name} width={60} height={60} />
-      : <img src={skill.logo} alt={skill.name} />
+
+<div class="skill">
+  {
+    iconBg && (
+      <div class="skill-icon" style={`background:${iconBg}`}>
+        {iconClass ? <i class={`uil ${iconClass}`}></i> : icon}
+      </div>
+    )
   }
-  <h3>{skill.name}</h3>
-  <p>{skill.level}</p>
+  <h3>{name}</h3>
+  {
+    badge ? (
+      <p class={badgeClass}>{badge}</p>
+    ) : (
+      <p class="skill-subtitle">{subtitle}</p>
+    )
+  }
 </div>

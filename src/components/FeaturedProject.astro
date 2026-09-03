@@ -1,32 +1,74 @@
 ---
-import { Image } from 'astro:assets';
-import type { FeaturedProject } from '../data/featured';
- 
 interface Props {
-  project: FeaturedProject;
+  eyebrow: string;
+  heading: string;
+  description: string;
+  variant: 'dragon' | 'ant' | 'bear';
+  image?: string;
+  emoji?: string;
+  badgeIcon: string;
+  captionTitle: string;
+  captionSub?: string;
+  cta?: { label: string; href: string };
+  reverse?: boolean;
 }
- 
-const { project } = Astro.props;
- 
-// glob devuelve ImageMetadata completo — eso es lo que <Image> necesita
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  '../assets/images/*',
-  { eager: true }
-);
- 
-const globKey = project.image.replace('src/assets/images', '../assets/images');
-const imageData = images[globKey]?.default;
+
+const {
+  eyebrow,
+  heading,
+  description,
+  variant,
+  image,
+  emoji,
+  badgeIcon,
+  captionTitle,
+  captionSub,
+  cta,
+  reverse = false,
+} = Astro.props;
 ---
- 
-<div class={`project-row${project.reverse ? ' reverse' : ''}`}>
-  <div class="project-media">
-    {imageData
-      ? <Image src={imageData} alt={project.imageAlt} />
-      : <img src={project.image} alt={project.imageAlt} />
-    }
-  </div>
+
+<div class:list={['project-row', { reverse }]}>
+  <button
+    type="button"
+    class="project-media"
+    data-modal-open
+    aria-haspopup="dialog"
+    aria-controls="project-modal"
+    aria-label={`Abrir vista previa ${heading}`}
+  >
+    <div class:list={['ph-render', variant]}>
+      {image ? (
+        <img
+          src={image}
+          alt={heading}
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
+      ) : (
+        <span class="creature" aria-hidden="true">{emoji}</span>
+      )}
+      <div class="ph-caption">
+        <div class="ph-badge"><i class={`uil ${badgeIcon}`}></i></div>
+        <div>
+          <strong>{captionTitle}</strong>
+          {captionSub && <span>{captionSub}</span>}
+        </div>
+      </div>
+    </div>
+  </button>
+
   <div class="project-text">
-    <h3>{project.title.toUpperCase()}</h3>
-    <p>{project.description}</p>
+    <div class="eyebrow">{eyebrow}</div>
+    <h3>{heading}</h3>
+    <p>{description}</p>
+    {
+      cta && (
+        <a href={cta.href} target="_blank" rel="noopener" class="project-btn">
+          {cta.label} <i class="uil uil-arrow-up-right"></i>
+        </a>
+      )
+    }
   </div>
 </div>

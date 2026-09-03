@@ -1,70 +1,43 @@
-# Portfolio Mateo Zamora — Astro SSG
+# Astro Starter Kit: Minimal
 
-## Estructura
-
-```
-src/
-├── assets/
-│   ├── images/                  # imágenes optimizadas por Astro en build
-│   └── documents/               # CV y otros PDFs descargables
-├── layouts/BaseLayout.astro
-├── components/
-│   ├── Navbar.astro
-│   ├── Hero.astro
-│   ├── FeaturedProject.astro
-│   ├── ProjectCard.astro
-│   ├── SkillCard.astro
-│   └── Footer.astro
-├── data/
-│   ├── featured.ts
-│   ├── projects.ts
-│   └── skills.ts
-├── pages/index.astro
-└── styles/global.css
-
-public/
-└── video/                       # video del hero (Astro no optimiza video)
+```sh
+npm create astro@latest -- --template minimal
 ```
 
-## Setup inicial
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-```bash
-npm install
-npm run dev        # http://localhost:4321
-npm run preview    # simula el base path de producción (úsalo antes de hacer push)
-npm run build      # genera ./dist
+## 🚀 Project Structure
+
+Inside of your Astro project, you'll see the following folders and files:
+
+```text
+/
+├── public/
+├── src/
+│   └── pages/
+│       └── index.astro
+└── package.json
 ```
 
-## Antes del primer deploy
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-1. Edita `astro.config.mjs`:
-   ```js
-   site: 'https://TU-USUARIO.github.io',
-   base: '/NOMBRE-DEL-REPO',
-   ```
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-2. En GitHub → Settings → Pages → Source: **GitHub Actions**
+Any static assets, like images, can be placed in the `public/` directory.
 
-3. Haz push a `main`. El workflow se encarga del resto.
+## 🧞 Commands
 
-## Agregar un proyecto nuevo
+All commands are run from the root of the project, from a terminal:
 
-Edita `src/data/projects.ts` y agrega un objeto al array:
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-```ts
-{
-  title: 'Nuevo Proyecto',
-  role: '3D Rigger',
-  software: 'Blender',
-  image: '/Imagenes/nuevo.jpg',
-  link: 'https://instagram.com/...',
-}
-```
+## 👀 Want to learn more?
 
-Sin tocar markup. Sin duplicar HTML.
-
-## Assets
-
-Todos los archivos de `Imagenes/` y `Documents/` van en `public/` para que
-Astro los copie tal cual a `dist/`. No los muevas a `src/assets/` a menos que
-quieras optimización de imágenes con `<Image />` de `astro:assets`.
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

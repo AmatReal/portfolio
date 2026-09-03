@@ -1,0 +1,164 @@
+---
+import Layout from '../components/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import ProjectModal from '../components/ProjectModal.astro';
+
+interface Card {
+  glyph: string;
+  gradient: string;
+  title: string;
+  description: string;
+  tags: { label: string; icon?: string }[];
+  ariaLabel: string;
+}
+
+interface Group {
+  category: string;
+  cards: Card[];
+}
+
+const groups: Group[] = [
+  {
+    category: 'Creature Rigs',
+    cards: [
+      {
+        glyph: '◆',
+        gradient: 'linear-gradient(135deg,#0f1430,#1a1e3a)',
+        title: 'Dragon Rig & Animation',
+        description:
+          'Adapted high-res dragon sculpt into fully animatable rig with IK/FK, drivers, constraints and secondary physics bones for realism.',
+        tags: [{ label: 'Blender', icon: 'uil-cube' }, { label: 'Drivers' }, { label: 'IK/FK' }],
+        ariaLabel: 'Abrir Dragon Rig',
+      },
+      {
+        glyph: '⬢',
+        gradient: 'linear-gradient(135deg,#0f1a0f,#1e3a1e)',
+        title: 'Ant Rig — Creature Variant',
+        description:
+          'Gameplay-focused creature rig prioritizing flexibility for movement and emotes, with toggle between standing and running states.',
+        tags: [{ label: 'Unreal', icon: 'uil-game-structure' }, { label: 'Blender' }],
+        ariaLabel: 'Abrir detalle',
+      },
+      {
+        glyph: '◎',
+        gradient: 'linear-gradient(135deg,#1a1710,#3a2f1a)',
+        title: 'Bear Rig — Low-Poly AR',
+        description:
+          'Lightweight rig for AR triggered via QR on presentation card, optimized for low-poly mesh with intuitive controls.',
+        tags: [{ label: 'Unity', icon: 'uil-mobile-android' }, { label: 'AR' }],
+        ariaLabel: 'Abrir detalle',
+      },
+    ],
+  },
+  {
+    category: 'Game Rigs',
+    cards: [
+      {
+        glyph: '⧉',
+        gradient: 'linear-gradient(135deg,#1a1a1e,#2f2f3a)',
+        title: 'Mechanical Arm Rig',
+        description:
+          'Hard-surface rig in Maya with precise constraints and FK controls for mechanical articulation and cinematic shots.',
+        tags: [{ label: 'Maya' }, { label: 'Hard-Surface' }],
+        ariaLabel: 'Abrir detalle',
+      },
+      {
+        glyph: '◉',
+        gradient: 'linear-gradient(135deg,#1e1510,#3d2a1a)',
+        title: 'Wrecking Ball Rig',
+        description:
+          'Physics-driven chain rig with secondary motion and weight control, built for dynamic destruction sequences.',
+        tags: [{ label: 'Maya' }, { label: 'Constraints' }],
+        ariaLabel: 'Abrir detalle',
+      },
+      {
+        glyph: '⬢',
+        gradient: 'linear-gradient(135deg,#0f1a0f,#1e3a1e)',
+        title: 'Ant Rig — Ant Defender Player',
+        description:
+          'Player character rig for Ant Defender in Unreal, IK + supporting FK, drivers and mode switching for gameplay.',
+        tags: [{ label: 'Unreal Engine' }, { label: 'Blender' }],
+        ariaLabel: 'Abrir detalle',
+      },
+    ],
+  },
+  {
+    category: 'AR & Animation',
+    cards: [
+      {
+        glyph: '◐',
+        gradient: 'linear-gradient(135deg,#0a0a23,#1a1d4a)',
+        title: 'Dream Sequence — Pwnisher Challenge',
+        description:
+          '4-second 120 BPM beat-driven animation for community challenge, built and animated entirely in Blender.',
+        tags: [{ label: 'Blender', icon: 'uil-film' }, { label: 'Animation' }],
+        ariaLabel: 'Abrir detalle',
+      },
+      {
+        glyph: '⬣',
+        gradient: 'linear-gradient(135deg,#0f1a1e,#143a3e)',
+        title: 'Ant Model',
+        description:
+          'High-detail character model sculpt and retopology for rigging, with clean topology for deformation.',
+        tags: [{ label: 'Blender' }, { label: 'Modeling' }],
+        ariaLabel: 'Abrir detalle',
+      },
+    ],
+  },
+];
+---
+
+<Layout
+  title="Mateo Zamora — Projects"
+  description="Comprehensive library of rigging and animation work by Mateo Zamora, organized for efficient exploration."
+>
+  <Navbar variant="projects" />
+
+  <main class="wrap">
+    <div class="header">
+      <h1>Project Archives</h1>
+      <p>A comprehensive library of my rigging and animation work, organized for efficient exploration.</p>
+      <p class="hint">Press on any project's card to see more details.</p>
+      <div class="filters">
+        <label class="sel-wrap">
+          <select class="sel" id="catFilter">
+            <option value="all">Category — All</option>
+            {groups.map((group) => <option value={group.category}>{group.category}</option>)}
+          </select>
+          <i class="uil uil-angle-down"></i>
+        </label>
+      </div>
+    </div>
+
+    {
+      groups.map((group) => (
+        <section data-cat={group.category}>
+          <div class="section-head">
+            <h2>{group.category}</h2>
+            <span>{group.cards.length} Project(s)</span>
+          </div>
+          <div class="grid">
+            {group.cards.map((card) => <ProjectCard {...card} />)}
+          </div>
+        </section>
+      ))
+    }
+  </main>
+
+  <ProjectModal />
+</Layout>
+
+<script>
+  const select = document.getElementById('catFilter');
+  const sections = document.querySelectorAll('[data-cat]');
+
+  function applyFilter() {
+    const value = select?.value ?? 'all';
+    sections.forEach((section) => {
+      section.hidden = !(value === 'all' || section.dataset.cat === value);
+    });
+  }
+
+  if (select) select.addEventListener('change', applyFilter);
+</script>
