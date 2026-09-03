@@ -7,6 +7,8 @@ import SkillCard from '../components/SkillCard.astro';
 import ProjectModal from '../components/ProjectModal.astro';
 import { projects } from '../data/projects';
 
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 const featured = [
   {
     eyebrow: 'Featured — Creature Rig',
@@ -29,7 +31,6 @@ const featured = [
     project: 'ant',
     badgeIcon: 'uil-game-structure',
     captionTitle: 'Press for more information',
-    cta: { label: 'View in Unreal', href: 'https://www.instagram.com/p/DLiuzmoNlZq/' },
     reverse: true,
   },
   {
@@ -42,29 +43,28 @@ const featured = [
     project: 'bear',
     badgeIcon: 'uil-mobile-android',
     captionTitle: 'Press for more information',
-    cta: { label: 'View AR demo', href: 'https://www.instagram.com/p/DORQnnBj0He/' },
   },
 ];
 
 const softwareSkills = [
-  { name: 'Blender', logo: '/assets/images/Logos/Blender_Logo.png', badge: 'Professional', badgeClass: 'lvl-pro' },
-  { name: 'Maya', icon: 'M', iconBg: '#0a0a23', badge: 'Advanced', badgeClass: 'lvl-adv' },
-  { name: 'ZBrush', icon: 'Z', iconBg: '#1a1a1e', badge: 'Intermediate', badgeClass: 'lvl-int' },
-  { name: '3D Max', icon: '3', iconBg: '#111827', badge: 'Intermediate', badgeClass: 'lvl-int' },
-  { name: 'Unreal Engine', logo: '/assets/images/Logos/Unreal_Logo.png', badge: 'Advanced', badgeClass: 'lvl-adv' },
-  { name: 'Premiere Pro', logo: '/assets/images/Logos/Adobe_Premiere_Pro_Logo.png', badge: 'Professional', badgeClass: 'lvl-pro' },
-  { name: 'After Effects', logo: '/assets/images/Logos/Adobe_After_Effects_Logo.png', badge: 'Advanced', badgeClass: 'lvl-adv' },
+  { name: 'Blender', logo: `${BASE}/assets/images/Logos/Blender_Logo.png`, badge: 'Professional', badgeClass: 'lvl-pro' },
+  { name: 'Maya', logo: `${BASE}/assets/images/Logos/Maya_Logo.png`, badge: 'Advanced', badgeClass: 'lvl-adv' },
+  { name: 'ZBrush', logo: `${BASE}/assets/images/Logos/Zbrush_Logo.png`, badge: 'Intermediate', badgeClass: 'lvl-int' },
+  { name: '3D Max', logo: `${BASE}/assets/images/Logos/3DMax_Logo.svg`, badge: 'Intermediate', badgeClass: 'lvl-int' },
+  { name: 'Unreal Engine', logo: `${BASE}/assets/images/Logos/Unreal_Logo.png`, badge: 'Advanced', badgeClass: 'lvl-adv' },
+  { name: 'Premiere Pro', logo: `${BASE}/assets/images/Logos/Adobe_Premiere_Pro_Logo.png`, badge: 'Professional', badgeClass: 'lvl-pro' },
+  { name: 'After Effects', logo: `${BASE}/assets/images/Logos/Adobe_After_Effects_Logo.png`, badge: 'Advanced', badgeClass: 'lvl-adv' },
 ];
 
 const proceduralSkills = [
-  { name: 'Geometry Nodes', subtitle: 'Procedural modeling' },
-  { name: 'Procedural Animation', subtitle: 'Systems & motion' },
+  { name: 'Geometry Nodes', logo: `${BASE}/assets/images/Logos/blender_icon_geometry_nodes.svg`, subtitle: 'Procedural modeling' },
+  { name: 'Procedural Animation', faIcon: 'fa-solid fa-wand-magic-sparkles', iconBg: '#9333ea', subtitle: 'Systems & motion' },
 ];
 
 const riggingSkills = [
-  { name: 'Complex Constraints', subtitle: 'Rig behavior' },
-  { name: 'Custom Drivers', subtitle: 'Control logic' },
-  { name: 'Node-Based Logic', subtitle: 'Modular setups' },
+  { name: 'Complex Constraints', logo: `${BASE}/assets/images/Logos/blender_icon_constraint.svg`, subtitle: 'Rig behavior' },
+  { name: 'Custom Drivers', logo: `${BASE}/assets/images/Logos/blender_icon_driver.svg`, subtitle: 'Control logic' },
+  { name: 'Node-Based Logic', logo: `${BASE}/assets/images/Logos/blender_icon_nodetree.svg`, subtitle: 'Modular setups' },
 ];
 ---
 
@@ -79,7 +79,7 @@ const riggingSkills = [
       <div class="video-wrapper">
         <video
           class="hero-media"
-          src="/assets/videos/Dream Sequence/Dream Sequence - Animation.mp4"
+          src={`${BASE}/assets/videos/Dream Sequence/Dream Sequence - Animation.mp4`}
           autoplay
           muted
           loop
@@ -97,7 +97,7 @@ const riggingSkills = [
 
     <div class="info">
       <div class="foto" aria-label="Foto de perfil">
-        <img src="/assets/images/Logos/Amat3d_Logo.jpeg" alt="Mateo Zamora" decoding="async" fetchpriority="high" />
+        <img src={`${BASE}/assets/images/Logos/Amat3d_Logo.jpeg`} alt="Mateo Zamora" decoding="async" fetchpriority="high" />
       </div>
       <h1>AMAT.3D</h1>
       <h2>Rigging artist &amp; Animator</h2>
@@ -107,8 +107,8 @@ const riggingSkills = [
         <p><i class="uil uil-phone"></i> +52 818 207 9917</p>
       </div>
       <div class="social">
-        <a href="https://www.instagram.com/amat.3d/?hl=en" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon"><img src="/assets/images/Logos/Instagram_Logo.png" alt="Instagram" loading="lazy" decoding="async" /></a>
-        <a href="https://mx.linkedin.com/in/mateo-zamora-474546261" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon"><img src="/assets/images/Logos/LinkedIn_logo.png" alt="LinkedIn" loading="lazy" decoding="async" /></a>
+        <a href="https://www.instagram.com/amat.3d/?hl=en" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon"><img src={`${BASE}/assets/images/Logos/Instagram_Logo.png`} alt="Instagram" loading="lazy" decoding="async" /></a>
+        <a href="https://mx.linkedin.com/in/mateo-zamora-474546261" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon"><img src={`${BASE}/assets/images/Logos/LinkedIn_logo.png`} alt="LinkedIn" loading="lazy" decoding="async" /></a>
         <a href="#" aria-label="Resume" class="social-resume"><i class="uil uil-file-alt"></i> Resume</a>
       </div>
     </div>
@@ -119,7 +119,7 @@ const riggingSkills = [
   </section>
 
   <div class="view-more-wrapper">
-    <a href="/projects/" class="btn-view-more">View More</a>
+    <a href={`${BASE}/projects/`} class="btn-view-more">View More</a>
   </div>
 
   <section id="software" class="skills">

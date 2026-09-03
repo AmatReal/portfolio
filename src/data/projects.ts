@@ -15,6 +15,9 @@ export interface Project {
   items: MediaItem[];
 }
 
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
+const A = (path: string) => `${BASE}${path}`;
+
 const IMG = 'Dragon Rig & Animation';
 const ANT = 'Ant Rig & Animation';
 const BEAR = 'Bear Rig - AR';
@@ -30,11 +33,11 @@ export const projects: Record<string, Project> = {
     ],
     technologies: 'Blender, Drivers, IK/FK, Constraints, Secondary Physics',
     breakdownUrl: 'https://www.instagram.com/p/DRiERhjj-78/',
-    preview: `/assets/images/${IMG}/Dragon Rig - Render.png`,
+    preview: A(`/assets/images/${IMG}/Dragon Rig - Render.png`),
     items: [
-      { type: 'image', src: `/assets/images/${IMG}/Dragon Rig - Render.png`, alt: 'Dragon Rig Render' },
-      { type: 'image', src: `/assets/images/${IMG}/Dragon Rig - viewport1.png`, alt: 'Dragon Rig Viewport 1' },
-      { type: 'image', src: `/assets/images/${IMG}/Dragon Rig - viewport2.jpeg`, alt: 'Dragon Rig Viewport 2' },
+      { type: 'image', src: A(`/assets/images/${IMG}/Dragon Rig - Render.png`), alt: 'Dragon Rig Render' },
+      { type: 'image', src: A(`/assets/images/${IMG}/Dragon Rig - viewport1.png`), alt: 'Dragon Rig Viewport 1' },
+      { type: 'image', src: A(`/assets/images/${IMG}/Dragon Rig - viewport2.jpeg`), alt: 'Dragon Rig Viewport 2' },
     ],
   },
   ant: {
@@ -46,10 +49,10 @@ export const projects: Record<string, Project> = {
     ],
     technologies: 'Unreal Engine, Blender, IK + FK, Drivers, Constraints, State Toggle',
     breakdownUrl: 'https://www.instagram.com/p/DLiuzmoNlZq/',
-    preview: `/assets/images/${ANT}/Ant Rig - Render.png`,
+    preview: A(`/assets/images/${ANT}/Ant Rig - Render.png`),
     items: [
-      { type: 'image', src: `/assets/images/${ANT}/Ant Rig - Render.png`, alt: 'Ant Rig Render' },
-      { type: 'image', src: `/assets/images/${ANT}/Ant Rig - Close up.jpeg`, alt: 'Ant Rig Close up' },
+      { type: 'image', src: A(`/assets/images/${ANT}/Ant Rig - Render.png`), alt: 'Ant Rig Render' },
+      { type: 'image', src: A(`/assets/images/${ANT}/Ant Rig - Close up.jpeg`), alt: 'Ant Rig Close up' },
     ],
   },
   bear: {
@@ -61,10 +64,10 @@ export const projects: Record<string, Project> = {
     ],
     technologies: 'Unity, AR, QR Trigger, Low-poly Rig',
     breakdownUrl: 'https://www.instagram.com/p/DORQnnBj0He/',
-    preview: `/assets/images/${BEAR}/BearRig - Render.png`,
+    preview: A(`/assets/images/${BEAR}/BearRig - Render.png`),
     items: [
-      { type: 'image', src: `/assets/images/${BEAR}/BearRig - Render.png`, alt: 'Bear Rig Render' },
-      { type: 'image', src: `/assets/images/${BEAR}/Bear Rig - Scene.jpg`, alt: 'Bear Rig Scene' },
+      { type: 'image', src: A(`/assets/images/${BEAR}/BearRig - Render.png`), alt: 'Bear Rig Render' },
+      { type: 'image', src: A(`/assets/images/${BEAR}/Bear Rig - Scene.jpg`), alt: 'Bear Rig Scene' },
     ],
   },
   'mechanical-arm': {
@@ -76,9 +79,9 @@ export const projects: Record<string, Project> = {
     ],
     technologies: 'Maya, Hard-Surface, Constraints, FK Controls',
     breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
-    preview: '/assets/images/Mechanical Arm Rig/Mechanical Arm Rig.jpg',
+    preview: A('/assets/images/Mechanical Arm Rig/Mechanical Arm Rig.jpg'),
     items: [
-      { type: 'image', src: '/assets/images/Mechanical Arm Rig/Mechanical Arm Rig.jpg', alt: 'Mechanical Arm Rig' },
+      { type: 'image', src: A('/assets/images/Mechanical Arm Rig/Mechanical Arm Rig.jpg'), alt: 'Mechanical Arm Rig' },
     ],
   },
   'wrecking-ball': {
@@ -90,9 +93,9 @@ export const projects: Record<string, Project> = {
     ],
     technologies: 'Maya, Constraints, Secondary Motion, Weight Control',
     breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
-    preview: '/assets/images/Wrecking Ball Rig/Wrecking Ball Rig.jpg',
+    preview: A('/assets/images/Wrecking Ball Rig/Wrecking Ball Rig.jpg'),
     items: [
-      { type: 'image', src: '/assets/images/Wrecking Ball Rig/Wrecking Ball Rig.jpg', alt: 'Wrecking Ball Rig' },
+      { type: 'image', src: A('/assets/images/Wrecking Ball Rig/Wrecking Ball Rig.jpg'), alt: 'Wrecking Ball Rig' },
     ],
   },
   'dream-sequence': {
@@ -104,11 +107,11 @@ export const projects: Record<string, Project> = {
     ],
     technologies: 'Blender, Animation, 120 BPM',
     breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
-    preview: `/assets/images/${DREAM}/DreamSequence - cover.png`,
+    preview: A(`/assets/images/${DREAM}/DreamSequence - cover.png`),
     items: [
-      { type: 'video', src: `/assets/videos/${DREAM}/Dream Sequence - Animation.mp4`, alt: 'Dream Sequence Animation' },
-      { type: 'video', src: `/assets/videos/${DREAM}/Dream Sequence - Mesh Test.mp4`, alt: 'Dream Sequence Mesh Test' },
-      { type: 'image', src: `/assets/images/${DREAM}/DreamSequence - cover.png`, alt: 'Dream Sequence Cover' },
+      { type: 'video', src: A(`/assets/videos/${DREAM}/Dream Sequence - Animation.mp4`), alt: 'Dream Sequence Animation' },
+      { type: 'video', src: A(`/assets/videos/${DREAM}/Dream Sequence - Mesh Test.mp4`), alt: 'Dream Sequence Mesh Test' },
+      { type: 'image', src: A(`/assets/images/${DREAM}/DreamSequence - cover.png`), alt: 'Dream Sequence Cover' },
     ],
   },
   'ant-model': {
@@ -120,9 +123,9 @@ export const projects: Record<string, Project> = {
     ],
     technologies: 'Blender, Modeling, Retopology',
     breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
-    preview: '/assets/images/Ant Model/AntModel.jpg',
+    preview: A('/assets/images/Ant Model/AntModel.jpg'),
     items: [
-      { type: 'image', src: '/assets/images/Ant Model/AntModel.jpg', alt: 'Ant Model' },
+      { type: 'image', src: A('/assets/images/Ant Model/AntModel.jpg'), alt: 'Ant Model' },
     ],
   },
 };

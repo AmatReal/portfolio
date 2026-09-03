@@ -25,7 +25,13 @@ const projectsJson = JSON.stringify(projects);
   <div class="modal-grid">
     <div class="modal-main">
       <video data-main-video muted loop playsinline controls hidden></video>
-      <img data-main-image alt="" hidden />
+      <img data-main-image alt="" hidden draggable="false" />
+      <button
+        type="button"
+        class="modal-zoom"
+        data-modal-zoom
+        aria-label="Ampliar vista"
+      >&#x2922;</button>
     </div>
 
     <div class="modal-info">
@@ -71,6 +77,11 @@ const projectsJson = JSON.stringify(projects);
   </div>
 </dialog>
 
+<dialog id="media-lightbox" class="media-lightbox" aria-label="Vista ampliada">
+  <video id="lightbox-video" controls autoplay muted loop playsinline hidden></video>
+  <img id="lightbox-image" alt="" hidden draggable="false" />
+</dialog>
+
 <script type="application/json" id="projects-data" set:html={projectsJson}></script>
 
 <script>
@@ -86,6 +97,11 @@ const projectsJson = JSON.stringify(projects);
     const mainImage = dialog.querySelector('[data-main-image]');
     const track = dialog.querySelector('[data-carousel-track]');
     const arrows = dialog.querySelectorAll('.carousel-arrow');
+    const zoomButton = dialog.querySelector('[data-modal-zoom]');
+    const lightbox = document.getElementById('media-lightbox');
+    const lightboxVideo = document.getElementById('lightbox-video');
+    const lightboxImage = document.getElementById('lightbox-image');
+    let currentItem = null;
 
     function template(tag, className, attrs = {}) {
       const el = document.createElement(tag);
@@ -122,6 +138,7 @@ const projectsJson = JSON.stringify(projects);
     }
 
     function showInMain(item) {
+      currentItem = item;
       if (item.type === 'video') {
         mainImage.hidden = true;
         mainVideo.hidden = false;
@@ -189,6 +206,42 @@ const projectsJson = JSON.stringify(projects);
       const item = event.target instanceof Element ? event.target.closest('.carousel-item') : null;
       if (!item) return;
       showInMain({ type: item.dataset.type, src: item.dataset.src, alt: item.dataset.alt ?? '' });
+    });
+
+    function openLightbox() {
+      if (!lightbox || !currentItem) return;
+      if (currentItem.type === 'video') {
+        lightboxImage.hidden = true;
+        lightboxVideo.hidden = false;
+        lightboxVideo.src = currentItem.src;
+      } else {
+        lightboxVideo.pause();
+        lightboxVideo.hidden = true;
+        lightboxVideo.removeAttribute('src');
+        lightboxImage.src = currentItem.src;
+        lightboxImage.alt = currentItem.alt;
+        lightboxImage.hidden = false;
+      }
+      lightbox.setAttribute('aria-label', currentItem.alt || 'Vista ampliada');
+      lightbox.showModal();
+    }
+
+    zoomButton.addEventListener('click', openLightbox);
+    mainImage.addEventListener('click', openLightbox);
+
+    if (lightbox) {
+      lightboxImage.addEventListener('click', () => lightbox.close());
+      lightbox.addEventListener('click', (event) => {
+        if (event.target === lightbox) lightbox.close();
+      });
+      lightbox.addEventListener('close', () => {
+        lightboxVideo.pause();
+        lightboxVideo.removeAttribute('src');
+      });
+    }
+
+    dialog.addEventListener('close', () => {
+      if (lightbox && lightbox.open) lightbox.close();
     });
 
     function updateArrows() {

@@ -4,23 +4,24 @@ interface Props {
 }
 
 const { variant = 'home' } = Astro.props;
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <header class="navbar" id="navbar">
-  <div class="logo"><img class="logo-img" src="/assets/images/Logos/Amat3d_Logo.jpeg" alt="AMAT.3D" /> AMAT.3D</div>
+  <div class="logo"><img class="logo-img" src={`${BASE}/assets/images/Logos/Amat3d_Logo.jpeg`} alt="AMAT.3D" draggable="false" /> Mateo Zamora</div>
   <nav>
     {
       variant === 'home' ? (
         <>
           <a href="#about">About me</a>
-          <a href="/projects/">Projects</a>
+          <a href={`${BASE}/projects/`}>Projects</a>
           <a href="#software">Software</a>
         </>
       ) : (
         <>
-          <a href="/">Home</a>
-          <a href="/projects/" class="active" aria-current="page">Projects</a>
-          <a href="/#software">Software</a>
+          <a href={`${BASE}/`}>Home</a>
+          <a href={`${BASE}/projects/`} class="active" aria-current="page">Projects</a>
+          <a href={`${BASE}/#software`}>Software</a>
         </>
       )
     }
