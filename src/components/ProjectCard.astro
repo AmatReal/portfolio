@@ -11,9 +11,11 @@ interface Props {
   description: string;
   tags: Tag[];
   ariaLabel: string;
+  image?: string;
+  project?: string;
 }
 
-const { glyph, gradient, title, description, tags, ariaLabel } = Astro.props;
+const { glyph, gradient, title, description, tags, ariaLabel, image, project } = Astro.props;
 ---
 
 <article class="card">
@@ -21,12 +23,19 @@ const { glyph, gradient, title, description, tags, ariaLabel } = Astro.props;
     type="button"
     class="card-media"
     data-modal-open
+    data-project={project}
     aria-haspopup="dialog"
     aria-controls="project-modal"
     aria-label={ariaLabel}
     style={`background:${gradient}`}
   >
-    <span>{glyph} {title}</span>
+    {
+      image ? (
+        <img src={image} alt={title} loading="lazy" decoding="async" />
+      ) : (
+        <span>{glyph} {title}</span>
+      )
+    }
     <span class="card-media-tag"><i class="uil uil-eye"></i> Click for more</span>
   </button>
   <div class="card-body">

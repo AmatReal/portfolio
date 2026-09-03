@@ -1,52 +1,18 @@
 ---
-interface CarouselItem {
-  type: 'video' | 'image';
-  src: string;
-  alt: string;
-}
-
-interface Props {
-  eyebrow?: string;
-  title?: string;
-  description?: string[];
-  technologies?: string;
-  breakdownUrl?: string;
-  items?: CarouselItem[];
-}
-
-const {
-  eyebrow = 'Placeholder',
-  title = 'Dragon Rig & Animation',
-  description = [
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.',
-    'Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra vestibulum erat wisi.',
-  ],
-  technologies = 'Blender, Maya, ZBrush, Drivers & Constraints, IK/FK systems, Unreal Engine, Unity',
-  breakdownUrl = 'https://www.instagram.com/p/DRiERhjj-78/',
-  items = [
-    { type: 'video', src: '/assets/videos/X9EXuuS7vrVchLr6-1.mp4', alt: 'Ver video' },
-    { type: 'image', src: '/assets/images/AntRig_Render.png', alt: 'Ver AntRig Render' },
-    { type: 'image', src: '/assets/images/AntRig.jpeg', alt: 'Ver AntRig' },
-    { type: 'image', src: '/assets/images/Dragon_Rig_Render.png', alt: 'Ver Dragon Rig' },
-    { type: 'image', src: '/assets/images/AntRig_Render.png', alt: 'Ver AntRig Render extra' },
-    { type: 'image', src: '/assets/images/AntRig.jpeg', alt: 'Ver AntRig extra' },
-    { type: 'image', src: '/assets/images/Dragon_Rig_Render.png', alt: 'Ver Dragon extra' },
-  ],
-} = Astro.props;
-
-const initialItem = items[0];
+import { projects } from '../data/projects';
+const projectsJson = JSON.stringify(projects);
 ---
 
 <dialog
   id="project-modal"
   class="project-modal"
-  aria-label={title}
+  aria-label="Project preview"
   aria-modal="true"
 >
   <div class="modal-header">
     <div>
-      <div class="modal-eyebrow">{eyebrow}</div>
-      <div class="modal-title">{title}</div>
+      <div class="modal-eyebrow" data-modal-eyebrow></div>
+      <div class="modal-title" data-modal-title></div>
     </div>
     <button
       type="button"
@@ -58,38 +24,19 @@ const initialItem = items[0];
 
   <div class="modal-grid">
     <div class="modal-main">
-      {
-        initialItem.type === 'video' ? (
-          <>
-            <video
-              data-main-video
-              src={initialItem.src}
-              autoplay
-              muted
-              loop
-              playsinline
-              controls
-            ></video>
-            <img data-main-image alt="" hidden />
-          </>
-        ) : (
-          <>
-            <video data-main-video hidden></video>
-            <img data-main-image src={initialItem.src} alt={initialItem.alt} />
-          </>
-        )
-      }
+      <video data-main-video muted loop playsinline controls hidden></video>
+      <img data-main-image alt="" hidden />
     </div>
 
     <div class="modal-info">
       <div class="modal-desc">
         <h4>Description</h4>
-        {description.map((paragraph) => <p>{paragraph}</p>)}
+        <div data-modal-description></div>
       </div>
       <div class="modal-divider"></div>
       <div>
         <h4>Technologies</h4>
-        <p class="modal-tech">{technologies}</p>
+        <p class="modal-tech" data-modal-technologies></p>
       </div>
     </div>
 
@@ -100,28 +47,7 @@ const initialItem = items[0];
         data-dir="-1"
         aria-label="Anterior"
       >&lsaquo;</button>
-      <div class="carousel-track">
-        {items.map((item) => (
-          <button
-            type="button"
-            class:list={['carousel-item', { 'is-active': item === initialItem }]}
-            data-type={item.type}
-            data-src={item.src}
-            aria-label={item.alt}
-          >
-            {
-              item.type === 'video' ? (
-                <>
-                  <video src={item.src} muted playsinline preload="metadata"></video>
-                  <span class="carousel-play"><span>&#9654;</span></span>
-                </>
-              ) : (
-                <img src={item.src} alt={item.alt} loading="lazy" decoding="async" />
-              )
-            }
-          </button>
-        ))}
-      </div>
+      <div class="carousel-track" data-carousel-track></div>
       <button
         type="button"
         class="carousel-arrow"
@@ -133,20 +59,115 @@ const initialItem = items[0];
 
   <div class="modal-footer">
     <button type="button" data-modal-close class="btn-secondary">Cerrar</button>
-    <a href={breakdownUrl} target="_blank" rel="noopener" class="btn-primary">
+    <a
+      href="#"
+      target="_blank"
+      rel="noopener"
+      class="btn-primary"
+      data-modal-breakdown
+    >
       View breakdown <i class="uil uil-arrow-up-right"></i>
     </a>
   </div>
 </dialog>
 
+<script type="application/json" id="projects-data" set:html={projectsJson}></script>
+
 <script>
+  const projects = JSON.parse(document.getElementById('projects-data').textContent);
   const dialog = document.getElementById('project-modal');
   if (dialog) {
+    const eyebrow = dialog.querySelector('[data-modal-eyebrow]');
+    const title = dialog.querySelector('[data-modal-title]');
+    const description = dialog.querySelector('[data-modal-description]');
+    const technologies = dialog.querySelector('[data-modal-technologies]');
+    const breakdown = dialog.querySelector('[data-modal-breakdown]');
+    const mainVideo = dialog.querySelector('[data-main-video]');
+    const mainImage = dialog.querySelector('[data-main-image]');
+    const track = dialog.querySelector('[data-carousel-track]');
+    const arrows = dialog.querySelectorAll('.carousel-arrow');
+
+    function template(tag, className, attrs = {}) {
+      const el = document.createElement(tag);
+      if (className) el.className = className;
+      Object.entries(attrs).forEach(([key, value]) => {
+        if (value != null) el.setAttribute(key, value);
+      });
+      return el;
+    }
+
+    function buildCarousel(items) {
+      track.innerHTML = '';
+      items.forEach((item, index) => {
+        const btn = template('button', index === 0 ? 'carousel-item is-active' : 'carousel-item', {
+          type: 'button',
+          'data-type': item.type,
+          'data-src': item.src,
+          'aria-label': item.alt,
+        });
+        if (item.type === 'video') {
+          const video = template('video', '', { src: item.src, muted: '', playsinline: '', preload: 'metadata' });
+          const play = template('span', 'carousel-play');
+          const playInner = template('span', '', {});
+          playInner.textContent = '\u25B6';
+          play.appendChild(playInner);
+          btn.appendChild(video);
+          btn.appendChild(play);
+        } else {
+          const img = template('img', '', { src: item.src, alt: item.alt, loading: 'lazy', decoding: 'async' });
+          btn.appendChild(img);
+        }
+        track.appendChild(btn);
+      });
+    }
+
+    function showInMain(item) {
+      if (item.type === 'video') {
+        mainImage.hidden = true;
+        mainVideo.hidden = false;
+        if (mainVideo.getAttribute('src') !== item.src) mainVideo.src = item.src;
+        mainVideo.play().catch(() => {});
+      } else {
+        mainVideo.pause();
+        mainVideo.hidden = true;
+        mainImage.src = item.src;
+        mainImage.alt = item.alt;
+        mainImage.hidden = false;
+      }
+
+      track.querySelectorAll('.carousel-item').forEach((el) => {
+        const isActive = el.dataset.src === item.src && el.dataset.type === item.type;
+        el.classList.toggle('is-active', isActive);
+      });
+    }
+
+    function populate(project) {
+      eyebrow.textContent = project.eyebrow;
+      title.textContent = project.title;
+      description.innerHTML = '';
+      project.description.forEach((paragraph) => {
+        const p = document.createElement('p');
+        p.textContent = paragraph;
+        description.appendChild(p);
+      });
+      technologies.textContent = project.technologies;
+      breakdown.href = project.breakdownUrl;
+      dialog.setAttribute('aria-label', project.title);
+
+      buildCarousel(project.items);
+      showInMain(project.items[0]);
+      updateArrows();
+    }
+
     document.addEventListener('click', (event) => {
       const trigger = event.target instanceof Element ? event.target.closest('[data-modal-open]') : null;
       if (trigger) {
         event.preventDefault();
-        dialog.showModal();
+        const project = projects[trigger.dataset.project];
+        if (project) {
+          populate(project);
+          dialog.showModal();
+        }
       }
     });
 
@@ -164,37 +185,11 @@ const initialItem = items[0];
       if (outside) dialog.close();
     });
 
-    const mainVideo = dialog.querySelector('[data-main-video]');
-    const mainImage = dialog.querySelector('[data-main-image]');
-    const items = dialog.querySelectorAll('.carousel-item');
-
-    function showInMain(type, src) {
-      if (type === 'video') {
-        mainImage.hidden = true;
-        mainVideo.hidden = false;
-        if (mainVideo.getAttribute('src') === '' || mainVideo.getAttribute('src') !== src) {
-          mainVideo.src = src;
-        }
-        mainVideo.play().catch(() => {});
-      } else {
-        mainVideo.pause();
-        mainVideo.hidden = true;
-        mainImage.src = src;
-        mainImage.hidden = false;
-      }
-
-      items.forEach((el) => {
-        const isActive = el.dataset.src === src && el.dataset.type === type;
-        el.classList.toggle('is-active', isActive);
-      });
-    }
-
-    items.forEach((el) => {
-      el.addEventListener('click', () => showInMain(el.dataset.type, el.dataset.src));
+    track.addEventListener('click', (event) => {
+      const item = event.target instanceof Element ? event.target.closest('.carousel-item') : null;
+      if (!item) return;
+      showInMain({ type: item.dataset.type, src: item.dataset.src, alt: item.dataset.alt ?? '' });
     });
-
-    const track = dialog.querySelector('.carousel-track');
-    const arrows = dialog.querySelectorAll('.carousel-arrow');
 
     function updateArrows() {
       if (!track) return;
@@ -213,11 +208,9 @@ const initialItem = items[0];
       });
     });
 
-    if (track) {
-      track.addEventListener('scroll', updateArrows, { passive: true });
-      window.addEventListener('resize', updateArrows);
-      window.addEventListener('load', updateArrows);
-      setTimeout(updateArrows, 300);
-    }
+    track.addEventListener('scroll', updateArrows, { passive: true });
+    window.addEventListener('resize', updateArrows);
+    window.addEventListener('load', updateArrows);
+    setTimeout(updateArrows, 300);
   }
 </script>

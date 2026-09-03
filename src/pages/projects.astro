@@ -3,6 +3,7 @@ import Layout from '../components/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import ProjectModal from '../components/ProjectModal.astro';
+import { projects } from '../data/projects';
 
 interface Card {
   glyph: string;
@@ -11,6 +12,8 @@ interface Card {
   description: string;
   tags: { label: string; icon?: string }[];
   ariaLabel: string;
+  image?: string;
+  project?: string;
 }
 
 interface Group {
@@ -30,6 +33,8 @@ const groups: Group[] = [
           'Adapted high-res dragon sculpt into fully animatable rig with IK/FK, drivers, constraints and secondary physics bones for realism.',
         tags: [{ label: 'Blender', icon: 'uil-cube' }, { label: 'Drivers' }, { label: 'IK/FK' }],
         ariaLabel: 'Abrir Dragon Rig',
+        image: projects.dragon.preview,
+        project: 'dragon',
       },
       {
         glyph: '⬢',
@@ -39,6 +44,8 @@ const groups: Group[] = [
           'Gameplay-focused creature rig prioritizing flexibility for movement and emotes, with toggle between standing and running states.',
         tags: [{ label: 'Unreal', icon: 'uil-game-structure' }, { label: 'Blender' }],
         ariaLabel: 'Abrir detalle',
+        image: projects.ant.items[1].src,
+        project: 'ant',
       },
       {
         glyph: '◎',
@@ -48,6 +55,8 @@ const groups: Group[] = [
           'Lightweight rig for AR triggered via QR on presentation card, optimized for low-poly mesh with intuitive controls.',
         tags: [{ label: 'Unity', icon: 'uil-mobile-android' }, { label: 'AR' }],
         ariaLabel: 'Abrir detalle',
+        image: projects.bear.preview,
+        project: 'bear',
       },
     ],
   },
@@ -62,6 +71,8 @@ const groups: Group[] = [
           'Hard-surface rig in Maya with precise constraints and FK controls for mechanical articulation and cinematic shots.',
         tags: [{ label: 'Maya' }, { label: 'Hard-Surface' }],
         ariaLabel: 'Abrir detalle',
+        image: projects['mechanical-arm'].preview,
+        project: 'mechanical-arm',
       },
       {
         glyph: '◉',
@@ -71,6 +82,8 @@ const groups: Group[] = [
           'Physics-driven chain rig with secondary motion and weight control, built for dynamic destruction sequences.',
         tags: [{ label: 'Maya' }, { label: 'Constraints' }],
         ariaLabel: 'Abrir detalle',
+        image: projects['wrecking-ball'].preview,
+        project: 'wrecking-ball',
       },
       {
         glyph: '⬢',
@@ -80,6 +93,8 @@ const groups: Group[] = [
           'Player character rig for Ant Defender in Unreal, IK + supporting FK, drivers and mode switching for gameplay.',
         tags: [{ label: 'Unreal Engine' }, { label: 'Blender' }],
         ariaLabel: 'Abrir detalle',
+        image: projects.ant.preview,
+        project: 'ant',
       },
     ],
   },
@@ -94,6 +109,8 @@ const groups: Group[] = [
           '4-second 120 BPM beat-driven animation for community challenge, built and animated entirely in Blender.',
         tags: [{ label: 'Blender', icon: 'uil-film' }, { label: 'Animation' }],
         ariaLabel: 'Abrir detalle',
+        image: projects['dream-sequence'].preview,
+        project: 'dream-sequence',
       },
       {
         glyph: '⬣',
@@ -103,6 +120,8 @@ const groups: Group[] = [
           'High-detail character model sculpt and retopology for rigging, with clean topology for deformation.',
         tags: [{ label: 'Blender' }, { label: 'Modeling' }],
         ariaLabel: 'Abrir detalle',
+        image: projects['ant-model'].preview,
+        project: 'ant-model',
       },
     ],
   },

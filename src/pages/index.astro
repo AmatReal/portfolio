@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import FeaturedProject from '../components/FeaturedProject.astro';
 import SkillCard from '../components/SkillCard.astro';
 import ProjectModal from '../components/ProjectModal.astro';
+import { projects } from '../data/projects';
 
 const featured = [
   {
@@ -13,7 +14,8 @@ const featured = [
     description:
       'Adapted and optimized a high-resolution dragon sculpt into a fully animatable rig. Developed IK/FK systems using drivers and constraints, along with secondary physics-based bones to enhance realism and motion detail.',
     variant: 'dragon',
-    image: '/assets/images/Dragon_Rig_Render-1.png',
+    image: projects.dragon.preview,
+    project: 'dragon',
     badgeIcon: 'uil-cube',
     captionTitle: 'Click for more information',
   },
@@ -23,7 +25,8 @@ const featured = [
     description:
       'Designed a gameplay-focused rig for the player character in Ant Defender, prioritizing flexibility and responsiveness for movement and emotes in Unreal Engine. Implemented IK systems with supporting FK controls, along with drivers, constraints, and a toggle system for switching between standing and running states.',
     variant: 'ant',
-    emoji: '🐜',
+    image: projects.ant.preview,
+    project: 'ant',
     badgeIcon: 'uil-game-structure',
     captionTitle: 'Ant Defender — Player',
     captionSub: 'Unreal Engine • IK + FK Toggle',
@@ -36,7 +39,8 @@ const featured = [
     description:
       'Created a lightweight rig for an augmented reality experience in Unity, triggered via QR code scanning on a presentation card. Optimized the rig to work with a low-poly mesh while maintaining functional and intuitive controls for animation.',
     variant: 'bear',
-    emoji: '🐻',
+    image: projects.bear.preview,
+    project: 'bear',
     badgeIcon: 'uil-mobile-android',
     captionTitle: 'AR Card Experience',
     captionSub: 'Unity • QR Trigger • Low-Poly',
@@ -45,13 +49,13 @@ const featured = [
 ];
 
 const softwareSkills = [
-  { name: 'Blender', iconClass: 'uil-cube', iconBg: '#0a66ff', badge: 'Professional', badgeClass: 'lvl-pro' },
+  { name: 'Blender', logo: '/assets/images/Logos/Blender_Logo.png', badge: 'Professional', badgeClass: 'lvl-pro' },
   { name: 'Maya', icon: 'M', iconBg: '#0a0a23', badge: 'Advanced', badgeClass: 'lvl-adv' },
   { name: 'ZBrush', icon: 'Z', iconBg: '#1a1a1e', badge: 'Intermediate', badgeClass: 'lvl-int' },
   { name: '3D Max', icon: '3', iconBg: '#111827', badge: 'Intermediate', badgeClass: 'lvl-int' },
-  { name: 'Unreal Engine', icon: 'UE', iconBg: '#0a0a23', badge: 'Advanced', badgeClass: 'lvl-adv' },
-  { name: 'Premiere Pro', icon: 'Pr', iconBg: '#2d2d9a', badge: 'Professional', badgeClass: 'lvl-pro' },
-  { name: 'After Effects', icon: 'Ae', iconBg: '#2a2a6a', badge: 'Advanced', badgeClass: 'lvl-adv' },
+  { name: 'Unreal Engine', logo: '/assets/images/Logos/Unreal_Logo.png', badge: 'Advanced', badgeClass: 'lvl-adv' },
+  { name: 'Premiere Pro', logo: '/assets/images/Logos/Adobe_Premiere_Pro_Logo.png', badge: 'Professional', badgeClass: 'lvl-pro' },
+  { name: 'After Effects', logo: '/assets/images/Logos/Adobe_After_Effects_Logo.png', badge: 'Advanced', badgeClass: 'lvl-adv' },
 ];
 
 const proceduralSkills = [
@@ -77,7 +81,7 @@ const riggingSkills = [
       <div class="video-wrapper">
         <video
           class="hero-media"
-          src="/assets/videos/X9EXuuS7vrVchLr6.mp4"
+          src="/assets/videos/Dream Sequence/Dream Sequence - Animation.mp4"
           autoplay
           muted
           loop
@@ -95,7 +99,7 @@ const riggingSkills = [
 
     <div class="info">
       <div class="foto" aria-label="Foto de perfil">
-        <img src="/assets/images/image.png" alt="Mateo Zamora" decoding="async" fetchpriority="high" />
+        <img src="/assets/images/Logos/Amat3d_Logo.jpeg" alt="Mateo Zamora" decoding="async" fetchpriority="high" />
       </div>
       <h1>Mateo Zamora</h1>
       <h2>Rigging artist &amp; Animator</h2>
@@ -105,8 +109,8 @@ const riggingSkills = [
         <p><i class="uil uil-phone"></i> +52 818 207 9917</p>
       </div>
       <div class="social">
-        <a href="https://www.instagram.com/amat.3d/?hl=en" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon"><i class="uil uil-instagram"></i></a>
-        <a href="https://mx.linkedin.com/in/mateo-zamora-474546261" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon"><i class="uil uil-linkedin"></i></a>
+        <a href="https://www.instagram.com/amat.3d/?hl=en" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon"><img src="/assets/images/Logos/Instagram_Logo.png" alt="Instagram" loading="lazy" decoding="async" /></a>
+        <a href="https://mx.linkedin.com/in/mateo-zamora-474546261" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon"><img src="/assets/images/Logos/LinkedIn_logo.png" alt="LinkedIn" loading="lazy" decoding="async" /></a>
         <a href="#" aria-label="Resume" class="social-resume"><i class="uil uil-file-alt"></i> Resume</a>
       </div>
     </div>
@@ -117,7 +121,7 @@ const riggingSkills = [
   </section>
 
   <div class="view-more-wrapper">
-    <a href="/projects/" target="_blank" rel="noopener" class="btn-view-more">View More</a>
+    <a href="/projects/" class="btn-view-more">View More</a>
   </div>
 
   <section id="software" class="skills">

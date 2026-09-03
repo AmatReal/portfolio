@@ -4,20 +4,27 @@ interface Props {
   icon?: string;
   iconBg?: string;
   iconClass?: string;
+  logo?: string;
   badge?: string;
   badgeClass?: string;
   subtitle?: string;
 }
 
-const { name, icon, iconBg, iconClass, badge, badgeClass, subtitle } = Astro.props;
+const { name, icon, iconBg, iconClass, logo, badge, badgeClass, subtitle } = Astro.props;
 ---
 
 <div class="skill">
   {
-    iconBg && (
-      <div class="skill-icon" style={`background:${iconBg}`}>
-        {iconClass ? <i class={`uil ${iconClass}`}></i> : icon}
+    logo ? (
+      <div class="skill-icon skill-icon--logo">
+        <img src={logo} alt="" loading="lazy" decoding="async" />
       </div>
+    ) : (
+      iconBg && (
+        <div class="skill-icon" style={`background:${iconBg}`}>
+          {iconClass ? <i class={`uil ${iconClass}`}></i> : icon}
+        </div>
+      )
     )
   }
   <h3>{name}</h3>

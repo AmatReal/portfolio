@@ -356,6 +356,12 @@ a {
   font-size: 18px;
 }
 
+.social a.social-icon img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
 /* ==========================================================================
    Featured projects
    ========================================================================== */
@@ -927,6 +933,18 @@ button.card-media {
   font-weight: 800;
   color: #ffffff;
   margin-bottom: 6px;
+}
+
+.skill-icon--logo {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  padding: 10px;
+}
+
+.skill-icon--logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .skill h3 {
