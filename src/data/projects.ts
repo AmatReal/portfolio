@@ -128,4 +128,100 @@ export const projects: Record<string, Project> = {
       { type: 'image', src: A('/assets/images/Ant Model/AntModel.jpg'), alt: 'Ant Model' },
     ],
   },
+  ball: {
+    id: 'ball',
+    eyebrow: 'Game Rig — Animation Principles',
+    title: 'Ball Rig',
+    description: [
+      'Bouncing ball rig built to practice animation principles, with squash & stretch controls and an intuitive setup for timing and spacing exercises.',
+    ],
+    technologies: 'Blender, Squash & Stretch, Controls, Animation Principles',
+    breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
+    preview: A('/assets/images/Ball Rig/Captura de pantalla 2026-09-03 174829.png'),
+    items: [
+      { type: 'image', src: A('/assets/images/Ball Rig/Captura de pantalla 2026-09-03 174829.png'), alt: 'Ball Rig viewport 1' },
+      { type: 'image', src: A('/assets/images/Ball Rig/Captura de pantalla 2026-09-03 174801.png'), alt: 'Ball Rig viewport 2' },
+      { type: 'image', src: A('/assets/images/Ball Rig/Captura de pantalla 2026-09-03 174746.png'), alt: 'Ball Rig viewport 3' },
+    ],
+  },
+  bunny: {
+    id: 'bunny',
+    eyebrow: 'Creature Rig — Stylized',
+    title: 'Bunny Rig',
+    description: [
+      'Stylized bunny character rig with IK/FK limbs, facial controls and corrective shapes, built for expressive cartoon-style motion.',
+    ],
+    technologies: 'Blender, IK/FK, Facial Controls, Corrective Shapes',
+    breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
+    preview: A('/assets/images/Bunny Rig/Captura de pantalla 2026-08-25 182108.png'),
+    items: [
+      { type: 'image', src: A('/assets/images/Bunny Rig/Captura de pantalla 2026-08-25 182108.png'), alt: 'Bunny Rig viewport 1' },
+      { type: 'image', src: A('/assets/images/Bunny Rig/Captura de pantalla 2026-08-25 121100.png'), alt: 'Bunny Rig viewport 2' },
+    ],
+  },
+  eye: {
+    id: 'eye',
+    eyebrow: 'Game Rig — Facial Setup',
+    title: 'Eye Rig',
+    description: [
+      'Eye rig with aim-constrained look-at controls, driver-driven blinks and supportive shaping for expressive character gazes.',
+    ],
+    technologies: 'Blender, Aim Constraints, Drivers, Facial Controls',
+    breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
+    preview: A('/assets/images/Eye Rig/Captura de pantalla 2026-08-13 185020.png'),
+    items: [
+      { type: 'image', src: A('/assets/images/Eye Rig/Captura de pantalla 2026-08-13 185020.png'), alt: 'Eye Rig viewport 1' },
+      { type: 'image', src: A('/assets/images/Eye Rig/Captura de pantalla 2026-08-12 205602.png'), alt: 'Eye Rig viewport 2' },
+    ],
+  },
+  gatoppel: {
+    id: 'gatoppel',
+    eyebrow: 'Creature Rig — Character',
+    title: 'Gatoppel',
+    description: [
+      'Stylized cat character rig with IK/FK blending, intuitive control curves and secondary motion for lively performances.',
+    ],
+    technologies: 'Blender, IK/FK, Constraints, Control Curves',
+    breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
+    preview: A('/assets/images/Gatoppel/1778816426962.jpg'),
+    items: [
+      { type: 'image', src: A('/assets/images/Gatoppel/1778816426962.jpg'), alt: 'Gatoppel render 1' },
+      { type: 'image', src: A('/assets/images/Gatoppel/1778816426903.jpg'), alt: 'Gatoppel render 2' },
+      { type: 'image', src: A('/assets/images/Gatoppel/1778816424599.jpg'), alt: 'Gatoppel render 3' },
+    ],
+  },
+  girl: {
+    id: 'girl',
+    eyebrow: 'Character Rig — Stylized',
+    title: 'Girl Rig',
+    description: [
+      'Stylized girl character rig with a full facial setup, IK/FK limbs and secondary dynamics, validated through a series of animation tests.',
+    ],
+    technologies: 'Blender, IK/FK, Facial Rig, Dynamics',
+    breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
+    preview: A('/assets/images/Girl Rig/Captura de pantalla 2026-06-10 114944.png'),
+    items: [
+      { type: 'video', src: A('/assets/images/Girl Rig/2026-04-23 10-34-16.mp4'), alt: 'Girl Rig test 1' },
+      { type: 'video', src: A('/assets/images/Girl Rig/2026-04-23 10-33-43.mp4'), alt: 'Girl Rig test 2' },
+      { type: 'video', src: A('/assets/images/Girl Rig/2026-04-23 08-52-41.mp4'), alt: 'Girl Rig test 3' },
+      { type: 'video', src: A('/assets/images/Girl Rig/2026-04-23 08-51-58.mp4'), alt: 'Girl Rig test 4' },
+      { type: 'image', src: A('/assets/images/Girl Rig/Captura de pantalla 2026-06-10 114944.png'), alt: 'Girl Rig viewport 1' },
+      { type: 'image', src: A('/assets/images/Girl Rig/Captura de pantalla 2026-06-05 125518.png'), alt: 'Girl Rig viewport 2' },
+    ],
+  },
+  turret: {
+    id: 'turret',
+    eyebrow: 'Game Rig — Hard Surface',
+    title: 'Turret Rig',
+    description: [
+      'Hard-surface turret rig with articulated aiming controls, constrained mechanical parts and game-ready ranges of motion.',
+    ],
+    technologies: 'Blender, Hard-Surface, Constraints, Game-Ready',
+    breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
+    preview: A('/assets/images/Turret Rig/Captura de pantalla 2026-09-03 174651.png'),
+    items: [
+      { type: 'image', src: A('/assets/images/Turret Rig/Captura de pantalla 2026-09-03 174651.png'), alt: 'Turret Rig viewport 1' },
+      { type: 'image', src: A('/assets/images/Turret Rig/Captura de pantalla 2026-09-03 174640.png'), alt: 'Turret Rig viewport 2' },
+    ],
+  },
 };
