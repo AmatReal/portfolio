@@ -4,8 +4,15 @@ export interface MediaItem {
   alt: string;
 }
 
+export type ProjectCategory =
+  | 'Character & Creature Rigs'
+  | 'Mechanical & Hard-Surface Rigs'
+  | 'Specialized Rigs & Mechanics'
+  | 'AR, Animation & Modeling';
+
 export interface Project {
   id: string;
+  category: ProjectCategory;
   eyebrow: string;
   title: string;
   description: string[];
@@ -26,6 +33,7 @@ const DREAM = 'Dream Sequence';
 export const projects: Record<string, Project> = {
   dragon: {
     id: 'dragon',
+    category: 'Character & Creature Rigs',
     eyebrow: 'Featured — Creature Rig',
     title: 'Dragon Rig & Animation',
     description: [
@@ -42,6 +50,7 @@ export const projects: Record<string, Project> = {
   },
   ant: {
     id: 'ant',
+    category: 'Character & Creature Rigs',
     eyebrow: 'Featured — Gameplay Rig',
     title: 'Ant Rig & Animation',
     description: [
@@ -57,6 +66,7 @@ export const projects: Record<string, Project> = {
   },
   bear: {
     id: 'bear',
+    category: 'AR, Animation & Modeling',
     eyebrow: 'Featured — AR / Unity',
     title: 'Bear Rig & Animation',
     description: [
@@ -72,7 +82,8 @@ export const projects: Record<string, Project> = {
   },
   'mechanical-arm': {
     id: 'mechanical-arm',
-    eyebrow: 'Game Rig — Hard Surface',
+    category: 'Mechanical & Hard-Surface Rigs',
+    eyebrow: 'Mechanical Rig — Hard Surface',
     title: 'Mechanical Arm Rig',
     description: [
       'Hard-surface rig in Maya with precise constraints and FK controls for mechanical articulation and cinematic shots.',
@@ -86,7 +97,8 @@ export const projects: Record<string, Project> = {
   },
   'wrecking-ball': {
     id: 'wrecking-ball',
-    eyebrow: 'Game Rig — Physics',
+    category: 'Mechanical & Hard-Surface Rigs',
+    eyebrow: 'Mechanical Rig — Physics',
     title: 'Wrecking Ball Rig',
     description: [
       'Physics-driven chain rig with secondary motion and weight control, built for dynamic destruction sequences.',
@@ -100,6 +112,7 @@ export const projects: Record<string, Project> = {
   },
   'dream-sequence': {
     id: 'dream-sequence',
+    category: 'AR, Animation & Modeling',
     eyebrow: 'Animation — Challenge',
     title: 'Dream Sequence — Pwnisher Challenge',
     description: [
@@ -116,6 +129,7 @@ export const projects: Record<string, Project> = {
   },
   'ant-model': {
     id: 'ant-model',
+    category: 'AR, Animation & Modeling',
     eyebrow: 'Modeling — Character',
     title: 'Ant Model',
     description: [
@@ -130,7 +144,8 @@ export const projects: Record<string, Project> = {
   },
   ball: {
     id: 'ball',
-    eyebrow: 'Game Rig — Animation Principles',
+    category: 'Specialized Rigs & Mechanics',
+    eyebrow: 'Specialized Rig — Principles',
     title: 'Ball Rig',
     description: [
       'Bouncing ball rig built to practice animation principles, with squash & stretch controls and an intuitive setup for timing and spacing exercises.',
@@ -146,6 +161,7 @@ export const projects: Record<string, Project> = {
   },
   bunny: {
     id: 'bunny',
+    category: 'Character & Creature Rigs',
     eyebrow: 'Creature Rig — Stylized',
     title: 'Bunny Rig',
     description: [
@@ -161,7 +177,8 @@ export const projects: Record<string, Project> = {
   },
   eye: {
     id: 'eye',
-    eyebrow: 'Game Rig — Facial Setup',
+    category: 'Specialized Rigs & Mechanics',
+    eyebrow: 'Specialized Rig — Facial Setup',
     title: 'Eye Rig',
     description: [
       'Eye rig with aim-constrained look-at controls, driver-driven blinks and supportive shaping for expressive character gazes.',
@@ -176,6 +193,7 @@ export const projects: Record<string, Project> = {
   },
   gatoppel: {
     id: 'gatoppel',
+    category: 'Character & Creature Rigs',
     eyebrow: 'Creature Rig — Character',
     title: 'Gatoppel',
     description: [
@@ -192,6 +210,7 @@ export const projects: Record<string, Project> = {
   },
   girl: {
     id: 'girl',
+    category: 'Character & Creature Rigs',
     eyebrow: 'Character Rig — Stylized',
     title: 'Girl Rig',
     description: [
@@ -211,7 +230,8 @@ export const projects: Record<string, Project> = {
   },
   turret: {
     id: 'turret',
-    eyebrow: 'Game Rig — Hard Surface',
+    category: 'Mechanical & Hard-Surface Rigs',
+    eyebrow: 'Mechanical Rig — Hard Surface',
     title: 'Turret Rig',
     description: [
       'Hard-surface turret rig with articulated aiming controls, constrained mechanical parts and game-ready ranges of motion.',
@@ -225,3 +245,190 @@ export const projects: Record<string, Project> = {
     ],
   },
 };
+
+export interface ProjectCardTag {
+  label: string;
+  icon?: string;
+}
+
+export interface ProjectCardData {
+  glyph: string;
+  gradient: string;
+  title: string;
+  description: string;
+  tags: ProjectCardTag[];
+  ariaLabel: string;
+  image?: string;
+  project?: string;
+}
+
+export interface ProjectGroup {
+  category: ProjectCategory;
+  cards: ProjectCardData[];
+}
+
+export const projectGroups: ProjectGroup[] = [
+  {
+    category: 'Character & Creature Rigs',
+    cards: [
+      {
+        glyph: '◆',
+        gradient: 'linear-gradient(135deg,#0f1430,#1a1e3a)',
+        title: 'Dragon Rig & Animation',
+        description:
+          'Adapted high-res dragon sculpt into fully animatable rig with IK/FK, drivers, constraints and secondary physics bones for realism.',
+        tags: [{ label: 'Blender', icon: 'uil-cube' }, { label: 'Drivers' }, { label: 'IK/FK' }],
+        ariaLabel: 'Abrir Dragon Rig',
+        image: projects.dragon.preview,
+        project: 'dragon',
+      },
+      {
+        glyph: '⬢',
+        gradient: 'linear-gradient(135deg,#0f1a0f,#1e3a1e)',
+        title: 'Ant Rig — Ant Defender Player',
+        description:
+          'Player character rig for Ant Defender in Unreal, IK + supporting FK, drivers and mode switching for gameplay.',
+        tags: [{ label: 'Unreal Engine' }, { label: 'Blender' }],
+        ariaLabel: 'Abrir detalle',
+        image: projects.ant.preview,
+        project: 'ant',
+      },
+      {
+        glyph: '✿',
+        gradient: 'linear-gradient(135deg,#0f1430,#1a2a55)',
+        title: 'Girl Rig',
+        description:
+          'Stylized girl character rig with full facial setup, IK/FK limbs and secondary dynamics, validated through animation tests.',
+        tags: [{ label: 'Blender', icon: 'uil-cube' }, { label: 'Facial' }, { label: 'Dynamics' }],
+        ariaLabel: 'Abrir Girl Rig',
+        image: projects.girl.preview,
+        project: 'girl',
+      },
+      {
+        glyph: '❍',
+        gradient: 'linear-gradient(135deg,#141430,#2a2a4a)',
+        title: 'Bunny Rig',
+        description:
+          'Stylized bunny character rig with IK/FK limbs, facial controls and corrective shapes for expressive cartoon motion.',
+        tags: [{ label: 'Blender', icon: 'uil-cube' }, { label: 'IK/FK' }, { label: 'Facial' }],
+        ariaLabel: 'Abrir Bunny Rig',
+        image: projects.bunny.preview,
+        project: 'bunny',
+      },
+      {
+        glyph: '✦',
+        gradient: 'linear-gradient(135deg,#131a38,#232a55)',
+        title: 'Gatoppel',
+        description:
+          'Stylized cat character rig with IK/FK blending, intuitive control curves and secondary motion for lively performances.',
+        tags: [{ label: 'Blender', icon: 'uil-cube' }, { label: 'IK/FK' }, { label: 'Constraints' }],
+        ariaLabel: 'Abrir Gatoppel',
+        image: projects.gatoppel.preview,
+        project: 'gatoppel',
+      },
+    ],
+  },
+  {
+    category: 'Mechanical & Hard-Surface Rigs',
+    cards: [
+      {
+        glyph: '⧉',
+        gradient: 'linear-gradient(135deg,#1a1a1e,#2f2f3a)',
+        title: 'Mechanical Arm Rig',
+        description:
+          'Hard-surface rig in Maya with precise constraints and FK controls for mechanical articulation and cinematic shots.',
+        tags: [{ label: 'Maya' }, { label: 'Hard-Surface' }],
+        ariaLabel: 'Abrir detalle',
+        image: projects['mechanical-arm'].preview,
+        project: 'mechanical-arm',
+      },
+      {
+        glyph: '⌖',
+        gradient: 'linear-gradient(135deg,#10141a,#263042)',
+        title: 'Turret Rig',
+        description:
+          'Hard-surface turret rig with articulated aiming controls, constrained mechanical parts and game-ready ranges of motion.',
+        tags: [{ label: 'Hard-Surface' }, { label: 'Constraints' }],
+        ariaLabel: 'Abrir Turret Rig',
+        image: projects.turret.preview,
+        project: 'turret',
+      },
+      {
+        glyph: '◉',
+        gradient: 'linear-gradient(135deg,#1e1510,#3d2a1a)',
+        title: 'Wrecking Ball Rig',
+        description:
+          'Physics-driven chain rig with secondary motion and weight control, built for dynamic destruction sequences.',
+        tags: [{ label: 'Maya' }, { label: 'Constraints' }],
+        ariaLabel: 'Abrir detalle',
+        image: projects['wrecking-ball'].preview,
+        project: 'wrecking-ball',
+      },
+    ],
+  },
+  {
+    category: 'Specialized Rigs & Mechanics',
+    cards: [
+      {
+        glyph: '◉',
+        gradient: 'linear-gradient(135deg,#0e1a26,#1c3a4a)',
+        title: 'Eye Rig',
+        description:
+          'Eye rig with aim-constrained look-at controls, driver-driven blinks and supportive shaping for expressive character gazes.',
+        tags: [{ label: 'Constraints' }, { label: 'Drivers' }],
+        ariaLabel: 'Abrir Eye Rig',
+        image: projects.eye.preview,
+        project: 'eye',
+      },
+      {
+        glyph: '●',
+        gradient: 'linear-gradient(135deg,#101a2e,#1c2c4a)',
+        title: 'Ball Rig',
+        description:
+          'Bouncing ball rig built to practice animation principles, with squash & stretch controls for timing and spacing exercises.',
+        tags: [{ label: 'Blender', icon: 'uil-cube' }, { label: 'Squash & Stretch' }],
+        ariaLabel: 'Abrir Ball Rig',
+        image: projects.ball.preview,
+        project: 'ball',
+      },
+    ],
+  },
+  {
+    category: 'AR, Animation & Modeling',
+    cards: [
+      {
+        glyph: '◎',
+        gradient: 'linear-gradient(135deg,#1a1710,#3a2f1a)',
+        title: 'Bear Rig — Low-Poly AR',
+        description:
+          'Lightweight rig for AR triggered via QR on presentation card, optimized for low-poly mesh with intuitive controls.',
+        tags: [{ label: 'Unity', icon: 'uil-mobile-android' }, { label: 'AR' }],
+        ariaLabel: 'Abrir detalle',
+        image: projects.bear.preview,
+        project: 'bear',
+      },
+      {
+        glyph: '◐',
+        gradient: 'linear-gradient(135deg,#0a0a23,#1a1d4a)',
+        title: 'Dream Sequence — Pwnisher Challenge',
+        description:
+          '4-second 120 BPM beat-driven animation for community challenge, built and animated entirely in Blender.',
+        tags: [{ label: 'Blender', icon: 'uil-film' }, { label: 'Animation' }],
+        ariaLabel: 'Abrir detalle',
+        image: projects['dream-sequence'].preview,
+        project: 'dream-sequence',
+      },
+      {
+        glyph: '⬣',
+        gradient: 'linear-gradient(135deg,#0f1a1e,#143a3e)',
+        title: 'Ant Model',
+        description:
+          'High-detail character model sculpt and retopology for rigging, with clean topology for deformation.',
+        tags: [{ label: 'Blender' }, { label: 'Modeling' }],
+        ariaLabel: 'Abrir detalle',
+        image: projects['ant-model'].preview,
+        project: 'ant-model',
+      },
+    ],
+  },
+];

@@ -79,18 +79,16 @@ const riggingSkills = [
       <div class="video-wrapper">
         <video
           class="hero-media"
-          src={`${BASE}/assets/videos/Dream Sequence/Dream Sequence - Animation.mp4`}
+          src={`${BASE}/assets/videos/Gauntlet Of Gods/Gauntlet Of Gods.mp4`}
           autoplay
           muted
           loop
           playsinline
           preload="metadata"
-          aria-label="Dream Sequence video preview"
+          aria-label="Gauntlet Of Gods video preview"
         ></video>
         <div class="video-overlay">
-          <h3>Dream Sequence</h3>
-          <p>My entry for the Dream Sequence community challenge hosted by pwnisher.</p>
-          <p>The challenge consisted in creating a 4 seconds animation that visualized the provided beat of 120 BPM.</p>
+          <h3>Gauntlet Of Gods</h3>
         </div>
       </div>
     </div>
@@ -126,19 +124,25 @@ const riggingSkills = [
     <h2 class="title">TECHNICAL KNOWLEDGE</h2>
     <p class="title-sub">TOOLS &amp; SPECIALTIES</p>
 
-    <h3 class="skills-group-title">SOFTWARE</h3>
-    <div class="skills-grid">
-      {softwareSkills.map((skill) => <SkillCard {...skill} />)}
+    <div class="skills-group-container">
+      <h3 class="skills-group-title">SOFTWARE</h3>
+      <div class="skills-grid">
+        {softwareSkills.map((skill) => <SkillCard {...skill} />)}
+      </div>
     </div>
 
-    <h3 class="skills-group-title">PROCEDURAL SYSTEMS</h3>
-    <div class="skills-grid">
-      {proceduralSkills.map((skill) => <SkillCard {...skill} />)}
+    <div class="skills-group-container">
+      <h3 class="skills-group-title">PROCEDURAL SYSTEMS</h3>
+      <div class="skills-grid">
+        {proceduralSkills.map((skill) => <SkillCard {...skill} />)}
+      </div>
     </div>
 
-    <h3 class="skills-group-title">RIGGING &amp; LOGIC</h3>
-    <div class="skills-grid">
-      {riggingSkills.map((skill) => <SkillCard {...skill} />)}
+    <div class="skills-group-container">
+      <h3 class="skills-group-title">RIGGING &amp; LOGIC</h3>
+      <div class="skills-grid">
+        {riggingSkills.map((skill) => <SkillCard {...skill} />)}
+      </div>
     </div>
   </section>
 
