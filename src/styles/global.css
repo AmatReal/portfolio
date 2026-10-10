@@ -352,17 +352,6 @@ a {
   width: 42px;
 }
 
-.social a.social-resume {
-  width: auto;
-  padding: 0 14px;
-  gap: 6px;
-  font-size: 13px;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .social a:hover {
   background: var(--blue);
   border-color: var(--blue);
