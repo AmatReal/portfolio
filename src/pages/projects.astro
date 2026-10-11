@@ -57,17 +57,17 @@ const featuredProductions = [
       </div>
     </section>
 
-    <div class="filters">
-      <label class="sel-wrap">
-        <select class="sel" id="catFilter">
-          <option value="all">Category — All</option>
-          {projectGroups.map((group) => <option value={group.category}>{group.category}</option>)}
-        </select>
-        <i class="uil uil-angle-down"></i>
-      </label>
-    </div>
-
-    <div class="tag-filters">
+    <div class="tag-filters" style="margin-bottom: 8px;">
+      <div class="tf-row" role="group" aria-label="Filter by category">
+        <span class="tf-row-label">Category:</span>
+        <label class="cat-wrap">
+          <select class="cat-sel" id="catFilter">
+            <option value="all">All Categories</option>
+            {projectGroups.map((group) => <option value={group.category}>{group.category}</option>)}
+          </select>
+          <i class="uil uil-angle-down"></i>
+        </label>
+      </div>
       <p class="tf-label" id="tag-filter-label">Filter by technology &amp; feature:</p>
       <div class="tf-row" role="group" aria-labelledby="tag-filter-label">
         <span class="tf-row-label">Software:</span>
@@ -84,6 +84,9 @@ const featuredProductions = [
             {tag}
           </button>
         ))}
+        <button type="button" class="tf-clear" id="clearFilters" disabled>
+          <i class="uil uil-times"></i> Clear filters
+        </button>
       </div>
     </div>
 
@@ -109,6 +112,7 @@ const featuredProductions = [
   const select = document.getElementById('catFilter');
   const sections = document.querySelectorAll('[data-cat]');
   const chips = document.querySelectorAll('.tf-chip');
+  const clearBtn = document.getElementById('clearFilters');
 
   function applyFilter() {
     const value = select?.value ?? 'all';
@@ -129,9 +133,18 @@ const featuredProductions = [
       const badge = section.querySelector('.section-head span');
       if (badge) badge.textContent = `${visible} Project(s)`;
     });
+
+    if (clearBtn) clearBtn.disabled = value === 'all' && activeTags.length === 0;
+  }
+
+  function clearFilters() {
+    if (select) select.value = 'all';
+    chips.forEach((chip) => chip.setAttribute('aria-pressed', 'false'));
+    applyFilter();
   }
 
   if (select) select.addEventListener('change', applyFilter);
+  if (clearBtn) clearBtn.addEventListener('click', clearFilters);
   chips.forEach((chip) =>
     chip.addEventListener('click', () => {
       chip.setAttribute('aria-pressed', chip.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
