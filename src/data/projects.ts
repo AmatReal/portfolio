@@ -7,8 +7,7 @@ export interface MediaItem {
 export type ProjectCategory =
   | 'Character & Creature Rigs'
   | 'Mechanical & Hard-Surface Rigs'
-  | 'Specialized Rigs & Mechanics'
-  | 'AR, Animation & Modeling';
+  | 'Specialized Rigs & R&D';
 
 export interface Project {
   id: string;
@@ -77,7 +76,7 @@ export const projects: Record<string, Project> = {
   },
   bear: {
     id: 'bear',
-    category: 'AR, Animation & Modeling',
+    category: 'Character & Creature Rigs',
     eyebrow: 'Featured — AR / Unity',
     title: 'Bear Rig - AR',
     description: [
@@ -93,9 +92,9 @@ export const projects: Record<string, Project> = {
   },
   'gauntlet-of-gods': {
     id: 'gauntlet-of-gods',
-    category: 'AR, Animation & Modeling',
+    category: 'Character & Creature Rigs',
     eyebrow: 'Animation — Game Cinematic',
-    title: 'Gauntlet Of Gods',
+    title: 'Gauntlet Of Gods - Pwnisher Challenge',
     description: [
       'Stylized cinematic for the Gauntlet Of Gods card battler. Rigged the rabbit hero and built the low-poly world with geometry-node driven eyes, trading card renders and orchestrated camera moves.',
     ],
@@ -176,7 +175,7 @@ export const projects: Record<string, Project> = {
   },
   'dream-sequence': {
     id: 'dream-sequence',
-    category: 'AR, Animation & Modeling',
+    category: 'Character & Creature Rigs',
     eyebrow: 'Animation — Challenge',
     title: 'Dream Sequence — Pwnisher Challenge',
     description: [
@@ -194,7 +193,7 @@ export const projects: Record<string, Project> = {
   },
   'ant-model': {
     id: 'ant-model',
-    category: 'AR, Animation & Modeling',
+    category: 'Character & Creature Rigs',
     eyebrow: 'Modeling — Character',
     title: 'Ant Model',
     description: [
@@ -209,7 +208,7 @@ export const projects: Record<string, Project> = {
   },
   ball: {
     id: 'ball',
-    category: 'Specialized Rigs & Mechanics',
+    category: 'Specialized Rigs & R&D',
     eyebrow: 'Specialized Rig — Principles',
     title: 'Simple Ball',
     description: [
@@ -243,7 +242,7 @@ export const projects: Record<string, Project> = {
   },
   eye: {
     id: 'eye',
-    category: 'Specialized Rigs & Mechanics',
+    category: 'Specialized Rigs & R&D',
     eyebrow: 'Specialized Rig — Facial Setup',
     title: 'Eye Rig',
     description: [
@@ -425,7 +424,7 @@ export const projects: Record<string, Project> = {
   },
   'rythball-logo': {
     id: 'rythball-logo',
-    category: 'AR, Animation & Modeling',
+    category: 'Specialized Rigs & R&D',
     eyebrow: 'Animation — Logo Sting',
     title: 'Rythball Logo',
     description: [
@@ -474,7 +473,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Dragon Rig & Animation',
         description:
           'Adapted high-res dragon sculpt into fully animatable rig with IK/FK, drivers, constraints and secondary physics bones for realism.',
-        tags: [{ label: 'Blender', icon: 'uil-cube' }, { label: 'Drivers' }, { label: 'IK/FK' }],
+        tags: [{ label: 'Blender' }, { label: 'Deformation' }, { label: 'Physics' }],
         ariaLabel: 'Abrir Dragon Rig',
         image: projects.dragon.preview,
         project: 'dragon',
@@ -485,7 +484,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Old Ant Rig',
         description:
           'Player character rig for Ant Defender in Unreal, IK + supporting FK, drivers and mode switching for gameplay.',
-        tags: [{ label: 'Unreal Engine' }, { label: 'Blender' }],
+        tags: [{ label: 'Unreal engine' }, { label: 'Blender' }, { label: 'Game-Ready' }],
         ariaLabel: 'Abrir Old Ant Rig',
         image: projects.ant.preview,
         project: 'ant',
@@ -496,7 +495,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Girl Rig',
         description:
           'Stylized girl character rig with full facial setup, IK/FK limbs and secondary dynamics, validated through animation tests.',
-        tags: [{ label: 'Blender', icon: 'uil-cube' }, { label: 'Facial' }, { label: 'Dynamics' }],
+        tags: [{ label: 'Blender' }, { label: 'Blendshapes' }, { label: 'Physics' }],
         ariaLabel: 'Abrir Girl Rig',
         image: projects.girl.preview,
         project: 'girl',
@@ -507,7 +506,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Bunny Rig',
         description:
           'Stylized bunny character rig with IK/FK limbs, facial controls and corrective shapes for expressive cartoon motion.',
-        tags: [{ label: 'Blender', icon: 'uil-cube' }, { label: 'IK/FK' }, { label: 'Facial' }],
+        tags: [{ label: 'Blender' }, { label: 'Blendshapes' }],
         ariaLabel: 'Abrir Bunny Rig',
         image: projects.bunny.preview,
         project: 'bunny',
@@ -518,7 +517,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Gatoppel',
         description:
           'Stylized cat character rig with IK/FK blending, intuitive control curves and secondary motion for lively performances.',
-        tags: [{ label: 'Blender', icon: 'uil-cube' }, { label: 'IK/FK' }, { label: 'Constraints' }],
+        tags: [{ label: 'Blender' }],
         ariaLabel: 'Abrir Gatoppel',
         image: projects.gatoppel.preview,
         project: 'gatoppel',
@@ -529,7 +528,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Mercy Rig',
         description:
           'Complete Mercy character rig with FK and IK setups for body and legs, detailed hand and facial controls and wing shaping.',
-        tags: [{ label: 'Blender', icon: 'uil-cube' }, { label: 'IK/FK' }, { label: 'Facial' }],
+        tags: [{ label: 'Blender' }, { label: 'Blendshapes' }, { label: 'Deformation' }],
         ariaLabel: 'Abrir Mercy Rig',
         image: projects['mercy-rig'].preview,
         project: 'mercy-rig',
@@ -540,7 +539,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Monster Leg',
         description:
           'Creature leg rig with IK/FK blending, foot roll and claw articulation, built for weighty monster locomotion.',
-        tags: [{ label: 'Blender', icon: 'uil-cube' }, { label: 'IK/FK' }, { label: 'Foot Controls' }],
+        tags: [{ label: 'Blender' }, { label: 'Deformation' }],
         ariaLabel: 'Abrir Monster Leg',
         image: projects['monster-leg'].preview,
         project: 'monster-leg',
@@ -551,7 +550,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'TheCreature',
         description:
           'Ghostly creature rig with a simulated cloth robe, antler and body control clusters and staged camera framing.',
-        tags: [{ label: 'Blender', icon: 'uil-cube' }, { label: 'Cloth' }, { label: 'Controls' }],
+        tags: [{ label: 'Blender' }, { label: 'Physics' }],
         ariaLabel: 'Abrir TheCreature',
         image: projects['the-creature'].preview,
         project: 'the-creature',
@@ -562,7 +561,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Sir Arthur',
         description:
           'Stylized knight rig with standing and posed setups, refined control curves and backstage documentation of the deformation work.',
-        tags: [{ label: 'Blender', icon: 'uil-cube' }, { label: 'IK/FK' }, { label: 'Control Curves' }],
+        tags: [{ label: 'Blender' }, { label: 'Deformation' }],
         ariaLabel: 'Abrir Sir Arthur',
         image: projects['sir-arthur'].preview,
         project: 'sir-arthur',
@@ -573,10 +572,32 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Spider Rig',
         description:
           'Spider rig with articulated leg chains and creepy-crawly secondary motion, built for creature animation tests.',
-        tags: [{ label: 'Blender', icon: 'uil-cube' }, { label: 'Leg IK' }, { label: 'Secondary Motion' }],
+        tags: [{ label: 'Blender' }],
         ariaLabel: 'Abrir Spider Rig',
         image: projects.spider.preview,
         project: 'spider',
+      },
+      {
+        glyph: '◎',
+        gradient: 'linear-gradient(135deg,#1a1710,#3a2f1a)',
+        title: 'Bear Rig - AR',
+        description:
+          'Lightweight rig for AR triggered via QR on presentation card, optimized for low-poly mesh with intuitive controls.',
+        tags: [{ label: 'Unity' }, { label: 'Game-Ready' }],
+        ariaLabel: 'Abrir Bear Rig',
+        image: projects.bear.preview,
+        project: 'bear',
+      },
+      {
+        glyph: '⬣',
+        gradient: 'linear-gradient(135deg,#0f1a1e,#143a3e)',
+        title: 'Ant Model',
+        description:
+          'High-detail character model sculpt and retopology for rigging, with clean topology for deformation.',
+        tags: [{ label: 'Blender' }, { label: 'Deformation' }],
+        ariaLabel: 'Abrir Ant Model',
+        image: projects['ant-model'].preview,
+        project: 'ant-model',
       },
     ],
   },
@@ -589,7 +610,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Complex Arm',
         description:
           'Hard-surface rig in Maya with precise constraints and FK controls for mechanical articulation and cinematic shots.',
-        tags: [{ label: 'Maya' }, { label: 'Hard-Surface' }],
+        tags: [{ label: 'Maya' }],
         ariaLabel: 'Abrir Complex Arm',
         image: projects['mechanical-arm'].preview,
         project: 'mechanical-arm',
@@ -600,7 +621,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Turret Tracking',
         description:
           'Hard-surface turret rig with articulated aiming controls, constrained mechanical parts and game-ready ranges of motion.',
-        tags: [{ label: 'Hard-Surface' }, { label: 'Constraints' }],
+        tags: [{ label: 'Blender' }, { label: 'Game-Ready' }],
         ariaLabel: 'Abrir Turret Tracking',
         image: projects.turret.preview,
         project: 'turret',
@@ -611,7 +632,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Wrecking Ball Rig',
         description:
           'Physics-driven chain rig with secondary motion and weight control, built for dynamic destruction sequences.',
-        tags: [{ label: 'Maya' }, { label: 'Constraints' }],
+        tags: [{ label: 'Maya' }, { label: 'Physics' }],
         ariaLabel: 'Abrir Wrecking Ball Rig',
         image: projects['wrecking-ball'].preview,
         project: 'wrecking-ball',
@@ -622,7 +643,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Milling Machine',
         description:
           'Milling machine rig with constrained mechanical articulation across spindle, table and hand wheels for precise machine motion.',
-        tags: [{ label: 'Blender', icon: 'uil-cube' }, { label: 'Hard-Surface' }, { label: 'Constraints' }],
+        tags: [{ label: 'Blender' }],
         ariaLabel: 'Abrir Milling Machine',
         image: projects['milling-machine'].preview,
         project: 'milling-machine',
@@ -633,7 +654,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Simple Arm',
         description:
           'Simple robotic arm rig with articulated joints and clean constraints for mechanical motion tests.',
-        tags: [{ label: 'Blender', icon: 'uil-cube' }, { label: 'Constraints' }, { label: 'Hard-Surface' }],
+        tags: [{ label: 'Blender' }],
         ariaLabel: 'Abrir Simple Arm',
         image: projects['simple-arm'].preview,
         project: 'simple-arm',
@@ -641,7 +662,7 @@ export const projectGroups: ProjectGroup[] = [
     ],
   },
   {
-    category: 'Specialized Rigs & Mechanics',
+    category: 'Specialized Rigs & R&D',
     cards: [
       {
         glyph: '◉',
@@ -649,7 +670,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Eye Rig',
         description:
           'Eye rig with aim-constrained look-at controls, driver-driven blinks and supportive shaping for expressive character gazes.',
-        tags: [{ label: 'Constraints' }, { label: 'Drivers' }],
+        tags: [{ label: 'Blender' }, { label: 'Blendshapes' }],
         ariaLabel: 'Abrir Eye Rig',
         image: projects.eye.preview,
         project: 'eye',
@@ -660,59 +681,10 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Simple Ball',
         description:
           'Bouncing ball rig built to practice animation principles, with squash & stretch controls for timing and spacing exercises.',
-        tags: [{ label: 'Blender', icon: 'uil-cube' }, { label: 'Squash & Stretch' }],
+        tags: [{ label: 'Blender' }],
         ariaLabel: 'Abrir Simple Ball',
         image: projects.ball.preview,
         project: 'ball',
-      },
-    ],
-  },
-  {
-    category: 'AR, Animation & Modeling',
-    cards: [
-      {
-        glyph: '◎',
-        gradient: 'linear-gradient(135deg,#1a1710,#3a2f1a)',
-        title: 'Bear Rig - AR',
-        description:
-          'Lightweight rig for AR triggered via QR on presentation card, optimized for low-poly mesh with intuitive controls.',
-        tags: [{ label: 'Unity', icon: 'uil-mobile-android' }, { label: 'AR' }],
-        ariaLabel: 'Abrir Bear Rig',
-        image: projects.bear.preview,
-        project: 'bear',
-      },
-      {
-        glyph: '◐',
-        gradient: 'linear-gradient(135deg,#0a0a23,#1a1d4a)',
-        title: 'Dream Sequence — Pwnisher Challenge',
-        description:
-          '4-second 120 BPM beat-driven animation for community challenge, built and animated entirely in Blender.',
-        tags: [{ label: 'Blender', icon: 'uil-film' }, { label: 'Animation' }],
-        ariaLabel: 'Abrir Dream Sequence',
-        image: projects['dream-sequence'].preview,
-        project: 'dream-sequence',
-      },
-      {
-        glyph: '⬣',
-        gradient: 'linear-gradient(135deg,#0f1a1e,#143a3e)',
-        title: 'Ant Model',
-        description:
-          'High-detail character model sculpt and retopology for rigging, with clean topology for deformation.',
-        tags: [{ label: 'Blender' }, { label: 'Modeling' }],
-        ariaLabel: 'Abrir Ant Model',
-        image: projects['ant-model'].preview,
-        project: 'ant-model',
-      },
-      {
-        glyph: '❖',
-        gradient: 'linear-gradient(135deg,#1a0f1e,#3a1440)',
-        title: 'Gauntlet Of Gods',
-        description:
-          'Stylized cinematic for the Gauntlet Of Gods card battler, with a rigged rabbit hero, geometry-node eyes and orchestrated camera moves.',
-        tags: [{ label: 'Blender', icon: 'uil-film' }, { label: 'Animation' }, { label: 'Geometry Nodes' }],
-        ariaLabel: 'Abrir Gauntlet Of Gods',
-        image: projects['gauntlet-of-gods'].preview,
-        project: 'gauntlet-of-gods',
       },
       {
         glyph: '♪',
@@ -720,7 +692,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Rythball Logo',
         description:
           'Animated logo sting for Rythball with rhythmic motion design and punchy timing.',
-        tags: [{ label: 'Blender', icon: 'uil-film' }, { label: 'Animation' }, { label: 'Motion Design' }],
+        tags: [{ label: 'Blender' }],
         ariaLabel: 'Abrir Rythball Logo',
         image: projects['rythball-logo'].preview,
         project: 'rythball-logo',

@@ -5,14 +5,17 @@ import ProjectCard from '../components/ProjectCard.astro';
 import ProjectModal from '../components/ProjectModal.astro';
 import { projectGroups, projects } from '../data/projects';
 
+const softwareTagList = ['Blender', 'Maya', 'Unreal engine', 'Unity'];
+const specialtyTagList = ['Geometry Nodes', 'Blendshapes', 'Deformation', 'Physics', 'Game-Ready'];
+
 const featuredProductions = [
   {
     glyph: '🎬',
     gradient: 'linear-gradient(135deg,#1a0f1e,#3a1440)',
-    title: 'Gauntlet Of Gods',
+    title: 'Gauntlet Of Gods - Pwnisher Challenge',
     description:
       'Stylized cinematic for the Gauntlet Of Gods card battler, with a rigged rabbit hero, geometry-node eyes and orchestrated camera moves.',
-    tags: [{ label: 'Blender', icon: 'uil-film' }, { label: 'Animation' }, { label: 'Geometry Nodes' }],
+    tags: [{ label: 'Blender' }, { label: 'Geometry Nodes' }],
     ariaLabel: 'Abrir Gauntlet Of Gods',
     image: projects['gauntlet-of-gods'].preview,
     project: 'gauntlet-of-gods',
@@ -23,7 +26,7 @@ const featuredProductions = [
     title: 'Dream Sequence — Pwnisher Challenge',
     description:
       '4-second 120 BPM beat-driven animation for community challenge, built and animated entirely in Blender.',
-    tags: [{ label: 'Blender', icon: 'uil-film' }, { label: 'Animation' }],
+    tags: [{ label: 'Blender' }],
     ariaLabel: 'Abrir Dream Sequence',
     image: projects['dream-sequence'].preview,
     project: 'dream-sequence',
@@ -64,6 +67,26 @@ const featuredProductions = [
       </label>
     </div>
 
+    <div class="tag-filters">
+      <p class="tf-label" id="tag-filter-label">Filter by technology &amp; feature:</p>
+      <div class="tf-row" role="group" aria-labelledby="tag-filter-label">
+        <span class="tf-row-label">Software:</span>
+        {softwareTagList.map((tag) => (
+          <button type="button" class="tf-chip" data-tag={tag} aria-pressed="false">
+            {tag}
+          </button>
+        ))}
+      </div>
+      <div class="tf-row" role="group" aria-labelledby="tag-filter-label">
+        <span class="tf-row-label">Specialty:</span>
+        {specialtyTagList.map((tag) => (
+          <button type="button" class="tf-chip" data-tag={tag} aria-pressed="false">
+            {tag}
+          </button>
+        ))}
+      </div>
+    </div>
+
     {
       projectGroups.map((group) => (
         <section data-cat={group.category}>
@@ -85,13 +108,34 @@ const featuredProductions = [
 <script>
   const select = document.getElementById('catFilter');
   const sections = document.querySelectorAll('[data-cat]');
+  const chips = document.querySelectorAll('.tf-chip');
 
   function applyFilter() {
     const value = select?.value ?? 'all';
+    const activeTags = Array.from(chips)
+      .filter((chip) => chip.getAttribute('aria-pressed') === 'true')
+      .map((chip) => chip.getAttribute('data-tag'));
+
     sections.forEach((section) => {
-      section.hidden = !(value === 'all' || section.dataset.cat === value);
+      const catMatch = value === 'all' || section.dataset.cat === value;
+      let visible = 0;
+      section.querySelectorAll('.card').forEach((card) => {
+        const cardTags = (card.getAttribute('data-tags') ?? '').split('|');
+        const show = catMatch && activeTags.every((tag) => cardTags.includes(tag));
+        card.hidden = !show;
+        if (show) visible++;
+      });
+      section.hidden = !catMatch || (activeTags.length > 0 && visible === 0);
+      const badge = section.querySelector('.section-head span');
+      if (badge) badge.textContent = `${visible} Project(s)`;
     });
   }
 
   if (select) select.addEventListener('change', applyFilter);
+  chips.forEach((chip) =>
+    chip.addEventListener('click', () => {
+      chip.setAttribute('aria-pressed', chip.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+      applyFilter();
+    })
+  );
 </script>

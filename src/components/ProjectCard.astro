@@ -19,7 +19,7 @@ interface Props {
 const { glyph, gradient, title, description, tags, ariaLabel, image, project, darkTags = false } = Astro.props;
 ---
 
-<article class="card">
+<article class="card" data-tags={tags.map((tag) => tag.label).join('|')}>
   <button
     type="button"
     class="card-media"
