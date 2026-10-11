@@ -3,7 +3,32 @@ import Layout from '../components/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import ProjectModal from '../components/ProjectModal.astro';
-import { projectGroups } from '../data/projects';
+import { projectGroups, projects } from '../data/projects';
+
+const featuredProductions = [
+  {
+    glyph: '🎬',
+    gradient: 'linear-gradient(135deg,#1a0f1e,#3a1440)',
+    title: 'Gauntlet Of Gods',
+    description:
+      'Stylized cinematic for the Gauntlet Of Gods card battler, with a rigged rabbit hero, geometry-node eyes and orchestrated camera moves.',
+    tags: [{ label: 'Blender', icon: 'uil-film' }, { label: 'Animation' }, { label: 'Geometry Nodes' }],
+    ariaLabel: 'Abrir Gauntlet Of Gods',
+    image: projects['gauntlet-of-gods'].preview,
+    project: 'gauntlet-of-gods',
+  },
+  {
+    glyph: '🌙',
+    gradient: 'linear-gradient(135deg,#0a0a23,#1a1d4a)',
+    title: 'Dream Sequence — Pwnisher Challenge',
+    description:
+      '4-second 120 BPM beat-driven animation for community challenge, built and animated entirely in Blender.',
+    tags: [{ label: 'Blender', icon: 'uil-film' }, { label: 'Animation' }],
+    ariaLabel: 'Abrir Dream Sequence',
+    image: projects['dream-sequence'].preview,
+    project: 'dream-sequence',
+  },
+];
 ---
 
 <Layout
@@ -17,15 +42,26 @@ import { projectGroups } from '../data/projects';
       <h1>Project Archives</h1>
       <p>A comprehensive library of my rigging and animation work, organized for efficient exploration.</p>
       <p class="hint">Press on any project's card to see more details.</p>
-      <div class="filters">
-        <label class="sel-wrap">
-          <select class="sel" id="catFilter">
-            <option value="all">Category — All</option>
-            {projectGroups.map((group) => <option value={group.category}>{group.category}</option>)}
-          </select>
-          <i class="uil uil-angle-down"></i>
-        </label>
+    </div>
+
+    <section class="featured-productions" aria-labelledby="featured-productions-title">
+      <header class="fp-head">
+        <p class="eyebrow">Selected Work</p>
+        <h2 id="featured-productions-title">Featured Productions</h2>
+      </header>
+      <div class="fp-grid">
+        {featuredProductions.map((card) => <ProjectCard {...card} darkTags />)}
       </div>
+    </section>
+
+    <div class="filters">
+      <label class="sel-wrap">
+        <select class="sel" id="catFilter">
+          <option value="all">Category — All</option>
+          {projectGroups.map((group) => <option value={group.category}>{group.category}</option>)}
+        </select>
+        <i class="uil uil-angle-down"></i>
+      </label>
     </div>
 
     {

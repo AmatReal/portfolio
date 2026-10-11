@@ -11,6 +11,29 @@ const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const featured = [
   {
+    eyebrow: 'Featured — Cinematic & Rig',
+    heading: 'GAUNTLET OF GODS',
+    description:
+      'Stylized cinematic for the Gauntlet Of Gods card battler. Rigged the rabbit hero and built the low-poly world with geometry-node driven eyes, trading card renders and orchestrated camera moves.',
+    variant: 'dragon',
+    image: projects['gauntlet-of-gods'].preview,
+    project: 'gauntlet-of-gods',
+    badgeIcon: 'uil-film',
+    captionTitle: 'Press for more information',
+  },
+  {
+    eyebrow: 'Featured — Beat-driven Animation',
+    heading: 'DREAM SEQUENCE',
+    description:
+      '4-second 120 BPM beat-driven animation for community challenge, built and animated entirely in Blender.',
+    variant: 'dragon',
+    image: projects['dream-sequence'].preview,
+    project: 'dream-sequence',
+    badgeIcon: 'uil-moon',
+    captionTitle: 'Press for more information',
+    reverse: true,
+  },
+  {
     eyebrow: 'Featured — Creature Rig',
     heading: 'DRAGON RIG & ANIMATION',
     description:
@@ -19,29 +42,6 @@ const featured = [
     image: projects.dragon.preview,
     project: 'dragon',
     badgeIcon: 'uil-cube',
-    captionTitle: 'Press for more information',
-  },
-  {
-    eyebrow: 'Featured — Gameplay Rig',
-    heading: 'OLD ANT RIG',
-    description:
-      'Designed a gameplay-focused rig for the player character in Ant Defender, prioritizing flexibility and responsiveness for movement and emotes in Unreal Engine. Implemented IK systems with supporting FK controls, along with drivers, constraints, and a toggle system for switching between standing and running states.',
-    variant: 'ant',
-    image: projects.ant.preview,
-    project: 'ant',
-    badgeIcon: 'uil-game-structure',
-    captionTitle: 'Press for more information',
-    reverse: true,
-  },
-  {
-    eyebrow: 'Featured — AR / Unity',
-    heading: 'BEAR RIG - AR',
-    description:
-      'Created a lightweight rig for an augmented reality experience in Unity, triggered via QR code scanning on a presentation card. Optimized the rig to work with a low-poly mesh while maintaining functional and intuitive controls for animation.',
-    variant: 'bear',
-    image: projects.bear.preview,
-    project: 'bear',
-    badgeIcon: 'uil-mobile-android',
     captionTitle: 'Press for more information',
   },
 ];

@@ -13,9 +13,10 @@ interface Props {
   ariaLabel: string;
   image?: string;
   project?: string;
+  darkTags?: boolean;
 }
 
-const { glyph, gradient, title, description, tags, ariaLabel, image, project } = Astro.props;
+const { glyph, gradient, title, description, tags, ariaLabel, image, project, darkTags = false } = Astro.props;
 ---
 
 <article class="card">
@@ -41,7 +42,7 @@ const { glyph, gradient, title, description, tags, ariaLabel, image, project } =
   <div class="card-body">
     <h3><a href="#">{title}</a></h3>
     <p>{description}</p>
-    <div class="tags">
+    <div class:list={['tags', { 'tag-dark': darkTags }]}>
       {tags.map((tag) => (
         <span class="tag">
           {tag.icon && <i class={`uil ${tag.icon}`}></i>}

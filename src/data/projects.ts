@@ -34,8 +34,11 @@ const MERCY = 'Mercy Rig';
 const MILLING = 'Milling Machine';
 const MONSTER = 'Monster Leg';
 const CREATURE = 'TheCreature';
-const ARTHUR = 'Nueva carpeta';
+const ARTHUR = 'Sir Arthur';
 const ARCHIVES = 'ProjectArchives';
+const RYTHBALL = 'Rythball Logo';
+const SIMPLE_ARM = 'Simple Arm';
+const SPIDER = 'Spider';
 
 export const projects: Record<string, Project> = {
   dragon: {
@@ -379,9 +382,11 @@ export const projects: Record<string, Project> = {
     ],
     technologies: 'Blender, Leg IK, Secondary Motion',
     breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
-    preview: '',
+    preview: A(`/assets/images/${SPIDER}/Spider Cover.png`),
     items: [
+      { type: 'image', src: A(`/assets/images/${SPIDER}/Spider Cover.png`), alt: 'Spider Rig Cover' },
       { type: 'video', src: A(`/assets/videos/${ARCHIVES}/Spider.mp4`), alt: 'Spider Rig Animation' },
+      { type: 'image', src: A(`/assets/images/${SPIDER}/Spider Top Rig View.png`), alt: 'Spider Rig Top View' },
     ],
   },
   'simple-arm': {
@@ -394,9 +399,11 @@ export const projects: Record<string, Project> = {
     ],
     technologies: 'Blender, Constraints, Hard-Surface',
     breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
-    preview: '',
+    preview: A(`/assets/images/${SIMPLE_ARM}/Simple Arm Cover.png`),
     items: [
+      { type: 'image', src: A(`/assets/images/${SIMPLE_ARM}/Simple Arm Cover.png`), alt: 'Simple Arm Cover' },
       { type: 'video', src: A(`/assets/videos/${ARCHIVES}/SimpleArm.mp4`), alt: 'Simple Arm Animation' },
+      { type: 'image', src: A(`/assets/images/${SIMPLE_ARM}/side view.png`), alt: 'Simple Arm Side view' },
     ],
   },
   'milling-machine': {
@@ -422,13 +429,16 @@ export const projects: Record<string, Project> = {
     eyebrow: 'Animation — Logo Sting',
     title: 'Rythball Logo',
     description: [
-      'Animated logo sting for Rythball with rhythmic motion design and punchy timing.',
+      'Rigged logo animation for Rythball, where the T turns into a soccer leg that kicks the ball with punchy, rhythmic timing.',
     ],
-    technologies: 'Blender, Animation, Motion Design',
+    technologies: 'Blender, Rigging, Animation, Motion Design',
     breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
-    preview: '',
+    preview: A(`/assets/images/${RYTHBALL}/LogoRythball.png`),
     items: [
+      { type: 'image', src: A(`/assets/images/${RYTHBALL}/LogoRythball.png`), alt: 'Rythball Logo' },
       { type: 'video', src: A(`/assets/videos/${ARCHIVES}/RythballLogo.mp4`), alt: 'Rythball Logo Animation' },
+      { type: 'image', src: A(`/assets/images/${RYTHBALL}/Rig View logo.png`), alt: 'Rythball Logo Rig View' },
+      { type: 'image', src: A(`/assets/images/${RYTHBALL}/Leg close up.png`), alt: 'Rythball Logo Leg close up' },
     ],
   },
 };
@@ -565,6 +575,7 @@ export const projectGroups: ProjectGroup[] = [
           'Spider rig with articulated leg chains and creepy-crawly secondary motion, built for creature animation tests.',
         tags: [{ label: 'Blender', icon: 'uil-cube' }, { label: 'Leg IK' }, { label: 'Secondary Motion' }],
         ariaLabel: 'Abrir Spider Rig',
+        image: projects.spider.preview,
         project: 'spider',
       },
     ],
@@ -624,6 +635,7 @@ export const projectGroups: ProjectGroup[] = [
           'Simple robotic arm rig with articulated joints and clean constraints for mechanical motion tests.',
         tags: [{ label: 'Blender', icon: 'uil-cube' }, { label: 'Constraints' }, { label: 'Hard-Surface' }],
         ariaLabel: 'Abrir Simple Arm',
+        image: projects['simple-arm'].preview,
         project: 'simple-arm',
       },
     ],
@@ -710,6 +722,7 @@ export const projectGroups: ProjectGroup[] = [
           'Animated logo sting for Rythball with rhythmic motion design and punchy timing.',
         tags: [{ label: 'Blender', icon: 'uil-film' }, { label: 'Animation' }, { label: 'Motion Design' }],
         ariaLabel: 'Abrir Rythball Logo',
+        image: projects['rythball-logo'].preview,
         project: 'rythball-logo',
       },
     ],
