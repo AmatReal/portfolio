@@ -890,6 +890,72 @@ a {
   cursor: default;
 }
 
+/* No results state */
+.no-results {
+  padding: 64px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.no-results .nr-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  color: var(--muted-2);
+  margin-bottom: 6px;
+}
+
+.no-results h3 {
+  font-family: "Instrument Serif", serif;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+
+.no-results p {
+  font-size: 13px;
+  color: var(--muted);
+  max-width: 400px;
+}
+
+.nr-btn {
+  appearance: none;
+  border: none;
+  background: var(--blue);
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 9px 18px;
+  border-radius: 8px;
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background var(--t-fast), transform var(--t-fast);
+}
+
+.nr-btn:hover {
+  background: var(--blue-hover);
+  transform: translateY(-2px);
+}
+
+.nr-btn:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
 .section-head {
   display: flex;
   align-items: baseline;
@@ -1041,6 +1107,13 @@ button.card-media {
   background: var(--navy-2);
   color: #ffffff;
   border-color: rgba(255, 255, 255, 0.16);
+}
+
+.tag.tag-wip,
+.tag-dark .tag.tag-wip {
+  background: #facc15;
+  color: var(--navy);
+  border-color: #eab308;
 }
 
 /* ==========================================================================
@@ -1208,6 +1281,11 @@ button.card-media {
   color: #b7791f;
 }
 
+.lvl-learn {
+  background: #e8f7ee;
+  color: #15803d;
+}
+
 /* Dark theme inside skills group container */
 .skills-group-container .skill {
   background: var(--navy-2);
@@ -1256,6 +1334,11 @@ button.card-media {
 .skills-group-container .lvl-int {
   background: rgba(217, 119, 6, 0.2);
   color: #fbbf24;
+}
+
+.skills-group-container .lvl-learn {
+  background: rgba(16, 185, 129, 0.18);
+  color: #34d399;
 }
 
 /* ==========================================================================

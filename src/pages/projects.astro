@@ -6,7 +6,7 @@ import ProjectModal from '../components/ProjectModal.astro';
 import { projectGroups, projects } from '../data/projects';
 
 const softwareTagList = ['Blender', 'Maya', 'Unreal engine', 'Unity'];
-const specialtyTagList = ['Geometry Nodes', 'Blendshapes', 'Deformation', 'Physics', 'Game-Ready'];
+const specialtyTagList = ['Animation', 'Geometry Nodes', 'Blendshapes', 'Custom UI', 'Deformation', 'Physics', 'Game-Ready', 'WIP'];
 
 const featuredProductions = [
   {
@@ -103,6 +103,13 @@ const featuredProductions = [
         </section>
       ))
     }
+
+    <div class="no-results" id="noResults" hidden>
+      <div class="nr-icon"><i class="uil uil-search"></i></div>
+      <h3>No projects found</h3>
+      <p>No projects match the current filters. Try removing some filters or switching categories.</p>
+      <button type="button" class="nr-btn" id="noResultsClear">Clear filters</button>
+    </div>
   </main>
 
   <ProjectModal />
@@ -113,6 +120,8 @@ const featuredProductions = [
   const sections = document.querySelectorAll('[data-cat]');
   const chips = document.querySelectorAll('.tf-chip');
   const clearBtn = document.getElementById('clearFilters');
+  const noResults = document.getElementById('noResults');
+  const noResultsClear = document.getElementById('noResultsClear');
 
   function applyFilter() {
     const value = select?.value ?? 'all';
@@ -120,6 +129,7 @@ const featuredProductions = [
       .filter((chip) => chip.getAttribute('aria-pressed') === 'true')
       .map((chip) => chip.getAttribute('data-tag'));
 
+    let totalVisible = 0;
     sections.forEach((section) => {
       const catMatch = value === 'all' || section.dataset.cat === value;
       let visible = 0;
@@ -132,8 +142,10 @@ const featuredProductions = [
       section.hidden = !catMatch || (activeTags.length > 0 && visible === 0);
       const badge = section.querySelector('.section-head span');
       if (badge) badge.textContent = `${visible} Project(s)`;
+      totalVisible += visible;
     });
 
+    if (noResults) noResults.hidden = totalVisible > 0;
     if (clearBtn) clearBtn.disabled = value === 'all' && activeTags.length === 0;
   }
 
@@ -145,6 +157,7 @@ const featuredProductions = [
 
   if (select) select.addEventListener('change', applyFilter);
   if (clearBtn) clearBtn.addEventListener('click', clearFilters);
+  if (noResultsClear) noResultsClear.addEventListener('click', clearFilters);
   chips.forEach((chip) =>
     chip.addEventListener('click', () => {
       chip.setAttribute('aria-pressed', chip.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');

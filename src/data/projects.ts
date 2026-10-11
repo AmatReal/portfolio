@@ -473,7 +473,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Dragon Rig & Animation',
         description:
           'Adapted high-res dragon sculpt into fully animatable rig with IK/FK, drivers, constraints and secondary physics bones for realism.',
-        tags: [{ label: 'Blender' }, { label: 'Deformation' }, { label: 'Physics' }],
+        tags: [{ label: 'Blender' }, { label: 'Deformation' }, { label: 'Physics' }, { label: 'Animation' }, { label: 'WIP' }],
         ariaLabel: 'Abrir Dragon Rig',
         image: projects.dragon.preview,
         project: 'dragon',
@@ -484,7 +484,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Old Ant Rig',
         description:
           'Player character rig for Ant Defender in Unreal, IK + supporting FK, drivers and mode switching for gameplay.',
-        tags: [{ label: 'Unreal engine' }, { label: 'Blender' }, { label: 'Game-Ready' }],
+        tags: [{ label: 'Unreal engine' }, { label: 'Blender' }, { label: 'Game-Ready' }, { label: 'Animation' }],
         ariaLabel: 'Abrir Old Ant Rig',
         image: projects.ant.preview,
         project: 'ant',
@@ -495,7 +495,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Girl Rig',
         description:
           'Stylized girl character rig with full facial setup, IK/FK limbs and secondary dynamics, validated through animation tests.',
-        tags: [{ label: 'Blender' }, { label: 'Blendshapes' }, { label: 'Physics' }],
+        tags: [{ label: 'Blender' }, { label: 'Blendshapes' }, { label: 'Physics' }, { label: 'Custom UI' }, { label: 'Game-Ready' }],
         ariaLabel: 'Abrir Girl Rig',
         image: projects.girl.preview,
         project: 'girl',
@@ -517,7 +517,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Gatoppel',
         description:
           'Stylized cat character rig with IK/FK blending, intuitive control curves and secondary motion for lively performances.',
-        tags: [{ label: 'Blender' }],
+        tags: [{ label: 'Blender' }, { label: 'Custom UI' }, { label: 'Game-Ready' }],
         ariaLabel: 'Abrir Gatoppel',
         image: projects.gatoppel.preview,
         project: 'gatoppel',
@@ -528,7 +528,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Mercy Rig',
         description:
           'Complete Mercy character rig with FK and IK setups for body and legs, detailed hand and facial controls and wing shaping.',
-        tags: [{ label: 'Blender' }, { label: 'Blendshapes' }, { label: 'Deformation' }],
+        tags: [{ label: 'Maya' }, { label: 'Blendshapes' }, { label: 'Deformation' }, { label: 'Custom UI' }, { label: 'WIP' }],
         ariaLabel: 'Abrir Mercy Rig',
         image: projects['mercy-rig'].preview,
         project: 'mercy-rig',
@@ -539,7 +539,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Monster Leg',
         description:
           'Creature leg rig with IK/FK blending, foot roll and claw articulation, built for weighty monster locomotion.',
-        tags: [{ label: 'Blender' }, { label: 'Deformation' }],
+        tags: [{ label: 'Maya' }, { label: 'Deformation' }, { label: 'Custom UI' }],
         ariaLabel: 'Abrir Monster Leg',
         image: projects['monster-leg'].preview,
         project: 'monster-leg',
@@ -550,7 +550,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'TheCreature',
         description:
           'Ghostly creature rig with a simulated cloth robe, antler and body control clusters and staged camera framing.',
-        tags: [{ label: 'Blender' }, { label: 'Physics' }],
+        tags: [{ label: 'Blender' }, { label: 'Game-Ready' }],
         ariaLabel: 'Abrir TheCreature',
         image: projects['the-creature'].preview,
         project: 'the-creature',
@@ -561,7 +561,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Sir Arthur',
         description:
           'Stylized knight rig with standing and posed setups, refined control curves and backstage documentation of the deformation work.',
-        tags: [{ label: 'Blender' }, { label: 'Deformation' }],
+        tags: [{ label: 'Blender' }, { label: 'Deformation' }, { label: 'WIP' }],
         ariaLabel: 'Abrir Sir Arthur',
         image: projects['sir-arthur'].preview,
         project: 'sir-arthur',
@@ -572,7 +572,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Spider Rig',
         description:
           'Spider rig with articulated leg chains and creepy-crawly secondary motion, built for creature animation tests.',
-        tags: [{ label: 'Blender' }],
+        tags: [{ label: 'Blender' }, { label: 'Deformation' }, { label: 'Animation' }],
         ariaLabel: 'Abrir Spider Rig',
         image: projects.spider.preview,
         project: 'spider',
@@ -583,7 +583,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Bear Rig - AR',
         description:
           'Lightweight rig for AR triggered via QR on presentation card, optimized for low-poly mesh with intuitive controls.',
-        tags: [{ label: 'Unity' }, { label: 'Game-Ready' }],
+        tags: [{ label: 'Unity' }, { label: 'Game-Ready' }, { label: 'Blender' }, { label: 'Animation' }],
         ariaLabel: 'Abrir Bear Rig',
         image: projects.bear.preview,
         project: 'bear',
@@ -610,7 +610,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Complex Arm',
         description:
           'Hard-surface rig in Maya with precise constraints and FK controls for mechanical articulation and cinematic shots.',
-        tags: [{ label: 'Maya' }],
+        tags: [{ label: 'Maya' }, { label: 'Custom UI' }],
         ariaLabel: 'Abrir Complex Arm',
         image: projects['mechanical-arm'].preview,
         project: 'mechanical-arm',
@@ -632,7 +632,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Wrecking Ball Rig',
         description:
           'Physics-driven chain rig with secondary motion and weight control, built for dynamic destruction sequences.',
-        tags: [{ label: 'Maya' }, { label: 'Physics' }],
+        tags: [{ label: 'Maya' }],
         ariaLabel: 'Abrir Wrecking Ball Rig',
         image: projects['wrecking-ball'].preview,
         project: 'wrecking-ball',
@@ -643,7 +643,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Milling Machine',
         description:
           'Milling machine rig with constrained mechanical articulation across spindle, table and hand wheels for precise machine motion.',
-        tags: [{ label: 'Blender' }],
+        tags: [{ label: 'Blender' }, { label: 'WIP' }],
         ariaLabel: 'Abrir Milling Machine',
         image: projects['milling-machine'].preview,
         project: 'milling-machine',
@@ -654,7 +654,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Simple Arm',
         description:
           'Simple robotic arm rig with articulated joints and clean constraints for mechanical motion tests.',
-        tags: [{ label: 'Blender' }],
+        tags: [{ label: 'Maya' }],
         ariaLabel: 'Abrir Simple Arm',
         image: projects['simple-arm'].preview,
         project: 'simple-arm',
@@ -670,7 +670,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Eye Rig',
         description:
           'Eye rig with aim-constrained look-at controls, driver-driven blinks and supportive shaping for expressive character gazes.',
-        tags: [{ label: 'Blender' }, { label: 'Blendshapes' }],
+        tags: [{ label: 'Blender' }, { label: 'Custom UI' }],
         ariaLabel: 'Abrir Eye Rig',
         image: projects.eye.preview,
         project: 'eye',
@@ -681,7 +681,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Simple Ball',
         description:
           'Bouncing ball rig built to practice animation principles, with squash & stretch controls for timing and spacing exercises.',
-        tags: [{ label: 'Blender' }],
+        tags: [{ label: 'Blender' }, { label: 'Deformation' }],
         ariaLabel: 'Abrir Simple Ball',
         image: projects.ball.preview,
         project: 'ball',
@@ -692,7 +692,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Rythball Logo',
         description:
           'Animated logo sting for Rythball with rhythmic motion design and punchy timing.',
-        tags: [{ label: 'Blender' }],
+        tags: [{ label: 'Blender' }, { label: 'Deformation' }, { label: 'Animation' }],
         ariaLabel: 'Abrir Rythball Logo',
         image: projects['rythball-logo'].preview,
         project: 'rythball-logo',

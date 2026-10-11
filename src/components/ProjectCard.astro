@@ -44,7 +44,7 @@ const { glyph, gradient, title, description, tags, ariaLabel, image, project, da
     <p>{description}</p>
     <div class:list={['tags', { 'tag-dark': darkTags }]}>
       {tags.map((tag) => (
-        <span class="tag">
+        <span class:list={['tag', { 'tag-wip': tag.label === 'WIP' }]}>
           {tag.icon && <i class={`uil ${tag.icon}`}></i>}
           {tag.label}
         </span>
