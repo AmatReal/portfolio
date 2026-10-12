@@ -535,7 +535,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Girl Rig',
         description:
           'Stylized girl character rig with jiggle bones for hair and clothing movement, corrective shapes and toggleable IK/FK controls, validated through a series of animation tests.',
-        tags: [{ label: 'Blender' }, { label: 'IK/FK' }, { label: 'Jiggle Bones' }],
+        tags: [{ label: 'Blender' }, { label: 'Unity' }, { label: 'IK/FK' }, { label: 'Jiggle Bones' }, { label: 'Animation' }, { label: 'Custom UI' }, { label: 'Physics' }, { label: 'Game-Ready' }],
         ariaLabel: 'Abrir Girl Rig',
         image: projects.girl.preview,
         project: 'girl',
@@ -546,7 +546,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Bunny Rig',
         description:
           'Stylized bunny character rig with FK limbs, facial controls and corrective shapes, built for simple movements during the Gauntlet Of Gods challenge animation.',
-        tags: [{ label: 'Blender' }, { label: 'FK Controls' }, { label: 'Corrective Shapes' }],
+        tags: [{ label: 'Blender' }, { label: 'Animation' }, { label: 'FK Controls' }, { label: 'Corrective Shapes' }],
         ariaLabel: 'Abrir Bunny Rig',
         image: projects.bunny.preview,
         project: 'bunny',
@@ -568,7 +568,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Gatoppel',
         description:
           'Stylized cat character rig with FK limbs, intuitive control curves and secondary motion for lively performances.',
-        tags: [{ label: 'Blender' }, { label: 'FK Limbs' }, { label: 'Control Curves' }],
+        tags: [{ label: 'Blender' }, { label: 'Custom UI' }, { label: 'FK Limbs' }, { label: 'Control Curves' }],
         ariaLabel: 'Abrir Gatoppel',
         image: projects.gatoppel.preview,
         project: 'gatoppel',
@@ -579,7 +579,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Mercy Rig',
         description:
           'Mercy character rig with FK and IK setups for body and legs, detailed hand, facial and body controls, with switches for IK/FK and enabling or disabling controls. Designed for animation and game development.',
-        tags: [{ label: 'Maya' }, { label: 'IK/FK' }, { label: 'Game-Ready' }, { label: 'WIP' }],
+        tags: [{ label: 'Maya' }, { label: 'IK/FK' }, { label: 'Blendshapes' }, { label: 'Deformation' }, { label: 'Custom UI' }, { label: 'WIP' }],
         ariaLabel: 'Abrir Mercy Rig',
         image: projects['mercy-rig'].preview,
         project: 'mercy-rig',
@@ -590,7 +590,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Monster Leg',
         description:
           'Creature leg rig with IK/FK blending, corrective shapes and foot roll, built for monster locomotion.',
-        tags: [{ label: 'Maya' }, { label: 'IK/FK' }, { label: 'Foot Controls' }],
+        tags: [{ label: 'Maya' }, { label: 'Deformation' }, { label: 'IK/FK' }, { label: 'Foot Controls' }],
         ariaLabel: 'Abrir Monster Leg',
         image: projects['monster-leg'].preview,
         project: 'monster-leg',
@@ -634,7 +634,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Bear Rig - AR',
         description:
           'Lightweight rig for an augmented reality mobile experience in Unity, triggered via QR code scanning on a presentation card, optimized for a low-poly mesh with intuitive controls.',
-        tags: [{ label: 'Unity' }, { label: 'AR' }, { label: 'Low Poly' }],
+        tags: [{ label: 'Blender' }, { label: 'Unity' }, { label: 'AR' }, { label: 'Low Poly' }, { label: 'Animation' }, { label: 'Game-Ready' }],
         ariaLabel: 'Abrir Bear Rig',
         image: projects.bear.preview,
         project: 'bear',
@@ -645,7 +645,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Ant Model',
         description:
           'Low poly character model made for rigging, optimized to be used on a C++ with DirectX 11 engine.',
-        tags: [{ label: 'Blender' }, { label: 'Modeling' }, { label: 'Low Poly' }],
+        tags: [{ label: 'Blender' }, { label: 'Modeling' }, { label: 'Low Poly' }, { label: 'Game-Ready' }],
         ariaLabel: 'Abrir Ant Model',
         image: projects['ant-model'].preview,
         project: 'ant-model',
@@ -661,7 +661,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Complex Arm',
         description:
           'Hard-surface rig in Maya with precise constraints and FK controls for mechanical articulation and ease of use.',
-        tags: [{ label: 'Maya' }],
+        tags: [{ label: 'Maya' }, { label: 'Custom UI' }],
         ariaLabel: 'Abrir Complex Arm',
         image: projects['mechanical-arm'].preview,
         project: 'mechanical-arm',
@@ -705,7 +705,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Simple Arm',
         description:
           'Simple robotic arm rig with articulated joints and clean constraints for mechanical motion tests.',
-        tags: [{ label: 'Maya' }],
+        tags: [{ label: 'Maya' }, { label: 'Custom UI' }],
         ariaLabel: 'Abrir Simple Arm',
         image: projects['simple-arm'].preview,
         project: 'simple-arm',
@@ -721,7 +721,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Eye Rig',
         description:
           'Eye rig with aim-constrained look-at controls, driver-driven blinks and supportive shaping for expressive character gazes.',
-        tags: [{ label: 'Blender' }],
+        tags: [{ label: 'Blender' }, { label: 'Animation' }],
         ariaLabel: 'Abrir Eye Rig',
         image: projects.eye.preview,
         project: 'eye',
@@ -732,7 +732,7 @@ export const projectGroups: ProjectGroup[] = [
         title: 'Simple Ball',
         description:
           'A P2Design rigging course assignment: bouncing ball rig built to practice animation principles with squash & stretch controls and an intuitive setup for timing and spacing.',
-        tags: [{ label: 'Blender' }],
+        tags: [{ label: 'Blender' }, { label: 'Deformation' }],
         ariaLabel: 'Abrir Simple Ball',
         image: projects.ball.preview,
         project: 'ball',

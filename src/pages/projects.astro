@@ -3,10 +3,13 @@ import Layout from '../components/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import ProjectModal from '../components/ProjectModal.astro';
-import { projectGroups, projects } from '../data/projects';
+import { projectGroups, projects, type ProjectCardTag } from '../data/projects';
 
 const softwareTagList = ['Blender', 'Maya', 'Unreal engine', 'Unity'];
 const specialtyTagList = ['Animation', 'Geometry Nodes', 'Blendshapes', 'Custom UI', 'Deformation', 'Physics', 'Game-Ready', 'WIP'];
+
+const filterableTags = new Set([...softwareTagList, ...specialtyTagList]);
+const visibleTags = (tags: ProjectCardTag[]) => tags.filter((tag) => filterableTags.has(tag.label));
 
 const featuredProductions = [
   {
@@ -102,7 +105,7 @@ const featuredProductions = [
             <span>{group.cards.length} Project(s)</span>
           </div>
           <div class="grid">
-            {group.cards.map((card) => <ProjectCard {...card} />)}
+            {group.cards.map((card) => <ProjectCard {...card} tags={visibleTags(card.tags)} />)}
           </div>
         </section>
       ))
