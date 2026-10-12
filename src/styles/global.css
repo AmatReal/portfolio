@@ -1923,6 +1923,11 @@ button.card-media {
   transition: filter var(--t-fast), box-shadow var(--t-fast);
 }
 
+.modal-footer .btn-primary i[data-modal-breakdown-icon] {
+  font-size: 17px;
+  line-height: 1;
+}
+
 .modal-footer .btn-primary:hover {
   filter: brightness(1.12);
   box-shadow: var(--glow-pink);

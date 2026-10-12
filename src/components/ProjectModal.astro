@@ -17,7 +17,7 @@ const projectsJson = JSON.stringify(projects);
     <button
       type="button"
       data-modal-close
-      aria-label="Cerrar"
+      aria-label="Close"
       class="modal-close"
     >&times;</button>
   </div>
@@ -68,15 +68,17 @@ const projectsJson = JSON.stringify(projects);
   </div>
 
   <div class="modal-footer">
-    <button type="button" data-modal-close class="btn-secondary">Cerrar</button>
+    <button type="button" data-modal-close class="btn-secondary">Close</button>
     <a
       href="#"
       target="_blank"
       rel="noopener"
       class="btn-primary"
       data-modal-breakdown
+      hidden
     >
-      View breakdown <i class="uil uil-arrow-up-right"></i>
+      View Post
+      <i class="uil uil-instagram" data-modal-breakdown-icon></i>
     </a>
   </div>
 </dialog>
@@ -198,7 +200,12 @@ const projectsJson = JSON.stringify(projects);
         description.appendChild(p);
       });
       technologies.textContent = project.technologies;
-      breakdown.href = project.breakdownUrl;
+      if (project.breakdownUrl) {
+        breakdown.href = project.breakdownUrl;
+        breakdown.hidden = false;
+      } else {
+        breakdown.hidden = true;
+      }
       dialog.setAttribute('aria-label', project.title);
       buildRelated(project);
 

@@ -1,4 +1,4 @@
-export interface MediaItem {
+﻿export interface MediaItem {
   type: 'video' | 'image';
   src: string;
   alt: string;
@@ -75,7 +75,7 @@ export const projects: Record<string, Project> = {
       'Designed a gameplay-focused rig for the player character in an early version of Ant Defender, running on C++ and DirectX 11, prioritizing flexibility, optimization and responsiveness for limited memory and resources. Implemented IK systems with supporting FK controls, along with drivers and constraints.',
     ],
     technologies: 'Blender, IK/FK, Drivers, Constraints, Optimization, Low Poly',
-    breakdownUrl: 'https://www.instagram.com/p/DLiuzmoNlZq/',
+    breakdownUrl: 'https://www.instagram.com/p/DLjiFBRAsBn/?hl=en&img_index=1',
     preview: A(`/assets/images/${ANT}/Old Ant Rig Cover.png`),
     items: [
       { type: 'image', src: A(`/assets/images/${ANT}/Old Ant Rig Cover.png`), alt: 'Old Ant Rig Cover' },
@@ -108,7 +108,7 @@ export const projects: Record<string, Project> = {
       'Stylized 5-second cinematic for the Gauntlet Of Gods community challenge. Composed of multiple rigs and a modular environment with custom UI and drivers for lightning, movement and effects, as well as different Geometry Node setups for the scene.',
     ],
     technologies: 'Blender, Geometry Nodes, Animation, Camera Work, Drivers, Custom UI, Modular Environment',
-    breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
+    breakdownUrl: '',
     preview: A(`/assets/images/${GAUNTLET}/Gauntlet Of Gods Cover.png`),
     related: [
       { label: 'Project Assets', projects: ['bunny', 'eye'] },
@@ -138,7 +138,7 @@ export const projects: Record<string, Project> = {
       'Mercy character rig with FK and IK setups for body and legs, detailed hand, facial and body controls. The rig is designed for use in animation and game development, with different switches for IK/FK and to disable or enable controls. At the moment the rig needs polishing on certain controls and deformations.',
     ],
     technologies: 'Maya, IK/FK, Facial Controls, Hand Rigging, Body Controls, Corrective Shapes.',
-    breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
+    breakdownUrl: '',
     preview: A(`/assets/images/${MERCY}/Mercy Cover.png`),
     items: [
       { type: 'image', src: A(`/assets/images/${MERCY}/Mercy Cover.png`), alt: 'Mercy Rig Cover' },
@@ -159,7 +159,7 @@ export const projects: Record<string, Project> = {
       'Hard-surface rig in Maya with precise constraints and FK controls for mechanical articulation and ease of use.',
     ],
     technologies: 'Maya, Hard-Surface, Constraints, FK Controls',
-    breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
+    breakdownUrl: '',
     preview: A('/assets/images/Complex Arm/Complex Arm Cover.png'),
     items: [
       { type: 'image', src: A('/assets/images/Complex Arm/Complex Arm Cover.png'), alt: 'Complex Arm Cover' },
@@ -177,7 +177,7 @@ export const projects: Record<string, Project> = {
       'FK controled Chain rig with easy motion and weight control.',
     ],
     technologies: 'Maya, Constraints, Weight Control',
-    breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
+    breakdownUrl: 'https://www.instagram.com/p/DLn9nkQt5RI/?hl=en',
     preview: A('/assets/images/Wrecking Ball Rig/Wrecking Ball Cover.png'),
     items: [
       { type: 'image', src: A('/assets/images/Wrecking Ball Rig/Wrecking Ball Cover.png'), alt: 'Wrecking Ball Cover' },
@@ -194,7 +194,7 @@ export const projects: Record<string, Project> = {
       '4-second 120 BPM beat-driven animation for a community challenge, built and animated entirely in Blender. The animation implements multiple camera tricks with a modular environment that changes during the sequence, and a stylized dough character rig with blendshape-driven deformation for a cartoon motion.',
     ],
     technologies: 'Blender, Animation, Rythmic Timing, Camera Tricks, Modular Environment, Blendshapes',
-    breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
+    breakdownUrl: 'https://www.instagram.com/p/DVhes2NEhkm/?hl=en',
     preview: A(`/assets/images/${DREAM}/Dream Sequence Cover.png`),
     related: [
       { label: 'Project Assets', projects: ['dough'] },
@@ -215,7 +215,7 @@ export const projects: Record<string, Project> = {
       'Stylized dough rig with blendshape-driven deformation for a cartoon motion, used as an asset in the Dream Sequence challenge animation.',
     ],
     technologies: 'Blender, Blendshapes, Animation',
-    breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
+    breakdownUrl: 'https://www.instagram.com/p/DVhes2NEhkm/?hl=en',
     preview: A('/assets/images/Dough/DoughCover.png'),
     related: [
       { label: 'Used In', projects: ['dream-sequence'] },
@@ -234,7 +234,7 @@ export const projects: Record<string, Project> = {
       'Low poly character model made for rigging, optimized to be used on a C++ with DirectX 11 engine.',
     ],
     technologies: 'Blender, Modeling, Optimization, Low Poly',
-    breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
+    breakdownUrl: '',
     preview: A('/assets/images/Ant Model/AntModel Cover.jpg'),
     items: [
       { type: 'image', src: A('/assets/images/Ant Model/AntModel Cover.jpg'), alt: 'Ant Model Cover' },
@@ -249,7 +249,7 @@ export const projects: Record<string, Project> = {
       'An assignment from P2Design rigging course, a bouncing ball rig built to practice animation principles, with squash & stretch controls and an intuitive setup for timing and spacing.',
     ],
     technologies: 'Blender, Squash & Stretch, Controls, Animation Principles, Course Assignment',
-    breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
+    breakdownUrl: '',
     preview: A('/assets/images/Simple Ball/Simple Ball Cover.png'),
     items: [
       { type: 'image', src: A('/assets/images/Simple Ball/Simple Ball Cover.png'), alt: 'Simple Ball Cover' },
@@ -267,7 +267,7 @@ export const projects: Record<string, Project> = {
       'Stylized bunny character rig with FK limbs, facial controls and corrective shapes, built for simple movements during the Gauntlet Of Gods challenge animation.',
     ],
     technologies: 'Blender, FK Controls, Corrective Shapes',
-    breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
+    breakdownUrl: '',
     preview: A('/assets/images/Bunny Rig/Captura de pantalla 2026-08-25 182108.png'),
     related: [
       { label: 'Used In', projects: ['gauntlet-of-gods'] },
@@ -286,7 +286,7 @@ export const projects: Record<string, Project> = {
       'Eye rig with aim-constrained look-at controls, driver-driven blinks and supportive shaping for expressive character gazes.',
     ],
     technologies: 'Blender, Aim Constraints, Drivers, Facial Controls',
-    breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
+    breakdownUrl: '',
     preview: A('/assets/images/Eye Rig/Captura de pantalla 2026-08-13 185020.png'),
     related: [
       { label: 'Used In', projects: ['gauntlet-of-gods'] },
@@ -305,7 +305,7 @@ export const projects: Record<string, Project> = {
       'Stylized cat character rig with FK limbs, intuitive control curves and secondary motion for lively performances.',
     ],
     technologies: 'Blender, FK limbs, Control Curves',
-    breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
+    breakdownUrl: '',
     preview: A('/assets/images/Gatoppel/GatoppelCover2.png'),
     items: [
       { type: 'image', src: A('/assets/images/Gatoppel/GatoppelCover2.png'), alt: 'Gatoppel Cover' },
@@ -324,7 +324,7 @@ export const projects: Record<string, Project> = {
       'Stylized girl character rig that uses jiggle bones for the hair and clothing movement, corrective shapes, and with IK/FK toggleable controls, validated through a series of animation tests.',
     ],
     technologies: 'Blender, IK/FK, Dynamics, Jiggle Bones, Corrective Shapes',
-    breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
+    breakdownUrl: '',
     preview: A('/assets/images/Girl Rig/Girl Rig Cover.png'),
     items: [
       { type: 'image', src: A('/assets/images/Girl Rig/Girl Rig Cover.png'), alt: 'Girl Rig Cover' },
@@ -346,7 +346,7 @@ export const projects: Record<string, Project> = {
       'An assignment from the P2Design rigging course, a hard-surface turret rig with articulated aiming controls, constrained mechanical parts and game-ready ranges of motion. Implemented more rig controls to the original design for a more intuitive and flexible setup.',
     ],
     technologies: 'Blender, Hard-Surface, Constraints, Game-Ready, Articulated Controls',
-    breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
+    breakdownUrl: '',
     preview: A('/assets/images/Turret Tracking/Turret cover.png'),
     items: [
       { type: 'image', src: A('/assets/images/Turret Tracking/Turret cover.png'), alt: 'Turret Tracking Cover' },
@@ -364,7 +364,7 @@ export const projects: Record<string, Project> = {
       'Creature leg rig with IK/FK blending, corrective shapes, foot roll, built for monster locomotion.',
     ],
     technologies: 'Maya, IK/FK, Foot Controls, Corrective Shapes',
-    breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
+    breakdownUrl: '',
     preview: A(`/assets/images/${MONSTER}/Full view.png`),
     items: [
       { type: 'image', src: A(`/assets/images/${MONSTER}/Full view.png`), alt: 'Monster Leg Full view' },
@@ -383,7 +383,7 @@ export const projects: Record<string, Project> = {
       'Ghostly creature rig with a simulated cloth robe, antler and body control clusters, and staged camera framing for animated shots. The model and rig were built in conmemoration of the short film "Mañana será otro día" directed by Arelli.',
     ],
     technologies: 'Blender, Cloth, Controls, Animation',
-    breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
+    breakdownUrl: '',
     preview: A(`/assets/images/${CREATURE}/TheCreature Cover.png`),
     items: [
       { type: 'image', src: A(`/assets/images/${CREATURE}/TheCreature Cover.png`), alt: 'TheCreature Cover' },
@@ -401,7 +401,7 @@ export const projects: Record<string, Project> = {
       'A rig from the series Knights Of Guinevere, this project is an ongoing work in progress with the help of Wurmiwible, a talented character designer. This first version is the result of a challenge to test our skills in a limited amount of time to create something to celebrate the second episode of the series.',
     ],
     technologies: 'Blender, Challenge, FK Controls, WIP',
-    breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
+    breakdownUrl: 'https://www.instagram.com/p/DeTHJlxj3ON/?hl=en&img_index=1',
     preview: A(`/assets/images/${ARTHUR}/Sir Arthur Cover.png`),
     items: [
       { type: 'image', src: A(`/assets/images/${ARTHUR}/Sir Arthur Cover.png`), alt: 'Sir Arthur Cover' },
@@ -420,7 +420,7 @@ export const projects: Record<string, Project> = {
       'Spider rig with articulated leg chains and creepy-crawly secondary motion, built for game animation in a low poly model..',
     ],
     technologies: 'Blender, Leg IK, Secondary Motion, Low Poly, Game Animation',
-    breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
+    breakdownUrl: '',
     preview: A(`/assets/images/${SPIDER}/Spider Cover.png`),
     items: [
       { type: 'image', src: A(`/assets/images/${SPIDER}/Spider Cover.png`), alt: 'Spider Rig Cover' },
@@ -437,7 +437,7 @@ export const projects: Record<string, Project> = {
       'Simple robotic arm rig with articulated joints and clean constraints for mechanical motion tests.',
     ],
     technologies: 'Maya, Constraints, Hard-Surface',
-    breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
+    breakdownUrl: 'https://www.instagram.com/p/DLn9ykMN_92/?hl=en',
     preview: A(`/assets/images/${SIMPLE_ARM}/Simple Arm Cover.png`),
     items: [
       { type: 'image', src: A(`/assets/images/${SIMPLE_ARM}/Simple Arm Cover.png`), alt: 'Simple Arm Cover' },
@@ -454,7 +454,7 @@ export const projects: Record<string, Project> = {
       'A milling machine rig challenge using a 3D scan. The model had to be cleaned and optimized for rigging, maintaining a naming order, logical separation of parts and a smart organizaton for the rigging and animation pipeline. Currently, an investigation is taking place regarding the actual movement of the machine, to understand how the parts interact and how to replicate it in a rig.',
     ],
     technologies: 'Blender, Hard-Surface, Constraints, Challenge, 3D Scan, Optimization, Organization',
-    breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
+    breakdownUrl: '',
     preview: A(`/assets/images/${MILLING}/Machine Cover.png`),
     items: [
       { type: 'image', src: A(`/assets/images/${MILLING}/Machine Cover.png`), alt: 'Milling Machine Cover' },
@@ -471,7 +471,7 @@ export const projects: Record<string, Project> = {
       'Rigged logo animation for a VR game in Unreal Engine, where the H has a soccer leg that kicks the ball with punchy, rhythmic timing.',
     ],
     technologies: 'Blender, Rigging, Animation, Motion Design, Unreal Engine, Logo Animation',
-    breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
+    breakdownUrl: '',
     preview: A(`/assets/images/${RYTHBALL}/LogoRythball.png`),
     items: [
       { type: 'image', src: A(`/assets/images/${RYTHBALL}/LogoRythball.png`), alt: 'Rythball Logo' },
