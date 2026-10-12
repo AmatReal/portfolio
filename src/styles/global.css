@@ -1221,15 +1221,7 @@ button.card-media {
   font-weight: 600;
   letter-spacing: -0.02em;
   margin-bottom: 4px;
-}
-
-.card-body h3 a {
   color: var(--text);
-  text-decoration: none;
-}
-
-.card-body h3 a:hover {
-  color: var(--pink);
 }
 
 .card-body p {
