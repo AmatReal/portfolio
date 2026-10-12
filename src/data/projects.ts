@@ -19,6 +19,15 @@ export interface Project {
   breakdownUrl: string;
   preview: string;
   items: MediaItem[];
+  /** Optional related-projects links rendered in the modal (e.g. "Project Assets" / "Used In"). */
+  related?: RelatedLink[];
+}
+
+export interface RelatedLink {
+  /** Heading of the section, e.g. "Project Assets" or "Used In". */
+  label: string;
+  /** ids of related projects */
+  projects: string[];
 }
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -46,9 +55,9 @@ export const projects: Record<string, Project> = {
     eyebrow: 'Featured — Creature Rig',
     title: 'Dragon Rig & Animation',
     description: [
-      'Adapted and optimized a high-resolution dragon sculpt into a fully animatable rig. Developed IK/FK systems using drivers and constraints, along with secondary physics-based bones to enhance realism and motion detail.',
+      'Adapted and optimized a high-resolution dragon sculpt into a fully animatable rig. Developed IK/FK systems using drivers and constraints, along with secondary physics-based bones to enhance realism and motion detail. Used Blender built in flame simulation during early tests, currently testing flame simulations in EmberGen.',
     ],
-    technologies: 'Blender, Drivers, IK/FK, Constraints, Secondary Physics',
+    technologies: 'Blender, Drivers, IK/FK, Constraints, Secondary Physics, Camera control, Fire simulation',
     breakdownUrl: 'https://www.instagram.com/p/DRiERhjj-78/',
     preview: A(`/assets/images/${IMG}/Dragon Rig - Render.png`),
     items: [
@@ -63,9 +72,9 @@ export const projects: Record<string, Project> = {
     eyebrow: 'Featured — Gameplay Rig',
     title: 'Old Ant Rig',
     description: [
-      'Designed a gameplay-focused rig for the player character in Ant Defender, prioritizing flexibility and responsiveness for movement and emotes in Unreal Engine. Implemented IK systems with supporting FK controls, along with drivers, constraints, and a toggle system for switching between standing and running states.',
+      'Designed a gameplay-focused rig for the player character in an early version of Ant Defender, running on C++ and DirectX 11, prioritizing flexibility, optimization and responsiveness for limited memory and resources. Implemented IK systems with supporting FK controls, along with drivers and constraints.',
     ],
-    technologies: 'Unreal Engine, Blender, IK + FK, Drivers, Constraints, State Toggle',
+    technologies: 'Blender, IK/FK, Drivers, Constraints, Optimization, Low Poly',
     breakdownUrl: 'https://www.instagram.com/p/DLiuzmoNlZq/',
     preview: A(`/assets/images/${ANT}/Old Ant Rig Cover.png`),
     items: [
@@ -80,9 +89,9 @@ export const projects: Record<string, Project> = {
     eyebrow: 'Featured — AR / Unity',
     title: 'Bear Rig - AR',
     description: [
-      'Created a lightweight rig for an augmented reality experience in Unity, triggered via QR code scanning on a presentation card. Optimized the rig to work with a low-poly mesh while maintaining functional and intuitive controls for animation.',
+      'Created a lightweight rig for an augmented reality mobile experience in Unity, triggered via QR code scanning on a presentation card. Optimized the rig to work with a low-poly mesh while maintaining functional and intuitive controls for animation.',
     ],
-    technologies: 'Unity, AR, QR Trigger, Low-poly Rig',
+    technologies: 'Unity, AR, QR Trigger, Low Poly, Mobile',
     breakdownUrl: 'https://www.instagram.com/p/DORQnnBj0He/',
     preview: A(`/assets/images/${BEAR}/BearRig - Render.png`),
     items: [
@@ -96,11 +105,14 @@ export const projects: Record<string, Project> = {
     eyebrow: 'Animation — Game Cinematic',
     title: 'Gauntlet Of Gods - Pwnisher Challenge',
     description: [
-      'Stylized cinematic for the Gauntlet Of Gods card battler. Rigged the rabbit hero and built the low-poly world with geometry-node driven eyes, trading card renders and orchestrated camera moves.',
+      'Stylized 5-second cinematic for the Gauntlet Of Gods community challenge. Composed of multiple rigs and a modular environment with custom UI and drivers for lightning, movement and effects, as well as different Geometry Node setups for the scene.',
     ],
-    technologies: 'Blender, Geometry Nodes, Animation, Camera Work',
+    technologies: 'Blender, Geometry Nodes, Animation, Camera Work, Drivers, Custom UI, Modular Environment',
     breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
     preview: A(`/assets/images/${GAUNTLET}/Gauntlet Of Gods Cover.png`),
+    related: [
+      { label: 'Project Assets', projects: ['bunny', 'eye'] },
+    ],
     items: [
       { type: 'image', src: A(`/assets/images/${GAUNTLET}/Gauntlet Of Gods Cover.png`), alt: 'Gauntlet Of Gods Cover' },
       { type: 'video', src: A(`/assets/videos/${GAUNTLET}/Gauntlet Of Gods.mp4`), alt: 'Gauntlet Of Gods Animation' },
@@ -123,9 +135,9 @@ export const projects: Record<string, Project> = {
     eyebrow: 'Character Rig — Full Setup',
     title: 'Mercy Rig',
     description: [
-      'Complete Mercy character rig with FK and IK setups for body and legs, detailed hand and facial controls, and wing geometry shaped for expressive support poses.',
+      'Mercy character rig with FK and IK setups for body and legs, detailed hand, facial and body controls. The rig is designed for use in animation and game development, with different switches for IK/FK and to disable or enable controls. At the moment the rig needs polishing on certain controls and deformations.',
     ],
-    technologies: 'Blender, IK/FK, Facial Controls, Hand Rigging',
+    technologies: 'Maya, IK/FK, Facial Controls, Hand Rigging, Body Controls, Corrective Shapes.',
     breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
     preview: A(`/assets/images/${MERCY}/Mercy Cover.png`),
     items: [
@@ -144,7 +156,7 @@ export const projects: Record<string, Project> = {
     eyebrow: 'Mechanical Rig — Hard Surface',
     title: 'Complex Arm',
     description: [
-      'Hard-surface rig in Maya with precise constraints and FK controls for mechanical articulation and cinematic shots.',
+      'Hard-surface rig in Maya with precise constraints and FK controls for mechanical articulation and ease of use.',
     ],
     technologies: 'Maya, Hard-Surface, Constraints, FK Controls',
     breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
@@ -162,9 +174,9 @@ export const projects: Record<string, Project> = {
     eyebrow: 'Mechanical Rig — Physics',
     title: 'Wrecking Ball Rig',
     description: [
-      'Physics-driven chain rig with secondary motion and weight control, built for dynamic destruction sequences.',
+      'FK controled Chain rig with easy motion and weight control.',
     ],
-    technologies: 'Maya, Constraints, Secondary Motion, Weight Control',
+    technologies: 'Maya, Constraints, Weight Control',
     breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
     preview: A('/assets/images/Wrecking Ball Rig/Wrecking Ball Cover.png'),
     items: [
@@ -179,16 +191,37 @@ export const projects: Record<string, Project> = {
     eyebrow: 'Animation — Challenge',
     title: 'Dream Sequence — Pwnisher Challenge',
     description: [
-      '4-second 120 BPM beat-driven animation for community challenge, built and animated entirely in Blender.',
+      '4-second 120 BPM beat-driven animation for a community challenge, built and animated entirely in Blender. The animation implements multiple camera tricks with a modular environment that changes during the sequence, and a stylized dough character rig with blendshape-driven deformation for a cartoon motion.',
     ],
-    technologies: 'Blender, Animation, 120 BPM',
+    technologies: 'Blender, Animation, Rythmic Timing, Camera Tricks, Modular Environment, Blendshapes',
     breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
     preview: A(`/assets/images/${DREAM}/Dream Sequence Cover.png`),
+    related: [
+      { label: 'Project Assets', projects: ['dough'] },
+    ],
     items: [
       { type: 'image', src: A(`/assets/images/${DREAM}/Dream Sequence Cover.png`), alt: 'Dream Sequence Cover' },
       { type: 'video', src: A(`/assets/videos/${DREAM}/Dream Sequence - Animation.mp4`), alt: 'Dream Sequence Animation' },
       { type: 'video', src: A(`/assets/videos/${DREAM}/Dream Sequence - Mesh Test.mp4`), alt: 'Dream Sequence Mesh Test' },
       { type: 'image', src: A(`/assets/images/${DREAM}/DreamSequence - cover.png`), alt: 'Dream Sequence Cover alt' },
+    ],
+  },
+  dough: {
+    id: 'dough',
+    category: 'Character & Creature Rigs',
+    eyebrow: 'Character Rig — Stylized',
+    title: 'Dough',
+    description: [
+      'Stylized dough rig with blendshape-driven deformation for a cartoon motion, used as an asset in the Dream Sequence challenge animation.',
+    ],
+    technologies: 'Blender, Blendshapes, Animation',
+    breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
+    preview: A('/assets/images/Dough/DoughCover.png'),
+    related: [
+      { label: 'Used In', projects: ['dream-sequence'] },
+    ],
+    items: [
+      { type: 'image', src: A('/assets/images/Dough/DoughCover.png'), alt: 'Dough Cover' },
     ],
   },
   'ant-model': {
@@ -197,9 +230,9 @@ export const projects: Record<string, Project> = {
     eyebrow: 'Modeling — Character',
     title: 'Ant Model',
     description: [
-      'High-detail character model sculpt and retopology for rigging, with clean topology for deformation.',
+      'Low poly character model made for rigging, optimized to be used on a C++ with DirectX 11 engine.',
     ],
-    technologies: 'Blender, Modeling, Retopology',
+    technologies: 'Blender, Modeling, Optimization, Low Poly',
     breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
     preview: A('/assets/images/Ant Model/AntModel Cover.jpg'),
     items: [
@@ -212,9 +245,9 @@ export const projects: Record<string, Project> = {
     eyebrow: 'Specialized Rig — Principles',
     title: 'Simple Ball',
     description: [
-      'Bouncing ball rig built to practice animation principles, with squash & stretch controls and an intuitive setup for timing and spacing exercises.',
+      'An assignment from P2Design rigging course, a bouncing ball rig built to practice animation principles, with squash & stretch controls and an intuitive setup for timing and spacing.',
     ],
-    technologies: 'Blender, Squash & Stretch, Controls, Animation Principles',
+    technologies: 'Blender, Squash & Stretch, Controls, Animation Principles, Course Assignment',
     breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
     preview: A('/assets/images/Simple Ball/Simple Ball Cover.png'),
     items: [
@@ -230,11 +263,14 @@ export const projects: Record<string, Project> = {
     eyebrow: 'Creature Rig — Stylized',
     title: 'Bunny Rig',
     description: [
-      'Stylized bunny character rig with IK/FK limbs, facial controls and corrective shapes, built for expressive cartoon-style motion.',
+      'Stylized bunny character rig with FK limbs, facial controls and corrective shapes, built for simple movements during the Gauntlet Of Gods challenge animation.',
     ],
-    technologies: 'Blender, IK/FK, Facial Controls, Corrective Shapes',
+    technologies: 'Blender, FK Controls, Corrective Shapes',
     breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
     preview: A('/assets/images/Bunny Rig/Captura de pantalla 2026-08-25 182108.png'),
+    related: [
+      { label: 'Used In', projects: ['gauntlet-of-gods'] },
+    ],
     items: [
       { type: 'image', src: A('/assets/images/Bunny Rig/Captura de pantalla 2026-08-25 182108.png'), alt: 'Bunny Rig viewport 1' },
       { type: 'image', src: A('/assets/images/Bunny Rig/Captura de pantalla 2026-08-25 121100.png'), alt: 'Bunny Rig viewport 2' },
@@ -251,6 +287,9 @@ export const projects: Record<string, Project> = {
     technologies: 'Blender, Aim Constraints, Drivers, Facial Controls',
     breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
     preview: A('/assets/images/Eye Rig/Captura de pantalla 2026-08-13 185020.png'),
+    related: [
+      { label: 'Used In', projects: ['gauntlet-of-gods'] },
+    ],
     items: [
       { type: 'image', src: A('/assets/images/Eye Rig/Captura de pantalla 2026-08-13 185020.png'), alt: 'Eye Rig viewport 1' },
       { type: 'image', src: A('/assets/images/Eye Rig/Captura de pantalla 2026-08-12 205602.png'), alt: 'Eye Rig viewport 2' },
@@ -262,9 +301,9 @@ export const projects: Record<string, Project> = {
     eyebrow: 'Creature Rig — Character',
     title: 'Gatoppel',
     description: [
-      'Stylized cat character rig with IK/FK blending, intuitive control curves and secondary motion for lively performances.',
+      'Stylized cat character rig with FK limbs, intuitive control curves and secondary motion for lively performances.',
     ],
-    technologies: 'Blender, IK/FK, Constraints, Control Curves',
+    technologies: 'Blender, FK limbs, Control Curves',
     breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
     preview: A('/assets/images/Gatoppel/GatoppelCover2.png'),
     items: [
@@ -281,9 +320,9 @@ export const projects: Record<string, Project> = {
     eyebrow: 'Character Rig — Stylized',
     title: 'Girl Rig',
     description: [
-      'Stylized girl character rig with a full facial setup, IK/FK limbs and secondary dynamics, validated through a series of animation tests.',
+      'Stylized girl character rig that uses jiggle bones for the hair and clothing movement, corrective shapes, and with IK/FK toggleable controls, validated through a series of animation tests.',
     ],
-    technologies: 'Blender, IK/FK, Facial Rig, Dynamics',
+    technologies: 'Blender, IK/FK, Dynamics, Jiggle Bones, Corrective Shapes',
     breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
     preview: A('/assets/images/Girl Rig/Girl Rig Cover.png'),
     items: [
@@ -303,9 +342,9 @@ export const projects: Record<string, Project> = {
     eyebrow: 'Mechanical Rig — Hard Surface',
     title: 'Turret Tracking',
     description: [
-      'Hard-surface turret rig with articulated aiming controls, constrained mechanical parts and game-ready ranges of motion.',
+      'An assignment from the P2Design rigging course, a hard-surface turret rig with articulated aiming controls, constrained mechanical parts and game-ready ranges of motion. Implemented more rig controls to the original design for a more intuitive and flexible setup.',
     ],
-    technologies: 'Blender, Hard-Surface, Constraints, Game-Ready',
+    technologies: 'Blender, Hard-Surface, Constraints, Game-Ready, Articulated Controls',
     breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
     preview: A('/assets/images/Turret Tracking/Turret cover.png'),
     items: [
@@ -321,9 +360,9 @@ export const projects: Record<string, Project> = {
     eyebrow: 'Creature Rig — Leg Setup',
     title: 'Monster Leg',
     description: [
-      'Creature leg rig with IK/FK blending, foot roll and claw articulation, built for weighty monster locomotion.',
+      'Creature leg rig with IK/FK blending, corrective shapes, foot roll, built for monster locomotion.',
     ],
-    technologies: 'Blender, IK/FK, Foot Controls',
+    technologies: 'Maya, IK/FK, Foot Controls, Corrective Shapes',
     breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
     preview: A(`/assets/images/${MONSTER}/Full view.png`),
     items: [
@@ -340,7 +379,7 @@ export const projects: Record<string, Project> = {
     eyebrow: 'Creature Rig — Cloth',
     title: 'TheCreature',
     description: [
-      'Ghostly creature rig with a simulated cloth robe, antler and body control clusters, and staged camera framing for animated shots.',
+      'Ghostly creature rig with a simulated cloth robe, antler and body control clusters, and staged camera framing for animated shots. The model and rig were built in conmemoration of the short film "Mañana será otro día" directed by Arelli.',
     ],
     technologies: 'Blender, Cloth, Controls, Animation',
     breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
@@ -358,9 +397,9 @@ export const projects: Record<string, Project> = {
     eyebrow: 'Character Rig — Stylized',
     title: 'Sir Arthur',
     description: [
-      'Stylized knight rig with standing and posed setups, refined control curves and backstage documentation of the deformation work.',
+      'A rig from the series Knights Of Guinevere, this project is an ongoing work in progress with the help of Wurmiwible, a talented character designer. This first version is the result of a challenge to test our skills in a limited amount of time to create something to celebrate the second episode of the series.',
     ],
-    technologies: 'Blender, IK/FK, Control Curves',
+    technologies: 'Blender, Challenge, FK Controls, WIP',
     breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
     preview: A(`/assets/images/${ARTHUR}/Sir Arthur Cover.png`),
     items: [
@@ -377,9 +416,9 @@ export const projects: Record<string, Project> = {
     eyebrow: 'Creature Rig — Arachnid',
     title: 'Spider Rig',
     description: [
-      'Spider rig with articulated leg chains and creepy-crawly secondary motion, built for creature animation tests.',
+      'Spider rig with articulated leg chains and creepy-crawly secondary motion, built for game animation in a low poly model..',
     ],
-    technologies: 'Blender, Leg IK, Secondary Motion',
+    technologies: 'Blender, Leg IK, Secondary Motion, Low Poly, Game Animation',
     breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
     preview: A(`/assets/images/${SPIDER}/Spider Cover.png`),
     items: [
@@ -396,7 +435,7 @@ export const projects: Record<string, Project> = {
     description: [
       'Simple robotic arm rig with articulated joints and clean constraints for mechanical motion tests.',
     ],
-    technologies: 'Blender, Constraints, Hard-Surface',
+    technologies: 'Maya, Constraints, Hard-Surface',
     breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
     preview: A(`/assets/images/${SIMPLE_ARM}/Simple Arm Cover.png`),
     items: [
@@ -411,9 +450,9 @@ export const projects: Record<string, Project> = {
     eyebrow: 'Mechanical Rig — Machine',
     title: 'Milling Machine',
     description: [
-      'Milling machine rig with constrained mechanical articulation across spindle, table and hand wheels for precise machine motion.',
+      'A milling machine rig challenge using a 3D scan. The model had to be cleaned and optimized for rigging, maintaining a naming order, logical separation of parts and a smart organizaton for the rigging and animation pipeline. Currently, an investigation is taking place regarding the actual movement of the machine, to understand how the parts interact and how to replicate it in a rig.',
     ],
-    technologies: 'Blender, Hard-Surface, Constraints',
+    technologies: 'Blender, Hard-Surface, Constraints, Challenge, 3D Scan, Optimization, Organization',
     breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
     preview: A(`/assets/images/${MILLING}/Machine Cover.png`),
     items: [
@@ -428,9 +467,9 @@ export const projects: Record<string, Project> = {
     eyebrow: 'Animation — Logo Sting',
     title: 'Rythball Logo',
     description: [
-      'Rigged logo animation for Rythball, where the T turns into a soccer leg that kicks the ball with punchy, rhythmic timing.',
+      'Rigged logo animation for a VR game in Unreal Engine, where the H has a soccer leg that kicks the ball with punchy, rhythmic timing.',
     ],
-    technologies: 'Blender, Rigging, Animation, Motion Design',
+    technologies: 'Blender, Rigging, Animation, Motion Design, Unreal Engine, Logo Animation',
     breakdownUrl: 'https://www.instagram.com/amat.3d/?hl=en',
     preview: A(`/assets/images/${RYTHBALL}/LogoRythball.png`),
     items: [
@@ -510,6 +549,17 @@ export const projectGroups: ProjectGroup[] = [
         ariaLabel: 'Abrir Bunny Rig',
         image: projects.bunny.preview,
         project: 'bunny',
+      },
+      {
+        glyph: '◍',
+        gradient: 'linear-gradient(135deg,#241a12,#40301e)',
+        title: 'Dough',
+        description:
+          'Stylized dough character rig with blendshape-driven deformation and expressive cartoon motion, used as an asset in Dream Sequence.',
+        tags: [{ label: 'Blender' }, { label: 'Blendshapes' }, { label: 'Animation' }],
+        ariaLabel: 'Abrir Dough',
+        image: projects.dough.preview,
+        project: 'dough',
       },
       {
         glyph: '✦',

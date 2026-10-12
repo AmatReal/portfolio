@@ -44,6 +44,10 @@ const projectsJson = JSON.stringify(projects);
         <h4>Technologies</h4>
         <p class="modal-tech" data-modal-technologies></p>
       </div>
+      <div class="modal-related" data-modal-related hidden>
+        <div class="modal-divider"></div>
+        <div data-modal-related-groups></div>
+      </div>
     </div>
 
     <div class="modal-carousel">
@@ -101,6 +105,8 @@ const projectsJson = JSON.stringify(projects);
     const lightbox = document.getElementById('media-lightbox');
     const lightboxVideo = document.getElementById('lightbox-video');
     const lightboxImage = document.getElementById('lightbox-image');
+    const relatedWrap = dialog.querySelector('[data-modal-related]');
+    const relatedGroups = dialog.querySelector('[data-modal-related-groups]');
     let currentItem = null;
 
     function template(tag, className, attrs = {}) {
@@ -158,6 +164,30 @@ const projectsJson = JSON.stringify(projects);
       });
     }
 
+    function buildRelated(project) {
+      relatedGroups.innerHTML = '';
+      const groups = project.related ?? [];
+      relatedWrap.hidden = groups.length === 0;
+      if (groups.length === 0) return;
+      groups.forEach((group) => {
+        const row = template('div', 'related-group');
+        const h4 = template('h4', '');
+        h4.textContent = group.label;
+        row.appendChild(h4);
+        const chips = template('div', 'related-chips');
+        group.projects.forEach((id) => {
+          const target = projects[id];
+          if (!target) return;
+          const chip = template('button', 'related-chip', { type: 'button', 'data-related-project': id });
+          chip.textContent = target.title;
+          chip.setAttribute('aria-label', `Abrir ${target.title}`);
+          chips.appendChild(chip);
+        });
+        row.appendChild(chips);
+        relatedGroups.appendChild(row);
+      });
+    }
+
     function populate(project) {
       eyebrow.textContent = project.eyebrow;
       title.textContent = project.title;
@@ -170,6 +200,7 @@ const projectsJson = JSON.stringify(projects);
       technologies.textContent = project.technologies;
       breakdown.href = project.breakdownUrl;
       dialog.setAttribute('aria-label', project.title);
+      buildRelated(project);
 
       buildCarousel(project.items);
       showInMain(project.items[0]);
@@ -177,13 +208,25 @@ const projectsJson = JSON.stringify(projects);
     }
 
     document.addEventListener('click', (event) => {
-      const trigger = event.target instanceof Element ? event.target.closest('[data-modal-open]') : null;
+      if (!(event.target instanceof Element)) return;
+      const trigger = event.target.closest('[data-modal-open]');
       if (trigger) {
         event.preventDefault();
         const project = projects[trigger.dataset.project];
         if (project) {
           populate(project);
           dialog.showModal();
+          updateArrows();
+        }
+        return;
+      }
+      const relatedChip = event.target.closest('[data-related-project]');
+      if (relatedChip) {
+        const project = projects[relatedChip.dataset.relatedProject];
+        if (project) {
+          populate(project);
+          dialog.querySelector('.modal-info').scrollTop = 0;
+          dialog.scrollTop = 0;
           updateArrows();
         }
       }

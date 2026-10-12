@@ -1734,6 +1734,58 @@ button.card-media {
   flex-shrink: 0;
 }
 
+/* Related projects — "Project Assets" / "Used In" */
+.modal-related {
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+.related-group h4 {
+  margin-bottom: 10px;
+}
+
+.related-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.related-chip {
+  appearance: none;
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  background: linear-gradient(100deg, rgba(222, 29, 141, 0.85), rgba(121, 40, 202, 0.85));
+  border: 1px solid rgba(222, 29, 141, 0.5);
+  border-radius: var(--radius-sm);
+  padding: 7px 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: filter var(--t-fast), box-shadow var(--t-fast), transform var(--t-fast);
+}
+
+.related-chip::after {
+  content: "→";
+  font-family: var(--font-mono);
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.related-chip:hover {
+  filter: brightness(1.15);
+  box-shadow: var(--glow-pink);
+  transform: translateY(-1px);
+}
+
+.related-chip:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(222, 29, 141, 0.35);
+}
+
 .modal-carousel {
   grid-column: span 2;
   display: flex;
