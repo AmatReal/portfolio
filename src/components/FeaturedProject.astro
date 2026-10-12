@@ -52,15 +52,10 @@ const {
       ) : (
         <span class="creature" aria-hidden="true">{emoji}</span>
       )}
-      <div class="ph-caption">
-        <div class="ph-badge"><i class={`uil ${badgeIcon}`}></i></div>
-        <div>
-          <strong>{captionTitle}</strong>
-          {captionSub && <span>{captionSub}</span>}
-        </div>
-      </div>
+      <span class="card-media-tag"><i class="uil uil-eye"></i> Click for more</span>
     </div>
   </button>
+
 
   <div class="project-text">
     <div class="eyebrow">{eyebrow}</div>

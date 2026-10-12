@@ -57,39 +57,43 @@ const featuredProductions = [
       </div>
     </section>
 
-    <div class="tag-filters" style="margin-bottom: 8px;">
-      <div class="tf-row" role="group" aria-label="Filter by category">
-        <span class="tf-row-label">Category:</span>
-        <label class="cat-wrap">
-          <select class="cat-sel" id="catFilter">
-            <option value="all">All Categories</option>
-            {projectGroups.map((group) => <option value={group.category}>{group.category}</option>)}
-          </select>
-          <i class="uil uil-angle-down"></i>
-        </label>
-      </div>
-      <p class="tf-label" id="tag-filter-label">Filter by technology &amp; feature:</p>
-      <div class="tf-row" role="group" aria-labelledby="tag-filter-label">
-        <span class="tf-row-label">Software:</span>
-        {softwareTagList.map((tag) => (
-          <button type="button" class="tf-chip" data-tag={tag} aria-pressed="false">
-            {tag}
-          </button>
-        ))}
-      </div>
-      <div class="tf-row" role="group" aria-labelledby="tag-filter-label">
-        <span class="tf-row-label">Specialty:</span>
-        {specialtyTagList.map((tag) => (
-          <button type="button" class="tf-chip" data-tag={tag} aria-pressed="false">
-            {tag}
-          </button>
-        ))}
-        <button type="button" class="tf-clear" id="clearFilters" disabled>
-          <i class="uil uil-times"></i> Clear filters
-        </button>
-      </div>
-    </div>
+    <div class="archive-layout">
+      <aside class="filter-rail">
+        <div class="tag-filters">
+          <div class="tf-row" role="group" aria-label="Filter by category">
+            <span class="tf-row-label">Category:</span>
+            <label class="cat-wrap">
+              <select class="cat-sel" id="catFilter">
+                <option value="all">All Categories</option>
+                {projectGroups.map((group) => <option value={group.category}>{group.category}</option>)}
+              </select>
+              <i class="uil uil-angle-down"></i>
+            </label>
+          </div>
+          <p class="sr-only" id="tag-filter-label">Filter by technology &amp; feature:</p>
+          <div class="tf-row" role="group" aria-labelledby="tag-filter-label">
+            <span class="tf-row-label">Software:</span>
+            {softwareTagList.map((tag) => (
+              <button type="button" class="tf-chip" data-tag={tag} aria-pressed="false">
+                {tag}
+              </button>
+            ))}
+          </div>
+          <div class="tf-row" role="group" aria-labelledby="tag-filter-label">
+            <span class="tf-row-label">Specialty:</span>
+            {specialtyTagList.map((tag) => (
+              <button type="button" class="tf-chip" data-tag={tag} aria-pressed="false">
+                {tag}
+              </button>
+            ))}
+            <button type="button" class="tf-clear" id="clearFilters" disabled>
+              <i class="uil uil-times"></i> Clear filters
+            </button>
+          </div>
+        </div>
+      </aside>
 
+      <div class="archive-content">
     {
       projectGroups.map((group) => (
         <section data-cat={group.category}>
@@ -109,6 +113,8 @@ const featuredProductions = [
       <h3>No projects found</h3>
       <p>No projects match the current filters. Try removing some filters or switching categories.</p>
       <button type="button" class="nr-btn" id="noResultsClear">Clear filters</button>
+    </div>
+      </div>
     </div>
   </main>
 

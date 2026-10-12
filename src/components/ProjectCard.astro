@@ -42,13 +42,17 @@ const { glyph, gradient, title, description, tags, ariaLabel, image, project, da
   <div class="card-body">
     <h3><a href="#">{title}</a></h3>
     <p>{description}</p>
-    <div class:list={['tags', { 'tag-dark': darkTags }]}>
-      {tags.map((tag) => (
-        <span class:list={['tag', { 'tag-wip': tag.label === 'WIP' }]}>
-          {tag.icon && <i class={`uil ${tag.icon}`}></i>}
-          {tag.label}
-        </span>
-      ))}
-    </div>
+    {
+      !darkTags && (
+        <div class="tags">
+          {tags.map((tag) => (
+            <span class:list={['tag', { 'tag-wip': tag.label === 'WIP' }]}>
+              {tag.icon && <i class={`uil ${tag.icon}`}></i>}
+              {tag.label}
+            </span>
+          ))}
+        </div>
+      )
+    }
   </div>
 </article>
