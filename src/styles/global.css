@@ -455,17 +455,33 @@ h3 {
   font-size: 18px;
 }
 
-.social a.social-icon img {
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
-  filter: grayscale(1) brightness(1.4);
-  transition: filter var(--t-fast);
+.social a.social-icon i {
+  font-size: 20px;
+  line-height: 1;
 }
 
-.social a:hover .social-icon img,
-.social a.social-icon:hover img {
-  filter: none;
+.social a.social-icon i.fa-instagram {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.social a.social-icon i.fa-linkedin-in {
+  color: #0a66c2;
+}
+
+.social a.social-icon i.fa-x-twitter {
+  color: #ffffff;
+}
+
+.social a.social-icon i.fa-youtube {
+  color: #ff0000;
+}
+
+.social a.social-icon:hover i {
+  filter: brightness(1.15);
 }
 
 /* ==========================================================================
