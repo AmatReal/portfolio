@@ -1404,14 +1404,9 @@ button.card-media {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: grayscale(1) brightness(1.35);
-  opacity: 0.75;
-  transition: filter var(--t-base), opacity var(--t-base), filter var(--t-base);
 }
 
 .skill:hover .skill-icon--logo img {
-  filter: none;
-  opacity: 1;
   filter: drop-shadow(0 0 10px rgba(222, 29, 141, 0.45));
 }
 
