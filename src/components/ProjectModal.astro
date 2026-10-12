@@ -184,6 +184,7 @@ const projectsJson = JSON.stringify(projects);
         if (project) {
           populate(project);
           dialog.showModal();
+          updateArrows();
         }
       }
     });
