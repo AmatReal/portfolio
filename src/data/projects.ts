@@ -111,7 +111,7 @@ export const projects: Record<string, Project> = {
     breakdownUrl: '',
     preview: A(`/assets/images/${GAUNTLET}/Gauntlet Of Gods Cover.png`),
     related: [
-      { label: 'Project Assets', projects: ['bunny', 'eye'] },
+      { label: 'Project Assets', projects: ['bunny', 'eye', 'tracking-eyes', 'scenery'] },
     ],
     items: [
       { type: 'image', src: A(`/assets/images/${GAUNTLET}/Gauntlet Of Gods Cover.png`), alt: 'Gauntlet Of Gods Cover' },
@@ -480,6 +480,48 @@ export const projects: Record<string, Project> = {
       { type: 'image', src: A(`/assets/images/${RYTHBALL}/Leg close up.png`), alt: 'Rythball Logo Leg close up' },
     ],
   },
+  'tracking-eyes': {
+    id: 'tracking-eyes',
+    category: 'Specialized Rigs & R&D',
+    eyebrow: 'Specialized Rig — Procedural Eyes',
+    title: 'Tracking Eyes',
+    description: [
+      'Procedural eye system created for the Gauntlet Of Gods challenge cinematic. With Geometry Nodes, stylized eyes scatter automatically across any surface — trees, rocks, ground and props — and every spawned eye aims at a shared target through constraints and drivers, so the whole scenery keeps its gaze on the action.',
+      'The setup is fully reusable: dropping the node group on any asset makes the eyes spawn, aim and animate on their own, which made it easy to cover the environment with watchful eyes.',
+    ],
+    technologies: 'Blender, Geometry Nodes, Procedural Animation, Constraints, Drivers',
+    breakdownUrl: '',
+    preview: A('/assets/images/Tracking Eyes/TrackingEyes Cover.png'),
+    related: [
+      { label: 'Used In', projects: ['gauntlet-of-gods'] },
+    ],
+    items: [
+      { type: 'image', src: A('/assets/images/Tracking Eyes/TrackingEyes Cover.png'), alt: 'Tracking Eyes Cover' },
+      { type: 'image', src: A('/assets/images/Tracking Eyes/EyeTrackingTest 1.png'), alt: 'Tracking Eyes scatter test 1' },
+      { type: 'image', src: A('/assets/images/Tracking Eyes/EyeTrackingTest 2.png'), alt: 'Tracking Eyes scatter test 2' },
+    ],
+  },
+  scenery: {
+    id: 'scenery',
+    category: 'Specialized Rigs & R&D',
+    eyebrow: 'Specialized Rig — Modular Environment',
+    title: 'Scenery',
+    description: [
+      'Modular forest scenery built for the Gauntlet Of Gods challenge environment. Trees, rocks, grass and props are scattered and controlled procedurally with Geometry Nodes, with a custom UI to adjust density, scale and variation between shots.',
+      'Constraints and drivers keep every piece consistent across cameras, while blendshape-driven deformation adds subtle stylized motion to the foliage, keeping the environment procedural and animation-ready.',
+    ],
+    technologies: 'Blender, Geometry Nodes, Procedural Animation, Constraints, Drivers',
+    breakdownUrl: '',
+    preview: A('/assets/images/Scenery/Gauntlet Of Gods wide scenery view COVER.png'),
+    related: [
+      { label: 'Used In', projects: ['gauntlet-of-gods'] },
+    ],
+    items: [
+      { type: 'image', src: A('/assets/images/Scenery/Gauntlet Of Gods wide scenery view COVER.png'), alt: 'Scenery wide view' },
+      { type: 'image', src: A('/assets/images/Scenery/1.jpeg'), alt: 'Scenery clay view' },
+      { type: 'image', src: A('/assets/images/Scenery/2.jpeg'), alt: 'Scenery outliner' },
+    ],
+  },
 };
 
 export interface ProjectCardTag {
@@ -747,6 +789,28 @@ export const projectGroups: ProjectGroup[] = [
         ariaLabel: 'Abrir Rythball Logo',
         image: projects['rythball-logo'].preview,
         project: 'rythball-logo',
+      },
+      {
+        glyph: '✺',
+        gradient: 'linear-gradient(135deg,#1c0a1a,#3d1436)',
+        title: 'Tracking Eyes',
+        description:
+          'Procedural Geometry Nodes system that scatters stylized eyes across any surface, with every gaze driven by constraints and drivers to track the action for the Gauntlet Of Gods cinematic.',
+        tags: [{ label: 'Blender' }, { label: 'Geometry Nodes' }, { label: 'Animation' }],
+        ariaLabel: 'Abrir Tracking Eyes',
+        image: projects['tracking-eyes'].preview,
+        project: 'tracking-eyes',
+      },
+      {
+        glyph: '⌂',
+        gradient: 'linear-gradient(135deg,#0d1a10,#1e3a24)',
+        title: 'Scenery',
+        description:
+          'Modular forest scenery for the Gauntlet Of Gods environment, scattered and controlled with Geometry Nodes, a custom UI and blendshape-driven stylized motion.',
+        tags: [{ label: 'Blender' }, { label: 'Geometry Nodes' }, { label: 'Animation' }, { label: 'Custom UI' }, { label: 'Blendshapes' }],
+        ariaLabel: 'Abrir Scenery',
+        image: projects.scenery.preview,
+        project: 'scenery',
       },
     ],
   },
