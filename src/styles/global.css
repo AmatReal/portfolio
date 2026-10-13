@@ -257,7 +257,66 @@ h3 {
   gap: 50px;
   min-height: 86vh;
   overflow: hidden;
+  position: relative;
   border-bottom: 1px solid var(--hairline-soft);
+}
+
+/* Scroll-down hint arrow */
+.scroll-arrow {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  color: var(--pink);
+  text-decoration: none;
+  z-index: 2;
+  transition:
+    opacity var(--t-base),
+    transform var(--t-base),
+    border-color var(--t-fast),
+    box-shadow var(--t-fast);
+}
+
+.scroll-arrow i {
+  font-size: 26px;
+  animation: scroll-arrow-pulse 2.2s ease-in-out infinite;
+}
+
+.scroll-arrow:hover {
+  border-color: rgba(222, 29, 141, 0.6);
+  background: var(--surface-2);
+  box-shadow: var(--glow-pink);
+}
+
+.scroll-arrow.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 12px);
+}
+
+@keyframes scroll-arrow-pulse {
+  0%,
+  100% {
+    transform: translateY(0);
+    filter: drop-shadow(0 0 4px rgba(222, 29, 141, 0.55));
+  }
+  50% {
+    transform: translateY(7px);
+    filter: drop-shadow(0 0 11px rgba(222, 29, 141, 0.95));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-arrow i {
+    animation: none;
+  }
 }
 
 .hero-video {
@@ -2045,6 +2104,16 @@ button.card-media {
     gap: 28px;
     min-height: auto;
     background-size: 30px 30px, 30px 30px, auto, auto, auto;
+  }
+
+  .scroll-arrow {
+    width: 38px;
+    height: 38px;
+    bottom: 8px;
+  }
+
+  .scroll-arrow i {
+    font-size: 22px;
   }
 
   .foto {

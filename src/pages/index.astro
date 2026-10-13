@@ -112,9 +112,13 @@ const riggingSkills = [
         <a href="https://www.youtube.com/@amat.3d" target="_blank" rel="noopener" aria-label="YouTube" class="social-icon"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
       </div>
     </div>
+
+    <a href="#featured-projects" class="scroll-arrow" aria-label="Scroll down to featured projects">
+      <i class="uil uil-angle-down" aria-hidden="true"></i>
+    </a>
   </section>
 
-  <section class="featured-projects">
+  <section id="featured-projects" class="featured-projects">
     {featured.map((project) => <FeaturedProject {...project} />)}
   </section>
 
@@ -154,9 +158,10 @@ const riggingSkills = [
 </Layout>
 
 <script>
-  // Navbar hide on scroll
+  // Navbar hide on scroll + scroll-down hint visibility
   let lastY = window.scrollY;
   const navbar = document.getElementById('navbar');
+  const scrollArrow = document.querySelector('.scroll-arrow');
   window.addEventListener(
     'scroll',
     () => {
@@ -165,10 +170,18 @@ const riggingSkills = [
         if (y > lastY && y > 120) navbar.classList.add('nav-hidden');
         else navbar.classList.remove('nav-hidden');
       }
+      if (scrollArrow) scrollArrow.classList.toggle('is-hidden', y > 60);
       lastY = y;
     },
     { passive: true }
   );
+  if (scrollArrow) scrollArrow.classList.toggle('is-hidden', window.scrollY > 60);
+
+  // Smooth-scroll when the scroll-down hint is clicked
+  scrollArrow?.addEventListener('click', (event) => {
+    event.preventDefault();
+    document.getElementById('featured-projects')?.scrollIntoView({ behavior: 'smooth' });
+  });
 
   // Hero video overlay toggle on mobile (≤768px)
   const videoWrapper = document.querySelector('.hero .video-wrapper');
